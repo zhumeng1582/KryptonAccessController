@@ -40,6 +40,4 @@ namespace KryptonAccessController.Json
             return json;
         }
     }
-
-    
 }
