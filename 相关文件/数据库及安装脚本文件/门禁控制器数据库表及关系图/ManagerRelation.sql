@@ -1,0 +1,30 @@
+Create database ManagerRelation
+
+Create Table Manager (
+	ManagerID int not null Primary key ,
+	ManagerName nvarchar(50) not null unique,
+	ManagerPassWord nvarchar (20),
+	IsSuperManager bit default(1)
+);
+
+Create Table MenuIconInfo(
+	MenuIconID int primary key,
+	MenuIconName nvarchar(50),
+	MenuIconCommercial int,
+	MenuIconImage image
+);
+--菜单信息
+Create Table Menu(
+	MenuID int not null primary key,
+	MenuName nvarchar(30) not null unique,
+	MenuIcoID int references MenuIconInfo(MenuIconID)
+);
+--管理员权限表
+Create Table ManagerRightList(
+	ManagerRightListID int not null primary key,
+	ManagerID int references Manager(ManagerID),
+	MenuID int references Menu(MenuID)
+);
+
+--alter table Manager add IsSuperManager bit default(1)
+--select * from Manager

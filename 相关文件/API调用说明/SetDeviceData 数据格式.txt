@@ -1,0 +1,159 @@
+//设置管理员参数
+string tableName = "Manager";
+string data = "ManagerID=1,ManagerName='Admin',ManagerPassWord='123456',IsSuperManager=1"; 
+
+//管理员表
+string tableName = "ManagerRightList";
+string data = "ManagerRightListID=1,ManagerID=1,MenuID=1";
+
+//菜单图标信息表
+string tableName = "MenuIconInfo";
+string data = "MenuIconID=1,MenuIconName='修改密码',MenuIconComercial=1,MenuIconImage=0xFFFFFFFFFFFFFFFFFFFFFFFFFF";
+
+//菜单信息表
+string tableName = "MenuInfo"
+string data = "MenuID=1,MenuName='修改密码'，MenuIconID=1";
+
+//控制器表
+string tableName = "ControllerInfo";
+string data = "ControllerID=241,ControllerType=1,ControllerName='Controller1',ControllerLocation='XXXXX',EncryptionType=0,ControllerVersion='Vxx.xx.xx-x',\
+	ControllerMAC='AA:BB:CC:DD:EE:FF',ControllerIP='192.168.1.241',ControllerSubnetMask='255.255.255.0',ControllerGateway='192.168.1.1',ControllerPort=1200,\
+	ControllerDNS='8.8.8.8',ControllerBUDNS='114.114.114.114',ControllerAddr485=0,ControllerBaudrate=115200,ControllerDataBits=8,ControllerStopBits=1,\
+	ControllerParityCheck='None',ControllerFlowControl='None',ControllerSAM=0,ControllerSAMType=0,DoorUnitCounts=2,ExpansionBoardCounts=0";
+//门单元表
+string tableName = "DoorUnitInfo";
+string data = "DoorUnitID=1,OutPutLockID=01,OutPutTimeLength=6,OpenDoorOverTimeLen=20,ZoneCountLinitEnable=0,ZoneCountLimitMax=10,ZoneCountLimitMed=8,\
+	ZoneCountLimitMin=0,ReadID1=1,ReaderEnable=1,ReaderID2=1,ReaderEnable2=0,InputStateType=2,ExitButtonID=01,ExitButtonMode=1,ExitButtonEnable=1,DoorContactID=02,\
+	DoorContactMode=1,DoorContacrEnable=1,DoorPositionID=03,DoorPositionMode=1,DoorPositionEnable=1,BreakGlassID=04,BreakGlassMode=1,BreakGlassEnable=1";
+
+//读卡器
+string tableName = "ReaderInfo";
+string data = "ReaderID=1,ReaderPointID=1,ReaderType='A',ReaderName='Reader1',ReaderLocation='xxxx',ReaderSAM=0,ReaderSAMType=0,CardType=0,CardReadArea=2,\
+	FingerEnable=0,SecurityAccessLevel=1,SupervisedMode=0,PINIdentify=0,ReaderPIN='000000',DuressCode='000001',ArmPassword='000001',UnarmPassword='000001',\
+	CommunicateType=0,ReaderMac=AA:BB:CC:DD:EE:FF,ReaderIP=192.168.1.231,ReaderSubnet=255.255.255.0,ReaderGateway=192.168.1.1,ReaderPort=1200,\
+	ReaderDNS='114.114.114.114',ReaderBUDNS='8.8.8.8',ReaderAddr485=1,ReaderBaudrate=115200,ReaderDataBits=8,ReaderStopBits=1,ReaderParityCheck='None',\
+	ReaderFlowControl='None',ReaderUsage=1,ReaderTimeAccessID=1";
+//读卡器工作时区表
+string tableName = "ReaderTimeZone";
+string data = "ReaderTimeZoneID=1,TimeZone1='00:00',OperateMode1=1,TimeZone2='23:59',OperateMode2=1,TimeZone4='00:00',OperateMode4=1,TimeZone5='00:00',\
+	OperateMode5=1,TimeZone6='00:00',OperateMode6=1";
+
+//读卡器周工作模式
+string tableName = "ReaderTimeAccess";
+string data = "ReaderTimeAccessID=1,ReaderTimeAccessName='ReadTimeAccess1',Mon=1,Tue=1,Wed=1,Thu=1,Fri=1,Sat=1,Sun=1";
+
+//读卡器节假日工作模式
+string tableName = "ReaderHoliday";
+string data = "ReaderHolidayID=1,ReaderID=1,ReaderHolidayName='Holiday1',ReaderHolidayType=1,ReaderHolidayStartDate='2014-01-01',ReaderHolidayEndDate='2014-01-01'";
+
+//辅助单元
+string tableName = "AuxiliaryUnit";
+string data = "AuxiliaryUnitID=1,AuxOutPutPointID=10,InputStateType=2,FireSensingID=10,FireSensingMode=1,FireSensingEnable=1,TamperSensingID=11,\
+	TamperSensingMode=1,TamperSensingEnable=1,LowVoltageID=12,LowVoltageMode=1,LowVoltageEnable=1,PowerOutageMode=13,PowerOutageMode=1,PowerOutageEnable=1";
+//扩展板信息表
+string tableName = "ExpansionBoardInfo";
+string data = "ExpansionBoardID=1,ExpansionBoardType=1,ExpansionBoardName='ExpansionBoard1',ExpansionBoardAddr=1,InputStateType=1,ExpansionBoardLocation='XXXX'";
+
+//扩展板端口信息
+string tableName = "ExpansionBoardPointInfo";
+string data = "ExpansionBoardPointID=1,PointName=input1,PointType=1,PointID=1,PointState='Null',ExpansionBoardID=1"
+
+//多媒体
+string tableName = "Media"
+string data = "MediaID=1,MediaFileName='XXX',MediaFilePath='XXXXXX',MediaGroupID=1,MediaType=1,PlayPriority=1";
+
+//多媒体组
+string tableName = "MediaGroup";
+string data = "MediaGroupID=1,MediaPictureGroupName='XXX',MediaGRoupDes='XXXX'";
+
+//多媒体播放信息
+string tableName = "PlayMediaInfo";
+string data ="PlayMediaID=1,PlayMediaName='XXX',PlayReaderID=1,PlayLoop=1,\
+	PlayMediaGroupID1=1,STime1='07:00',ETime1='08:00',PlayMediaGroupID2=1,STime2='11:30',ETime2='12:30',\
+	PlayMediaGroupID3=1,STime3='17:00',ETime3='18:00',PlayMediaGroupID4=1,STime4='21:00',ETime4='22:00',\
+	PlayMediaGroupID5=1,STime5='00:00',ETime5='00:00',PlayMediaGroupID6=1,STime6='00:00',ETime6='00:00'";
+
+//用户表
+string tableName = "UserInfo";
+string data = "UserID=1,UserName='user1',Photograph=0xFFFFF,UserGroupID1=1,UserGroupID2=1,UserGroupID3=1,UserGroupID4=1,FingerPosition0=1,FingerPrint0=0xFFFFF,\
+	FingerPosition1=1,FingerPrint1=0xFFFFFF,SecurityAccessLevel=1,PrimaryCardID='00000000',SecondCardID='00000000'";
+	
+//卡信息
+string tableName ="CardInfo";
+string data = "CardId='000000',CardVersion=1,CardType=0,CardLevel='E',CardPassword=000000,CardIssueDate='2014-09-01',CardValidDate=2016-09-01,StateFlag=1";
+
+//黑名单信息
+string tableName = "BlacklistCardInfo";
+string data = "CardID=000000,CardVersion=1,CardDeactivateDate='2014-09-01',UserName='abc',MarkBListReason='xxxx',BListStateFlag=1";
+
+//时区表
+string tableName = "TimeZone";
+string data = "TimeZoneID=1,STime1='00:00',ETime1='23:59',STime2='00:00',ETime2='00:00',STime3='00:00',ETime3='00:00',STime4='00:00',ETime4='00:00',\
+	STime5='00:00',ETime5='00:00',STime6='00:00',ETime6='00:00'";
+
+//假日表
+string tableName = "Holiday";
+string data = "HolidayID=1,HolidayName='中秋节',UserGroupID=1,HolidayType=1,HolidayStartDate='2014-09-06',HolidayEndDate='2014-09-08'";
+
+//用户组表
+string tableName = "UserGroup"
+string data = "UserGroupID=1,UserGroupName='xxx',UserGroupDes='xxxxxxx'";
+
+//访问时间表
+string tableName ="TimeAccess";
+string data = "TimeAccessID=1,UserGroupID=1,Mon=1,Tue=1,Wed=1,Thu=1,Fri=1,Sat=1,Sun=1";
+
+//局域网内控制器信息
+string tableName = "ControllerInfoLAN";
+string data = "ControllerID=1,ControllerName='XXX',ControllerType=1,CommunicateType=1,ControllerIP='192.168.1.241',ControllerPort=1200,\
+	ControllerAddr485=0,ControllerBaudrate=115200,ControllerDataBits=8,ControllerStopBits=1,ControllerParityCheck='None',ControlerFlowControl='None'";
+	
+//指令程序表
+string tableName = "InterControlProgram";
+string data = "ICPID=1,ICPName='XXX',ICPWaitTimeLength=0,DesControllerInfoInLANID=2,PointType=01,PointID=01,PointState=1,OutPutLength=6";
+
+//TimeICP
+string tableName = "TimeICP";
+string data = "TimeICPID=1,TimeICPName='XXX',TimeICPEnable=1,TimeICPLoop=1,MonEnable=1,TueEnable=1,WedEnable=1,ThuEnable=1,FriEnable=1,SatEnable=1,SunEnable=1,TimePoint='00:00:00',ICPID=1";
+
+//HolidayICP
+string tableName = "HolidayICP";
+string data = "HolidayID=1,HolidayName='XXXX',HolidayStartDate='2014-09-06',HolidayEndDate='2014-09-08',HolidayType=1,TimeICPID=1";
+
+//EventICP
+string tableName = "EventICP";
+string data = "EventICPID=1,EventICPName='XXXX',EventICPEnable=1,PointType=1,PointID=1,EventCodeID='00001',ICPID=1";
+
+//StandardOperateProcedure
+string tableName = "StandardOperateProcedure"
+string data = "SOPID=1,SOPName='XXX',SOPWaitTimeLength=0,DesControllerInfoInLANID=1,Action='XXXX',OutPutLength=6";
+
+//TimeSOP表
+string tableName = "TimeSOP";
+string data = "TimeSOPID=1,TimeSOPName='XXX',TimeSOPEnable=1,TimeSOPloop=1,MonEnable=1,TueEnable=1,WedEnable=1,ThuEnable=1,FriEnable=1,SatEnable=1,SunEnable=1,TimePoint='00:00:00',SOPID=1";
+
+//HolidaySOP
+string tableName = "HolidaySOP";
+string data = "HolidayID=1,HolidayName='XXX',HolidayStartDate='2014-09-06',HolidayEndDate='2014-09-08',HolidayType=1,TimeSOPID=1";
+
+//EventSOP
+string tableName = "EventSOP";
+string data = "EventSOPID=1,EventSOPName='XXX',EventSOPEnable=1,PointType=1,PointID=01,EventCodeID='000001',SOPID=1";
+
+//InterLock
+string tableName = "InterLock";
+string data = "InterLockID=1,InterLockEnable=1,ControllerInfoInLANID1=1,DoorUnitID=1,ControllerInfoInLANID2=1,DoorUnitID2=2";
+
+//反潜回
+string tableName = "AntiPassBack";
+string data = "AntiPasssBackID=1,AntiPassBackMode=1,AntiPassEnable=1,ControllerInfoInLANID1=1,DoorUnitID1=1,ControllerInfoINLANID2=1,DoorUnitID2=2,ControllerInfoInLANID3=1,DoorUnit=3,ControllerInfoInLANID=1,DoorUnitID=4"
+
+
+
+	
+
+
+
+ 
+
+
