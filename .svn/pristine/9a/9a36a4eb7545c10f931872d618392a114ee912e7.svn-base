@@ -1,0 +1,168 @@
+namespace KryptonAccessController.RelationUser
+{
+    partial class UserInfo
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.kryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
+            this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.dataGridViewWithCheckBox1 = new MyComponents.DataGridViewWithCheckBox();
+            this.dataGridViewLinkColumn2 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewLinkColumn1 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.toolStripUserInfo = new System.Windows.Forms.ToolStrip();
+            this.dataGridViewLinkColumn3 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
+            this.kryptonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWithCheckBox1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // kryptonPanel
+            // 
+            this.kryptonPanel.Controls.Add(this.dataGridViewWithCheckBox1);
+            this.kryptonPanel.Controls.Add(this.toolStripUserInfo);
+            this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel.Name = "kryptonPanel";
+            this.kryptonPanel.Size = new System.Drawing.Size(292, 246);
+            this.kryptonPanel.TabIndex = 0;
+            // 
+            // dataGridViewWithCheckBox1
+            // 
+            this.dataGridViewWithCheckBox1.AllowUserToAddRows = false;
+            this.dataGridViewWithCheckBox1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWithCheckBox1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewLinkColumn3,
+            this.dataGridViewCheckBoxColumn3,
+            this.dataGridViewLinkColumn2,
+            this.dataGridViewCheckBoxColumn2,
+            this.dataGridViewLinkColumn1,
+            this.dataGridViewCheckBoxColumn1});
+            this.dataGridViewWithCheckBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewWithCheckBox1.HaveCheckbox = true;
+            this.dataGridViewWithCheckBox1.HaveEditLink = true;
+            this.dataGridViewWithCheckBox1.Location = new System.Drawing.Point(0, 25);
+            this.dataGridViewWithCheckBox1.Name = "dataGridViewWithCheckBox1";
+            this.dataGridViewWithCheckBox1.RowTemplate.Height = 23;
+            this.dataGridViewWithCheckBox1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewWithCheckBox1.Size = new System.Drawing.Size(292, 221);
+            this.dataGridViewWithCheckBox1.TabIndex = 4;
+            // 
+            // dataGridViewLinkColumn2
+            // 
+            this.dataGridViewLinkColumn2.DataPropertyName = "Edit";
+            this.dataGridViewLinkColumn2.HeaderText = "Edit";
+            this.dataGridViewLinkColumn2.LinkColor = System.Drawing.Color.Blue;
+            this.dataGridViewLinkColumn2.Name = "dataGridViewLinkColumn2";
+            this.dataGridViewLinkColumn2.Text = "Edit";
+            this.dataGridViewLinkColumn2.UseColumnTextForLinkValue = true;
+            this.dataGridViewLinkColumn2.VisitedLinkColor = System.Drawing.Color.Gray;
+            this.dataGridViewLinkColumn2.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn2
+            // 
+            this.dataGridViewCheckBoxColumn2.HeaderText = "";
+            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            this.dataGridViewCheckBoxColumn2.Width = 50;
+            // 
+            // dataGridViewLinkColumn1
+            // 
+            this.dataGridViewLinkColumn1.DataPropertyName = "Edit";
+            this.dataGridViewLinkColumn1.HeaderText = "Edit";
+            this.dataGridViewLinkColumn1.LinkColor = System.Drawing.Color.Blue;
+            this.dataGridViewLinkColumn1.Name = "dataGridViewLinkColumn1";
+            this.dataGridViewLinkColumn1.Text = "Edit";
+            this.dataGridViewLinkColumn1.UseColumnTextForLinkValue = true;
+            this.dataGridViewLinkColumn1.VisitedLinkColor = System.Drawing.Color.Gray;
+            this.dataGridViewLinkColumn1.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Width = 50;
+            // 
+            // toolStripUserInfo
+            // 
+            this.toolStripUserInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripUserInfo.Location = new System.Drawing.Point(0, 0);
+            this.toolStripUserInfo.Name = "toolStripUserInfo";
+            this.toolStripUserInfo.Size = new System.Drawing.Size(292, 25);
+            this.toolStripUserInfo.TabIndex = 3;
+            this.toolStripUserInfo.Text = "toolStrip1";
+            // 
+            // dataGridViewLinkColumn3
+            // 
+            this.dataGridViewLinkColumn3.DataPropertyName = "Edit";
+            this.dataGridViewLinkColumn3.HeaderText = "Edit";
+            this.dataGridViewLinkColumn3.LinkColor = System.Drawing.Color.Blue;
+            this.dataGridViewLinkColumn3.Name = "dataGridViewLinkColumn3";
+            this.dataGridViewLinkColumn3.Text = "Edit";
+            this.dataGridViewLinkColumn3.UseColumnTextForLinkValue = true;
+            this.dataGridViewLinkColumn3.VisitedLinkColor = System.Drawing.Color.Gray;
+            this.dataGridViewLinkColumn3.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn3
+            // 
+            this.dataGridViewCheckBoxColumn3.HeaderText = "";
+            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
+            this.dataGridViewCheckBoxColumn3.Width = 50;
+            // 
+            // UserInfo
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(292, 246);
+            this.Controls.Add(this.kryptonPanel);
+            this.Name = "UserInfo";
+            this.Text = "UserInfo";
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
+            this.kryptonPanel.ResumeLayout(false);
+            this.kryptonPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWithCheckBox1)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel;
+        private System.Windows.Forms.ToolStrip toolStripUserInfo;
+        private MyComponents.DataGridViewWithCheckBox dataGridViewWithCheckBox1;
+        private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
+    }
+}
+

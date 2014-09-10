@@ -1,0 +1,10 @@
+E:\AccessController\KryptonAccessController\Components\bin\Debug\Components.dll
+E:\AccessController\KryptonAccessController\Components\bin\Debug\Components.pdb
+E:\AccessController\KryptonAccessController\Components\obj\Debug\MyComponents.ComponentDoorUnit.resources
+E:\AccessController\KryptonAccessController\Components\obj\Debug\MyComponents.DoorUnit.resources
+E:\AccessController\KryptonAccessController\Components\obj\Debug\MyComponents.FlatTabControl.resources
+E:\AccessController\KryptonAccessController\Components\obj\Debug\MyComponents.TimeMode.resources
+E:\AccessController\KryptonAccessController\Components\obj\Debug\Components.csproj.GenerateResource.Cache
+E:\AccessController\KryptonAccessController\Components\obj\Debug\Components.dll
+E:\AccessController\KryptonAccessController\Components\obj\Debug\Components.pdb
+E:\AccessController\KryptonAccessController\Components\obj\Debug\Components.csprojResolveAssemblyReference.cache

@@ -1,0 +1,134 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace KryptonAccessController.MyComponents
+{
+    [ToolboxBitmap(typeof(System.Windows.Forms.DataGridView))]
+    public partial class DataGridViewWithCheckBox : System.Windows.Forms.DataGridView
+    {
+        private static DataGridViewColumn checkBoxColumn = new DataGridViewCheckBoxColumn(false);
+        private static datagridviewCheckboxHeaderCell checkBoxHeaderCell = new datagridviewCheckboxHeaderCell();
+        
+        //[Category("自定义参数设置")]
+        //[Description("获取/设置默认方式单选按钮控件")]
+        private bool haveCheckbox = false;
+        public bool HaveCheckbox
+        {
+            get { return haveCheckbox; }
+            set
+            {
+                if (value == true)
+                {
+                    if (this.Columns.Contains(checkBoxColumn)==false)
+                        this.Columns.Insert(0, checkBoxColumn);
+                }
+                else
+                {
+                    if (this.Columns.Contains(checkBoxColumn))
+                        this.Columns.Remove(checkBoxColumn);
+                }
+                haveCheckbox = value;
+            }
+        }
+        
+        private void initCheckBoxColumn()
+        {
+            checkBoxColumn.HeaderCell = checkBoxHeaderCell;
+            checkBoxColumn.Name = "CheckBoxColumn";
+            checkBoxColumn.HeaderText = null;
+            checkBoxColumn.Width = 50;
+        }
+
+        //private new  bool AllowUserToAddRows = false;
+        public DataGridViewWithCheckBox()
+        {
+            InitializeComponent();
+
+            //if (this.AllowUserToAddRows == true)
+            base.AllowUserToAddRows = false;
+
+            initCheckBoxColumn();
+
+            this.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWithCheckBox_CellContentClick);
+            this.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewWithCheckBox_CellFormatting);
+            this.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridViewWithCheckBox_CurrentCellDirtyStateChanged);
+            checkBoxHeaderCell.OnCheckBoxClicked += new datagridviewcheckboxHeaderEventHander(ch_OnCheckBoxClicked);//关联单击事件
+            
+        }
+       
+        private void ch_OnCheckBoxClicked(object sender, datagridviewCheckboxHeaderEventArgs e)
+        {
+            foreach (DataGridViewRow dgvRow in this.Rows)
+            {
+                dgvRow.Cells[0].Value = e.CheckedState;
+            }
+            this.Refresh();
+        }
+        private void dataGridViewWithCheckBox_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView dataGridView = (DataGridView)sender;
+
+            if (dataGridView[e.ColumnIndex, e.RowIndex].Value != null)
+                e.Value = dataGridView[e.ColumnIndex, e.RowIndex].Value.ToString().Trim();
+
+            if (dataGridView[e.ColumnIndex, e.RowIndex] is DataGridViewCheckBoxCell)
+                dataGridView.CurrentCell.ReadOnly = false;
+            else if (dataGridView[e.ColumnIndex, e.RowIndex] is DataGridViewLinkCell)
+                return;
+            else
+                dataGridView.CurrentCell.ReadOnly = true;
+        }
+
+        private void dataGridViewWithCheckBox_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            DataGridView dataGridView = (DataGridView)sender;
+            if (dataGridView.IsCurrentCellDirty)
+            {
+                dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void dataGridViewWithCheckBox_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = (DataGridView)sender;
+            if (dataGridView[e.ColumnIndex, e.RowIndex] is DataGridViewCheckBoxCell)
+            {
+                if (e.ColumnIndex != 0)
+                    return;
+
+                checkBoxHeaderCell.Checked = true;
+                for (int row = 0; row < Rows.Count; row++)
+                {
+                    if (GetRowCheckBoxState(row) == false)
+                    {
+                        checkBoxHeaderCell.Checked = false;
+                        break;
+                    }
+                }
+            }
+            else
+                return;
+
+            this.Refresh();
+        }
+        public bool GetRowCheckBoxState(int row)
+        {
+            DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.Rows[row].Cells[0];
+            if (checkCell == null)
+                return false;
+
+            bool check = false;
+            this.Invoke((EventHandler)delegate
+            {
+                check = (bool)checkCell.FormattedValue;
+            });
+            return check;
+        }
+    }
+}

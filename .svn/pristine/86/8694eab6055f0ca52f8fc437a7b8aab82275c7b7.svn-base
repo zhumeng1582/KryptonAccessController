@@ -1,0 +1,128 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using KryptonAccessController.DialogBox;
+namespace KryptonAccessController.OperationFile
+{
+    class IniFile
+    {
+        static string iniFile = AppDomain.CurrentDomain.BaseDirectory + @"\config.ini";
+
+        public IniFile()
+        {
+            if (System.Environment.CurrentDirectory == AppDomain.CurrentDomain.BaseDirectory)//windows应用程序则相等
+                iniFile = AppDomain.CurrentDomain.BaseDirectory;
+            else
+                iniFile = AppDomain.CurrentDomain.BaseDirectory + @"\config.ini";
+        }
+        /********************数据源***************************/
+        public static string getDataSource()
+        {
+            string IP = Win32.ReadValue(iniFile,"DataBase", "IP");
+            if (IP == null)
+                ClassMessageBox.MessageBoxOK("config.ini 文件格式错误");
+
+            return IP;
+        }
+        public static void setDataSource(string ip)
+        {
+            Win32.WriteValue(iniFile,"DataBase", "IP", ip);
+        }
+        /**********************数据库名************************/
+        public static string getDataBaseName()
+        {
+            string dataBaseName = Win32.ReadValue(iniFile,"DataBase", "DataBaseName");
+
+            if (dataBaseName == null)
+                ClassMessageBox.MessageBoxOK("config.ini 文件格式错误");
+
+            return dataBaseName;
+        }
+        public static void setDataBaseName(string databasename)
+        {
+            Win32.WriteValue(iniFile,"DataBase", "DataBaseName", databasename);
+        }
+        /*************************数据库登录用户名*********************/
+        public static string getUserID()
+        {
+            string userID = Win32.ReadValue(iniFile,"DataBase", "UserID");
+            if (userID == null)
+                ClassMessageBox.MessageBoxOK("config.ini 文件格式错误");
+            return userID;
+        }
+        public static void setUserID(string userid)
+        {
+            Win32.WriteValue(iniFile,"DataBase", "UserID", userid);
+        }
+        /**************************数据库登录密码********************/
+        public static string getPassword()
+        {
+            string password = Win32.ReadValue(iniFile,"DataBase", "Password");
+            if (password == null)
+                ClassMessageBox.MessageBoxOK("config.ini 文件格式错误");
+            return password;
+        }
+        public static void setPassword(string password)
+        {
+            Win32.WriteValue(iniFile,"DataBase", "Password", password);
+        }
+        /**************************数据库登录密码********************/
+        public static string getHide()
+        {
+            string password = Win32.ReadValue(iniFile, "DataBase", "Hide");
+            /*
+            if (password == null)
+                ClassMessageBox.MessageBoxOK("config.ini 文件格式错误");*/
+
+            return password;
+        }
+        public static void setHide(string password)
+        {
+            Win32.WriteValue(iniFile, "DataBase", "Hide", password);
+        }
+
+        public static string getDataBaseString()
+        {
+            string IP = getDataSource();
+            string dataBaseName = getDataBaseName();
+            string userID = getUserID();
+            string password = getPassword();
+            string connstring = "data source =" + IP + ";initial catalog = " + dataBaseName + "; user id = " + userID + ";password =" + password;
+            return connstring;
+        }
+        public static void setDataBaseString(string ip, string databaseName, string userID, string password)
+        {
+            setDataSource(ip);
+            setDataBaseName(databaseName);
+            setUserID(userID);
+            setPassword(password);
+        }
+        /**************************界面语言********************/
+        public static string getStartUpLanguage()
+        {
+            string languageType = Win32.ReadValue(iniFile, "StartUp", "Language");
+            if (languageType == null)
+                ClassMessageBox.MessageBoxOK("config.ini 文件格式错误");
+            return languageType;
+        }
+        public static void setStartUpLanguage(string languageType)
+        {
+            Win32.WriteValue(iniFile, "StartUp", "Language", languageType);
+        }
+
+        /**************************主页********************/
+        public static string getStartUpHomePage()
+        {
+            string languageType = Win32.ReadValue(iniFile, "StartUp", "HomePage");
+            if (languageType == null)
+                ClassMessageBox.MessageBoxOK("config.ini 文件格式错误");
+            return languageType;
+
+        }
+        public static void setStartUpHomePage(string homepage)
+        {
+            Win32.WriteValue(iniFile,"StartUp", "HomePage", homepage);
+        }
+    }
+}

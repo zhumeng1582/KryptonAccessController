@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+using KryptonAccessController.Common;
+
+namespace KryptonAccessController.RelationDepartment
+{
+    public partial class FormDepartment : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        private AccessDataBase.Model.DepartmentInfo modelDepartmentInfo = new AccessDataBase.Model.DepartmentInfo();
+        private AccessDataBase.BLL.DepartmentInfo bllDepartmentInfo = new AccessDataBase.BLL.DepartmentInfo();
+        private OpenMode openMode;
+        public FormDepartment(AccessDataBase.Model.DepartmentInfo modelDepartmentInfo, OpenMode openMode)
+        {
+            InitializeComponent();
+            InitComboBoxCompany();
+
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            this.modelDepartmentInfo = modelDepartmentInfo;
+            this.openMode = openMode;
+
+            if (openMode == OpenMode.Add)
+            {
+                kryptonTextBoxDepartmentID.Text = modelDepartmentInfo.DepartmentID.ToString();
+            }
+            else if (openMode == OpenMode.Update)
+            {
+                kryptonTextBoxDepartmentID.Text = modelDepartmentInfo.DepartmentID.ToString();
+                kryptonTextBoxDepartmentDes.Text = modelDepartmentInfo.DepartmentDes.ToString();
+                kryptonTextBoxDepartmentName.Text = modelDepartmentInfo.DepartmentName.ToString();
+                kryptonLabelDepartmentTel1.Text = modelDepartmentInfo.DepartmentTel1.ToString();
+                kryptonLabelDepartmentTel2.Text = modelDepartmentInfo.DepartmentTel2.ToString();
+            }
+        }
+        private void InitComboBoxCompany()
+        {
+            AccessDataBase.BLL.CompanyInfo bllCompanyInfo = new AccessDataBase.BLL.CompanyInfo();
+            DataTable dt = bllCompanyInfo.GetAllList().Tables[0];
+
+            kryptonComboBoxCompany.Items.Clear();
+            foreach (DataRow row in dt.Rows)
+            {
+                kryptonComboBoxCompany.Items.Add(row["CompanyName"]);
+            }
+        }
+
+        private void kryptonButtonOK_Click(object sender, EventArgs e)
+        {
+            modelDepartmentInfo.DepartmentID = int.Parse( kryptonTextBoxDepartmentID.Text.ToString());
+            modelDepartmentInfo.DepartmentName = kryptonTextBoxDepartmentName.Text.ToString();
+            modelDepartmentInfo.DepartmentDes = kryptonTextBoxDepartmentDes.Text.ToString();
+            modelDepartmentInfo.DepartmentTel1 = kryptonTextBoxDepartmentTel1.Text.ToString();
+            modelDepartmentInfo.DepartmentTel2 = kryptonTextBoxDepartmentTel2.Text.ToString();
+
+            if (openMode == OpenMode.Add)
+            {
+                if (bllDepartmentInfo.Exists(modelDepartmentInfo.DepartmentID))
+                    MyMessageBox.MessageBoxOK("该部门已经存在");
+                else if (bllDepartmentInfo.Add(modelDepartmentInfo))
+                    MyMessageBox.MessageBoxOK("添加部门成功");
+                else
+                    MyMessageBox.MessageBoxOK("添加部门失败");
+
+            }
+            else if (openMode == OpenMode.Update)
+            {
+                if (bllDepartmentInfo.Update(modelDepartmentInfo))
+                    MyMessageBox.MessageBoxOK("修改部门成功");
+                else
+                    MyMessageBox.MessageBoxOK("修改部门失败");
+            }
+            this.Close();
+        }
+
+        private void kryptonButtonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}

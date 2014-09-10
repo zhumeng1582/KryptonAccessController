@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.WidgetThread;
+
+namespace KryptonAccessController.RelationDepartment
+{
+    public partial class DepartmentInfo : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        AccessDataBase.BLL.DepartmentInfo bllDepartment = new AccessDataBase.BLL.DepartmentInfo();
+
+        private static object obj = new object();
+        static DepartmentInfo _instance = null;
+        public static DepartmentInfo getInstance()
+        {
+            if (_instance == null)
+            {
+                lock (obj)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new DepartmentInfo();
+                    }
+                }
+            }
+            return _instance;
+        }
+
+        public DepartmentInfo()
+        {
+            InitializeComponent();
+
+            initToolStripMenu();
+            refreshDataGridView();
+        }
+        public void initToolStripMenu()
+        {
+            toolStripDepartment.Items.Clear();
+            ImageOperate.AddButtonItemToToolStrip(toolStripDepartment, "add.BMP", "Add", toolStripButtonAddCompanyInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripDepartment, "update.BMP", "Update", toolStripButtonUpdateCompanyInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripDepartment, "delete.BMP", "Del", toolStripButtonDeleteCompanyInfo_Click);
+
+        }
+        public void refreshDataGridView()
+        {
+            DataTable dt = bllDepartment.GetAllList().Tables[0];
+            kryptonDataGridViewDepartment.DataSource = dt;
+
+        }
+        private void toolStripButtonAddCompanyInfo_Click(object sender, EventArgs e)
+        {
+            this.refreshDataGridView();
+        }
+
+        private void toolStripButtonUpdateCompanyInfo_Click(object sender, EventArgs e)
+        {
+            this.refreshDataGridView();
+        }
+
+        private void toolStripButtonDeleteCompanyInfo_Click(object sender, EventArgs e)
+        {
+            this.refreshDataGridView();
+        }
+    }
+}

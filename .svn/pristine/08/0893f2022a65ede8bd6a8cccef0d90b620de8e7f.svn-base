@@ -1,0 +1,120 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+using KryptonAccessController.Common;
+
+namespace KryptonAccessController.RelationUser
+{
+    public partial class FormUser : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        private AccessDataBase.Model.UserInfo modelUserInfo = new AccessDataBase.Model.UserInfo();
+        private AccessDataBase.BLL.UserInfo bllUserInfo = new AccessDataBase.BLL.UserInfo();
+
+        private AccessDataBase.Model.CardInfo modelCardInfo1 = new AccessDataBase.Model.CardInfo();
+        private AccessDataBase.Model.CardInfo modelCardInfo2 = new AccessDataBase.Model.CardInfo();
+        private AccessDataBase.BLL.CardInfo bllCardInfo = new AccessDataBase.BLL.CardInfo();
+
+        private OpenMode openMode;
+        public FormUser(AccessDataBase.Model.UserInfo userInfo, OpenMode openMode)
+        {
+            InitializeComponent();
+
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            this.modelUserInfo = userInfo;
+            this.openMode = openMode;
+            if (openMode == OpenMode.Add)
+            {
+                showAddPara();
+            }
+            else if (openMode == OpenMode.Update)
+            {
+                showUpdatePara();
+            }
+
+        }
+        /// <summary>
+        /// 显示添加参数
+        /// </summary>
+        private void showAddPara()
+        {
+            kryptonTextBoxUserID.Text = modelUserInfo.UserID.ToString();
+        }
+        /// <summary>
+        /// 显示更新参数
+        /// </summary>
+        private void showUpdatePara()
+        {
+            string cardID = null;
+            #region 基本信息
+            kryptonTextBoxUserID.Text = modelUserInfo.UserID.ToString();
+            kryptonTextBoxUserName.Text = modelUserInfo.UserName.ToString();
+            #endregion
+            #region 个人信息
+
+            #endregion
+            #region 卡片信息1
+            cardID = modelUserInfo.PrimaryCardID.Trim();
+            if(!string.IsNullOrEmpty(cardID))
+            {
+                kryptonTextBoxCardID1.Text = cardID;
+                modelCardInfo1 = bllCardInfo.GetModel(cardID);
+                if (modelCardInfo1 != null)
+                {
+                    kryptonTextBoxCardVersion1.Text = modelCardInfo1.CardVersion != null ? modelCardInfo1.CardVersion.Trim() :"";
+                    kryptonTextBoxCardType1.Text = (modelCardInfo1.CardType.HasValue ?modelCardInfo1.CardType.Value: 0).ToString()  ;
+                    kryptonTextBoxCardLevel1.Text = modelCardInfo1.CardLevel != null ? modelCardInfo1.CardLevel.Trim() : "";
+                    kryptonTextBoxCardPassword1.Text = modelCardInfo1.CardPassword != null ? modelCardInfo1.CardPassword.Trim() : "";
+                    if (RegexMatch.IsDate(modelCardInfo1.CardIssueDateTime))
+                        kryptonDateTimePickerCardIssueDateTime1.Value = Convert.ToDateTime(modelCardInfo1.CardIssueDateTime);
+                    if (RegexMatch.IsDate(modelCardInfo1.CardValidDateTime))
+                    kryptonDateTimePickerCardValidDateTime1.Value = Convert.ToDateTime(modelCardInfo1.CardValidDateTime);
+
+                }
+            }
+                
+          
+            #endregion
+            #region 卡片信息2
+            cardID = modelUserInfo.SecondCardID.Trim();
+            if (!string.IsNullOrEmpty(cardID))
+            {
+                kryptonTextBoxCardID2.Text = cardID;
+                modelCardInfo2 = bllCardInfo.GetModel(cardID);
+                if (modelCardInfo2 != null)
+                {
+                    kryptonTextBoxCardVersion2.Text = modelCardInfo2.CardVersion != null ? modelCardInfo2.CardVersion.Trim() : "";
+                    kryptonTextBoxCardType2.Text = (modelCardInfo2.CardType.HasValue ? modelCardInfo2.CardType.Value : 0).ToString();
+                    kryptonTextBoxCardLevel2.Text = modelCardInfo2.CardLevel != null ? modelCardInfo2.CardLevel.Trim() : "";
+                    kryptonTextBoxCardPassword2.Text = modelCardInfo2.CardPassword != null ? modelCardInfo2.CardPassword.Trim() : "";
+                    if (RegexMatch.IsDate(modelCardInfo2.CardIssueDateTime))
+                        kryptonDateTimePickerCardIssueDateTime2.Value = Convert.ToDateTime(modelCardInfo2.CardIssueDateTime);
+                    if (RegexMatch.IsDate(modelCardInfo2.CardValidDateTime))
+                        kryptonDateTimePickerCardValidDateTime2.Value = Convert.ToDateTime(modelCardInfo2.CardValidDateTime);
+
+                }
+            }
+            #endregion
+
+
+        }
+        private void kryptonButtonOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonButtonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}

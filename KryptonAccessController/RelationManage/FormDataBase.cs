@@ -1,0 +1,124 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using Maticsoft.DBUtility;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+using KryptonAccessController.OperationFile;
+using KryptonAccessController.Common;
+using System.Data.SqlClient;
+using KryptonAccessController.International;
+
+namespace KryptonAccessController.RelationManage
+{
+    public partial class FormDataBase : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        private string IP ;
+        private string dataBaseName;
+        private string userID;
+        private string password;
+
+        public FormDataBase()
+        {
+            InitializeComponent();
+
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            initUserInterface();
+
+        }
+        private void initUserInterface()
+        {
+            /*
+            if (IniFile.getStartUpLanguage() != "English")
+                return;
+            */
+            if (System.Globalization.CultureInfo.InstalledUICulture.Name == "zh-CN")
+                return;
+            this.Text = English.FormDataBaseValidatorText;
+            kryptonLabelDataSource.Text = English.DataSource;
+            kryptonLabelUserPassword.Text = English.DataBaseUserPassword;
+            kryptonLabelUserName.Text = English.DataBaseUserName;
+            kryptonLabelDataBaseName.Text = English.DataBaseName;
+            kryptonCheckBoxOnlyOne.Text = English.OnlyOne;
+            kryptonButtonOk.Text = English.OK;
+            kryptonButtonCancel.Text = English.Cancel;
+            
+        }
+
+        public string getDataBaseString()
+        {
+            IP = kryptonTextBoxDataSource.Text.Trim();
+            dataBaseName = kryptonTextBoxDataBaseName.Text.Trim();
+            userID = kryptonTextBoxUserName.Text.Trim();
+            password = kryptonTextBoxPassword.Text.Trim();
+
+            return "data source =" + IP + ";initial catalog = " + dataBaseName + "; user id = " + userID + ";password =" + password;
+        }
+
+        private void kryptonButtonOk_Click(object sender, EventArgs e)
+        {
+            DbHelperSQL.connectionString = getDataBaseString();
+            using (SqlConnection conn = new SqlConnection(DbHelperSQL.connectionString))
+            {
+                conn.Open();
+                if (ConnectionState.Open == conn.State)
+                {
+                    conn.Close();
+                    IniFile.setDataBaseString(IP, dataBaseName, userID, password);
+                    this.Hide();
+
+                    FormLogin AccessControl = new FormLogin(OpenMode.Login);
+                    AccessControl.ShowDialog();
+                }
+                else
+                {
+                    MyMessageBox.MessageBoxOK("数据库连接失败");
+                }
+            }
+        }
+
+        private void kryptonButtonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FormDataBaseLogin_Load(object sender, EventArgs e)
+        {
+            
+            kryptonTextBoxDataSource.Text = IniFile.getDataSource();
+            kryptonTextBoxDataBaseName.Text=IniFile.getDataBaseName();
+            kryptonTextBoxUserName.Text=IniFile.getUserID();
+            kryptonTextBoxPassword.Text = IniFile.getPassword();
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            if (string.IsNullOrEmpty(kryptonTextBoxDataSource.Text))
+                IniFile.setHide("false");
+            else if (string.IsNullOrEmpty(kryptonTextBoxDataBaseName.Text))
+                IniFile.setHide("false");
+            else if (string.IsNullOrEmpty(kryptonTextBoxUserName.Text))
+                IniFile.setHide("false");
+            else if (string.IsNullOrEmpty(kryptonTextBoxPassword.Text))
+                IniFile.setHide("false");
+
+            if (IniFile.getHide() == "true")
+                kryptonButtonOk_Click(sender, e);
+        }
+
+        private void kryptonCheckBoxOnlyOne_CheckedChanged(object sender, EventArgs e)
+        {
+            if (kryptonCheckBoxOnlyOne.Checked ==true)
+                IniFile.setHide("true");
+            else 
+                IniFile.setHide("false");
+        }
+    }
+}

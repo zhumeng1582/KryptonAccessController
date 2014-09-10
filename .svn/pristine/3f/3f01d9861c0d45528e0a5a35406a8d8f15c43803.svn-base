@@ -1,0 +1,280 @@
+namespace KryptonAccessController.RelationController
+{
+    partial class FormReaderHoliday
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.kryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
+            this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonDateTimePicker7 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
+            this.kryptonComboBox5 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonDateTimePicker8 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
+            this.kryptonComboBox4 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonDateTimePicker9 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
+            this.kryptonComboBox3 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonDateTimePicker10 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
+            this.kryptonComboBox2 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonDateTimePicker11 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
+            this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonDateTimePicker12 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
+            this.kryptonComboBoxModeMon1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
+            this.kryptonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxModeMon1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // kryptonPanel
+            // 
+            this.kryptonPanel.Controls.Add(this.kryptonPanel1);
+            this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel.Name = "kryptonPanel";
+            this.kryptonPanel.Size = new System.Drawing.Size(738, 272);
+            this.kryptonPanel.TabIndex = 0;
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Controls.Add(this.kryptonDateTimePicker7);
+            this.kryptonPanel1.Controls.Add(this.kryptonComboBox5);
+            this.kryptonPanel1.Controls.Add(this.kryptonDateTimePicker8);
+            this.kryptonPanel1.Controls.Add(this.kryptonComboBox4);
+            this.kryptonPanel1.Controls.Add(this.kryptonDateTimePicker9);
+            this.kryptonPanel1.Controls.Add(this.kryptonComboBox3);
+            this.kryptonPanel1.Controls.Add(this.kryptonDateTimePicker10);
+            this.kryptonPanel1.Controls.Add(this.kryptonComboBox2);
+            this.kryptonPanel1.Controls.Add(this.kryptonDateTimePicker11);
+            this.kryptonPanel1.Controls.Add(this.kryptonComboBox1);
+            this.kryptonPanel1.Controls.Add(this.kryptonDateTimePicker12);
+            this.kryptonPanel1.Controls.Add(this.kryptonComboBoxModeMon1);
+            this.kryptonPanel1.Location = new System.Drawing.Point(59, 32);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(516, 56);
+            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.kryptonPanel1.StateNormal.Color1 = System.Drawing.SystemColors.AppWorkspace;
+            this.kryptonPanel1.TabIndex = 49;
+            // 
+            // kryptonDateTimePicker7
+            // 
+            this.kryptonDateTimePicker7.CustomFormat = "HH:mm";
+            this.kryptonDateTimePicker7.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.kryptonDateTimePicker7.Location = new System.Drawing.Point(448, 3);
+            this.kryptonDateTimePicker7.Name = "kryptonDateTimePicker7";
+            this.kryptonDateTimePicker7.ShowUpDown = true;
+            this.kryptonDateTimePicker7.Size = new System.Drawing.Size(60, 21);
+            this.kryptonDateTimePicker7.TabIndex = 5;
+            // 
+            // kryptonComboBox5
+            // 
+            this.kryptonComboBox5.DropDownWidth = 59;
+            this.kryptonComboBox5.Items.AddRange(new object[] {
+            "Access",
+            "super",
+            "Lock",
+            "Unlock",
+            "Alarm"});
+            this.kryptonComboBox5.Location = new System.Drawing.Point(448, 30);
+            this.kryptonComboBox5.Name = "kryptonComboBox5";
+            this.kryptonComboBox5.Size = new System.Drawing.Size(59, 23);
+            this.kryptonComboBox5.TabIndex = 47;
+            this.kryptonComboBox5.Text = "Access";
+            // 
+            // kryptonDateTimePicker8
+            // 
+            this.kryptonDateTimePicker8.CustomFormat = "HH:mm";
+            this.kryptonDateTimePicker8.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.kryptonDateTimePicker8.Location = new System.Drawing.Point(5, 3);
+            this.kryptonDateTimePicker8.Name = "kryptonDateTimePicker8";
+            this.kryptonDateTimePicker8.ShowUpDown = true;
+            this.kryptonDateTimePicker8.Size = new System.Drawing.Size(60, 21);
+            this.kryptonDateTimePicker8.TabIndex = 0;
+            // 
+            // kryptonComboBox4
+            // 
+            this.kryptonComboBox4.DropDownWidth = 59;
+            this.kryptonComboBox4.Items.AddRange(new object[] {
+            "Access",
+            "super",
+            "Lock",
+            "Unlock",
+            "Alarm"});
+            this.kryptonComboBox4.Location = new System.Drawing.Point(358, 30);
+            this.kryptonComboBox4.Name = "kryptonComboBox4";
+            this.kryptonComboBox4.Size = new System.Drawing.Size(59, 23);
+            this.kryptonComboBox4.TabIndex = 46;
+            this.kryptonComboBox4.Text = "Access";
+            // 
+            // kryptonDateTimePicker9
+            // 
+            this.kryptonDateTimePicker9.CustomFormat = "HH:mm";
+            this.kryptonDateTimePicker9.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.kryptonDateTimePicker9.Location = new System.Drawing.Point(92, 3);
+            this.kryptonDateTimePicker9.Name = "kryptonDateTimePicker9";
+            this.kryptonDateTimePicker9.ShowUpDown = true;
+            this.kryptonDateTimePicker9.Size = new System.Drawing.Size(60, 21);
+            this.kryptonDateTimePicker9.TabIndex = 1;
+            // 
+            // kryptonComboBox3
+            // 
+            this.kryptonComboBox3.DropDownWidth = 59;
+            this.kryptonComboBox3.Items.AddRange(new object[] {
+            "Access",
+            "super",
+            "Lock",
+            "Unlock",
+            "Alarm"});
+            this.kryptonComboBox3.Location = new System.Drawing.Point(264, 30);
+            this.kryptonComboBox3.Name = "kryptonComboBox3";
+            this.kryptonComboBox3.Size = new System.Drawing.Size(59, 23);
+            this.kryptonComboBox3.TabIndex = 45;
+            this.kryptonComboBox3.Text = "Access";
+            // 
+            // kryptonDateTimePicker10
+            // 
+            this.kryptonDateTimePicker10.CustomFormat = "HH:mm";
+            this.kryptonDateTimePicker10.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.kryptonDateTimePicker10.Location = new System.Drawing.Point(177, 3);
+            this.kryptonDateTimePicker10.Name = "kryptonDateTimePicker10";
+            this.kryptonDateTimePicker10.ShowUpDown = true;
+            this.kryptonDateTimePicker10.Size = new System.Drawing.Size(60, 21);
+            this.kryptonDateTimePicker10.TabIndex = 2;
+            // 
+            // kryptonComboBox2
+            // 
+            this.kryptonComboBox2.DropDownWidth = 59;
+            this.kryptonComboBox2.Items.AddRange(new object[] {
+            "Access",
+            "super",
+            "Lock",
+            "Unlock",
+            "Alarm"});
+            this.kryptonComboBox2.Location = new System.Drawing.Point(178, 30);
+            this.kryptonComboBox2.Name = "kryptonComboBox2";
+            this.kryptonComboBox2.Size = new System.Drawing.Size(59, 23);
+            this.kryptonComboBox2.TabIndex = 44;
+            this.kryptonComboBox2.Text = "Access";
+            // 
+            // kryptonDateTimePicker11
+            // 
+            this.kryptonDateTimePicker11.CustomFormat = "HH:mm";
+            this.kryptonDateTimePicker11.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.kryptonDateTimePicker11.Location = new System.Drawing.Point(263, 3);
+            this.kryptonDateTimePicker11.Name = "kryptonDateTimePicker11";
+            this.kryptonDateTimePicker11.ShowUpDown = true;
+            this.kryptonDateTimePicker11.Size = new System.Drawing.Size(60, 21);
+            this.kryptonDateTimePicker11.TabIndex = 3;
+            // 
+            // kryptonComboBox1
+            // 
+            this.kryptonComboBox1.DropDownWidth = 59;
+            this.kryptonComboBox1.Items.AddRange(new object[] {
+            "Access",
+            "super",
+            "Lock",
+            "Unlock",
+            "Alarm"});
+            this.kryptonComboBox1.Location = new System.Drawing.Point(93, 30);
+            this.kryptonComboBox1.Name = "kryptonComboBox1";
+            this.kryptonComboBox1.Size = new System.Drawing.Size(59, 23);
+            this.kryptonComboBox1.TabIndex = 43;
+            this.kryptonComboBox1.Text = "Access";
+            // 
+            // kryptonDateTimePicker12
+            // 
+            this.kryptonDateTimePicker12.CustomFormat = "HH:mm";
+            this.kryptonDateTimePicker12.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.kryptonDateTimePicker12.Location = new System.Drawing.Point(357, 3);
+            this.kryptonDateTimePicker12.Name = "kryptonDateTimePicker12";
+            this.kryptonDateTimePicker12.ShowUpDown = true;
+            this.kryptonDateTimePicker12.Size = new System.Drawing.Size(60, 21);
+            this.kryptonDateTimePicker12.TabIndex = 4;
+            // 
+            // kryptonComboBoxModeMon1
+            // 
+            this.kryptonComboBoxModeMon1.DropDownWidth = 59;
+            this.kryptonComboBoxModeMon1.Items.AddRange(new object[] {
+            "Access",
+            "super",
+            "Lock",
+            "Unlock",
+            "Alarm"});
+            this.kryptonComboBoxModeMon1.Location = new System.Drawing.Point(6, 30);
+            this.kryptonComboBoxModeMon1.Name = "kryptonComboBoxModeMon1";
+            this.kryptonComboBoxModeMon1.Size = new System.Drawing.Size(59, 23);
+            this.kryptonComboBoxModeMon1.TabIndex = 42;
+            this.kryptonComboBoxModeMon1.Text = "Access";
+            // 
+            // FormReaderHoliday
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(738, 272);
+            this.Controls.Add(this.kryptonPanel);
+            this.Name = "FormReaderHoliday";
+            this.Text = "¶Á¿¨Æ÷½Ú¼ÙÈÕ";
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
+            this.kryptonPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxModeMon1)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker7;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox5;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker8;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox4;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker9;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox3;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker10;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox2;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker11;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker12;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBoxModeMon1;
+    }
+}
+

@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+
+namespace KryptonAccessController.RelationDepartment
+{
+    public partial class FormCompany : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        private AccessDataBase.Model.CompanyInfo companyInfo = new AccessDataBase.Model.CompanyInfo();
+
+        public FormCompany(AccessDataBase.Model.CompanyInfo companyInfo, OpenMode openMode)
+        {
+            InitializeComponent();
+
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            if (openMode == OpenMode.Add)
+            {
+                kryptonTextBoxCompanyID.Text = companyInfo.CompanyID.ToString();
+            }
+            else if (openMode == OpenMode.Update)
+            {
+                kryptonTextBoxCompanyID.Text = companyInfo.CompanyID.ToString();
+                kryptonTextBoxCompanyName.Text = companyInfo.CompanyName.ToString();
+                kryptonTextBoxCompanyDes.Text = companyInfo.CompanyDes.ToString();
+                kryptonTextBoxCompanyAddr.Text = companyInfo.CompanyAddress.ToString();
+                kryptonTextBoxTelPhone1.Text = companyInfo.CompanyTel1.ToString();
+                kryptonTextBoxTelPhone2.Text = companyInfo.CompanyTel2.ToString();
+            }
+        }
+
+        private void kryptonButtonCompanyOK_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

@@ -1,0 +1,101 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+using KryptonAccessController.WidgetThread;
+namespace KryptonAccessController.RelationController
+{
+    public partial class FormReaderInfo : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        AccessDataBase.Model.ReaderInfo modelReaderInfo = new AccessDataBase.Model.ReaderInfo();
+        AccessDataBase.Model.ReaderHoliday modelHoliay = new AccessDataBase.Model.ReaderHoliday();
+        AccessDataBase.BLL.ReaderHoliday bllHoliday = new AccessDataBase.BLL.ReaderHoliday();
+
+        public FormReaderInfo(AccessDataBase.Model.ReaderInfo modelReaderInfo, OpenMode openMode)
+        {
+            InitializeComponent();
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            this.modelReaderInfo = modelReaderInfo;
+
+            if (openMode == OpenMode.Add)
+            {
+                showAddPara();
+            }
+            else if (openMode == OpenMode.Update)
+            {
+                showUpdatePara();
+            }
+        }
+        
+        private void showAddPara()
+        {
+        }
+        private void showUpdatePara()
+        {
+            #region 基本参数
+            kryptonTextBoxReaderID.Text = modelReaderInfo.ReaderID.ToString();
+            kryptonTextBoxReaderPointID.Text = modelReaderInfo.ReaderPointID.ToString();
+            #endregion
+
+            #region TCP通讯参数
+            textBoxDeviceIP.Text = modelReaderInfo.ReaderIP.Trim();
+            textBoxMask.Text = modelReaderInfo.ReaderSubnet.Trim();
+            textBoxGateway.Text = modelReaderInfo.ReaderGateway.Trim();
+            textBoxDNS.Text = modelReaderInfo.ReaderDNS == null ? "" : modelReaderInfo.ReaderDNS.Trim();
+            kryptonTextBoxBackUpDNS.Text = modelReaderInfo.ReaderBuDNS == null ? "" : modelReaderInfo.ReaderBuDNS.Trim();
+            #endregion
+
+            #region 485通讯参数
+            kryptonTextBoxControllerAddr485.Text = modelReaderInfo.ReaderAddr483.ToString();
+            kryptonTextBoxControllerBaudrate.Text = modelReaderInfo.ReaderBaudrate.ToString();
+            kryptonLabelControllerDataBits.Text = modelReaderInfo.ReaderDataBits.ToString();
+            kryptonTextBoxControllerStopBits.Text = modelReaderInfo.ReaderStopBits.ToString();
+            kryptonComboBoxControllerParityCheck.Text = modelReaderInfo.ReaderParityCheck.ToString();
+            kryptonTextBoxControllerFlowControl.Text = modelReaderInfo.ReaderFlowControl.ToString();
+            #endregion
+        }
+        private void FormReaderInfo_Load(object sender, EventArgs e)
+        {
+            initToolStripMenu();
+            refreshDataGridView();
+        }
+        public void refreshDataGridView()
+        {
+            dataGridViewWithCheckBox1.DataSource = bllHoliday.GetAllList().Tables[0];
+        }
+        public void initToolStripMenu()
+        {
+
+            toolStripReaderHoliday.Items.Clear();
+
+            ImageOperate.AddButtonItemToToolStrip(toolStripReaderHoliday, "add.BMP", "Add", toolStripButtonAddReaderHolidayInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripReaderHoliday, "update.BMP", "Update", toolStripButtonUpdateHolidayInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripReaderHoliday, "delete.BMP", "Del", toolStripButtonDeleteHolidayInfo_Click);
+        }
+        private void toolStripButtonAddReaderHolidayInfo_Click(object sender, EventArgs e)
+        { }
+        private void toolStripButtonUpdateHolidayInfo_Click(object sender, EventArgs e)
+        { }
+        private void toolStripButtonDeleteHolidayInfo_Click(object sender, EventArgs e)
+        { }
+
+        private void kryptonButtonReaderOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonButtonReaderCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}

@@ -1,0 +1,218 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+using KryptonAccessController.WidgetThread;
+using System.IO;
+using MyComponents;
+
+namespace KryptonAccessController.RelationRealTimeMoni
+{
+    public partial class FormRealTimeMoni : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        private AccessDataBase.BLL.DoorUnitInfo bllDoorUnitInfo = new AccessDataBase.BLL.DoorUnitInfo();
+        private AccessDataBase.Model.DoorUnitInfo modelDoorUnitInfo = new AccessDataBase.Model.DoorUnitInfo();
+
+        private AccessDataBase.BLL.ElectronicMap bllElectronicMap = new AccessDataBase.BLL.ElectronicMap();
+        private AccessDataBase.Model.ElectronicMap modelElectronicMap = new AccessDataBase.Model.ElectronicMap();
+
+
+        private Font Var_Font = new Font("宋体", 11);
+
+        static FormRealTimeMoni instance = null;
+        private FormPictureMovable formPictureMovable = new FormPictureMovable();
+
+        public static FormRealTimeMoni getInstance()
+        {
+            if (instance == null)
+                instance = new FormRealTimeMoni();
+            return instance;
+        }
+
+
+        private FormRealTimeMoni()
+        {
+            InitializeComponent();
+            initToolStripControlConsole();
+            initPictureBoxTitle();
+
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            showlistViewElectronicMap();
+            showlistViewAccess();
+            displayFormOnPanel1(formPictureMovable);
+        }
+        private void displayFormOnPanel1(Form newForm)
+        {
+            newForm.TopLevel = false;    //设置为非顶级窗体
+            newForm.FormBorderStyle = FormBorderStyle.None;       //设置窗体为非边框样式
+            newForm.Dock = System.Windows.Forms.DockStyle.Fill;   //设置样式是否填充整个PANEL
+            this.kryptonSplitContainerMap.Panel1.Controls.Add(newForm);
+            newForm.Show();
+        }
+
+        private void initPictureBoxTitle()
+        {
+            ImageOperate.DrawStringToPictureBox(pictureBoxAccessList.Image, "设备列表", Var_Font);
+            ImageOperate.DrawStringToPictureBox(pictureBoxMapList.Image,"地图列表", Var_Font);
+        }
+        /// <summary>
+        /// 显示电子地图列表
+        /// </summary>
+        private void showlistViewElectronicMap()
+        {
+            listViewMapList.Clear();
+            List<AccessDataBase.Model.ElectronicMap> listElectronicMap = bllElectronicMap.GetModelList("ElectronicMapID > 0");
+            foreach (AccessDataBase.Model.ElectronicMap model in listElectronicMap)
+            {
+                string devpointname = model.ElectronicMapName;
+                listViewMapList.Items.Add(devpointname, 0);
+            }
+        }
+        /// <summary>
+        /// 显示设备通道列表
+        /// </summary>
+        private void showlistViewAccess()
+        {
+            listViewAccessList.Clear();
+            DataTable myDataTable = bllDoorUnitInfo.GetAllList().Tables[0];
+            if (myDataTable != null)
+            {
+                foreach (DataRow row in myDataTable.Rows)
+                {
+                    string devpointname = row["DoorUnitID"].ToString().Trim();
+                    listViewAccessList.Items.Add(devpointname, 0);
+                }
+            }
+        }
+        /// <summary>
+        /// 将通道点显示到指定电子地图上
+        /// </summary>
+        /// <param name="mapid">电子地图ID</param>
+        private void showAllAccessToElectronicMap(int mapid)
+        {
+            //先清除原来电子地图上的通道点
+            for (int i = formPictureMovable.pictureBoxElectronicMap.Controls.Count - 1; i >= 0; i--)
+            {
+                if (formPictureMovable.pictureBoxElectronicMap.Controls[i] is PictureBox)
+                    formPictureMovable.pictureBoxElectronicMap.Controls.RemoveAt(i);
+            }
+
+            // 将通道点显示到指定电子地图上
+            List<AccessDataBase.Model.DoorUnitInfo> listDoorUnitInfo = bllDoorUnitInfo.GetModelList("ElectronicMapID = " + mapid);
+
+            foreach (AccessDataBase.Model.DoorUnitInfo doorUintInfo in listDoorUnitInfo)
+            {
+                Point Location = new Point(0, 0);
+                Location.X = doorUintInfo.PositionX.Value;
+                Location.Y = doorUintInfo.PositionY.Value;
+                ComponentDoorUnit doorUnit = new ComponentDoorUnit(formPictureMovable.pictureBoxElectronicMap, doorUintInfo.DoorUnitID.ToString(), null, Location, 1);
+                formPictureMovable.pictureBoxElectronicMap.Controls.Add(doorUnit);
+
+            }
+        }
+
+
+        private void initToolStripControlConsole()
+        {
+            string[] items = { "20%", "40%", "50%", "80%", "100%", "150%", "200%", "400%", "500%", "800%" };
+            toolStripControlConsole.Items.Clear();
+            ImageOperate.AddButtonItemToToolStrip(toolStripControlConsole, "update.BMP", "disTextUpdateMap1", toolStripButtonUpdateElectricMap_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripControlConsole, "MonitorOpen.bmp", "disTextOpenRealWatch", toolStripButtonOpenRealWatch_Click);
+            ImageOperate.AddComboBoxItemToToolStrip(toolStripControlConsole, items, "disTextScale", toolStripComboBoxScale_TextChanged);
+        }
+        private void toolStripButtonUpdateElectricMap_Click(object sender, EventArgs e)
+        { }
+        private void toolStripButtonOpenRealWatch_Click(object sender, EventArgs e)
+        { }
+        private void toolStripComboBoxScale_TextChanged(object sender, EventArgs e)
+        { }
+
+        private void buttonFindDevicePoint_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void listViewMapList_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && this.listViewMapList.SelectedItems.Count > 0)
+            {
+                //this.contextMenuStripElectronicMap.Show(listViewElectronicMap, e.Location);
+                contextMenuStripElectronicMap.Items[1].Enabled = true;
+                contextMenuStripElectronicMap.Items[2].Enabled = true;
+
+            }
+        }
+
+        private void listViewMapList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e == null)
+                return;
+
+            ListView lv = (ListView)sender;
+            if (lv.FocusedItem == null)
+                return;
+
+            List<KryptonAccessController.AccessDataBase.Model.ElectronicMap> listElectronicMap = bllElectronicMap.GetModelList("ElectronicMapName = '" + lv.FocusedItem.Text + "'");
+
+
+           int electronicmapid = listElectronicMap[0].ElectronicMapID;
+           if (listElectronicMap[0].Map == null)
+               return;
+            // 打开新图片之前先保存原图片
+            
+            MemoryStream ms = new MemoryStream(listElectronicMap[0].Map);
+            Bitmap bmp = new Bitmap(ms);
+            formPictureMovable.pictureBoxElectronicMap.Image = new Bitmap(ms);
+            formPictureMovable.BringToFront();
+            toolStripStatusLabelElectronicMapName.Text = lv.FocusedItem.Text;
+
+            showAllAccessToElectronicMap(listElectronicMap[0].ElectronicMapID);
+        
+        }
+
+        private void listViewMapList_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStripElectronicMap.Items[1].Enabled = false;
+                contextMenuStripElectronicMap.Items[2].Enabled = false;
+            }
+        }
+
+        private void toolStripMenuItemAdd_Click(object sender, EventArgs e)
+        {
+            FormElectronicMap addelectronicmap = new FormElectronicMap(null, OpenMode.Add);
+            addelectronicmap.ShowDialog();
+
+            showlistViewElectronicMap();
+        }
+
+        private void toolStripMenuItemUpdate_Click(object sender, EventArgs e)
+        {
+            string ElectronicMapName = listViewMapList.SelectedItems[0].Text;
+            List<KryptonAccessController.AccessDataBase.Model.ElectronicMap> listElectronicMap = bllElectronicMap.GetModelList("ElectronicMapName = '" + ElectronicMapName + "'");
+
+
+            FormElectronicMap addelectronicmap = new FormElectronicMap(listElectronicMap[0], OpenMode.Update);
+            addelectronicmap.ShowDialog();
+
+            showlistViewElectronicMap();
+        }
+
+        private void toolStripMenuItemDelete_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+    }
+}

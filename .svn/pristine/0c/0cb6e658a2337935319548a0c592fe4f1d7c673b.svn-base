@@ -1,0 +1,163 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Drawing;
+
+namespace MyComponents
+{
+    public enum ModeValue { edit = 0, save = 1 };
+    public partial class ComponentDoorUnit : PictureBox
+    {
+        private PictureBox fatherPanel = null;
+        public ModeValue mode = ModeValue.save;
+
+        private bool IsMoving = false;
+        private Point pCtrlLastCoordinate = new Point(0, 0);
+        private Point pCursorOffset = new Point(0, 0);
+        private Point pCursorLastCoordinate = new Point(0, 0);
+        private EventHandler editModeStripMenuItem_Click;
+        private EventHandler saveModeStripMenuItem_Click;
+
+        public ComponentDoorUnit(PictureBox fatherPanel, string name,Bitmap image, Point loca, double scale)
+        {
+            InitializeComponent();
+            this.fatherPanel = fatherPanel;
+            this.Name = name;
+            this.Location = new Point(Convert.ToInt32(loca.X * scale), Convert.ToInt32(loca.Y * scale));
+            changeImage(image, scale);
+
+            this.BringToFront();
+        }
+        public void changeImage(Bitmap image, double scale)
+        {
+            Image myBmp = Common.scaleImage(image, scale);
+            this.Image = myBmp;
+            this.Size = myBmp.Size;
+        }
+        public void reigsterEvent(EventHandler editModeStripMenuItem_Click, EventHandler saveModeStripMenuItem_Click)
+        {
+             this.editModeStripMenuItem_Click = editModeStripMenuItem_Click;
+             this.saveModeStripMenuItem_Click = saveModeStripMenuItem_Click;
+        }
+        /// <summary>
+        /// 在鼠标左键按下的状态记录鼠标当前的位置,以及被移动组件的当前位置
+        /// </summary>
+        private void AccessPointMouseDown(object sender, MouseEventArgs e)
+        {
+            PictureBox currentButton = (PictureBox)sender;
+            if (this.fatherPanel == null)
+            {
+                return;
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+
+                IsMoving = true;
+                pCtrlLastCoordinate.X = currentButton.Left;
+                pCtrlLastCoordinate.Y = currentButton.Top;
+                pCursorLastCoordinate.X = Cursor.Position.X;
+                pCursorLastCoordinate.Y = Cursor.Position.Y;
+
+            }
+        }
+
+        private void AccessPointMouseMove(object sender, MouseEventArgs e)
+        {
+            PictureBox currentButton = (PictureBox)sender;
+            if (this.fatherPanel == null)
+            {
+                return;
+            }
+
+            if (e.Button == MouseButtons.Left)
+            {
+                if (this.IsMoving)
+                {
+                    Point pCursor = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+                    pCursorOffset.X = pCursor.X - pCursorLastCoordinate.X;
+                    pCursorOffset.Y = pCursor.Y - pCursorLastCoordinate.Y;
+
+                    currentButton.Left = pCtrlLastCoordinate.X + pCursorOffset.X;
+                    currentButton.Top = pCtrlLastCoordinate.Y + pCursorOffset.Y;
+                    //修正参数
+
+                    if (currentButton.Left < 0)
+                        currentButton.Left = 0;
+                    if (currentButton.Top < 0)
+                        currentButton.Top = 0;
+
+                    if (currentButton.Left + currentButton.Width > this.fatherPanel.Width)
+                        currentButton.Left = this.fatherPanel.Width - currentButton.Width;
+
+                    if (currentButton.Top + currentButton.Height > this.fatherPanel.Height)
+                        currentButton.Top = this.fatherPanel.Height - currentButton.Height;
+
+
+                }
+            }
+        }
+
+        private void AccessPointMouseUp(object sender, MouseEventArgs e)
+        {
+            PictureBox currentButton = (PictureBox)sender;
+            if (this.fatherPanel == null)
+            {
+                return;
+            }
+            if (this.IsMoving)
+            {
+                pCursorOffset.X = 0;
+                pCursorOffset.Y = 0;
+                IsMoving = false;
+            }
+        }
+
+        private void LoadContextMenuStripSaveMode(EventHandler contextMenuStripMenuItem_Click)
+        {
+            string cmdOpen = "Open Door";
+            string cmdClose = "CLose Door";
+            string cmdNormalOpen = "Normal Open";
+            contextMenuStripSaveMode.Items.Clear();
+            Common.AddButtonItemToContextMenuStrip(contextMenuStripSaveMode, "openDoorToolStripMenuItem", cmdOpen, contextMenuStripMenuItem_Click);
+            Common.AddButtonItemToContextMenuStrip(contextMenuStripSaveMode, "closeDoorToolStripMenuItem", cmdClose, contextMenuStripMenuItem_Click);
+            Common.AddButtonItemToContextMenuStrip(contextMenuStripSaveMode, "normalOpenToolStripMenuItem", cmdNormalOpen, contextMenuStripMenuItem_Click);
+
+            this.ContextMenuStrip = contextMenuStripSaveMode;
+        }
+        private void LoadContextMenuStripEditMode(EventHandler contextMenuStripMenuItem_Click)
+        {
+            string delAccessPoint = "Del";
+            contextMenuDelAccessPoint.Items.Clear();
+            Common.AddButtonItemToContextMenuStrip(contextMenuDelAccessPoint, "delAccessPointToolStripMenuItem", delAccessPoint, contextMenuStripMenuItem_Click);
+
+            this.ContextMenuStrip = contextMenuDelAccessPoint;
+        }
+        public void EditMode()
+        {
+            if (mode == ModeValue.save)
+            {
+                mode = ModeValue.edit;
+                this.MouseMove += AccessPointMouseMove;
+                this.MouseDown += AccessPointMouseDown;
+                this.MouseUp += AccessPointMouseUp;
+                LoadContextMenuStripEditMode(editModeStripMenuItem_Click);
+            }
+        }
+        public void SaveMode(EventHandler StripMenuItem_Click)
+        {
+            if (mode == ModeValue.edit)
+            {
+                mode = ModeValue.save;
+                this.MouseMove -= AccessPointMouseMove;
+                this.MouseDown -= AccessPointMouseDown;
+                this.MouseUp -= AccessPointMouseUp;
+                LoadContextMenuStripSaveMode(saveModeStripMenuItem_Click);
+            }
+        }
+    }
+}

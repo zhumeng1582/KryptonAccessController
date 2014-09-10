@@ -1,0 +1,121 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.WidgetThread;
+
+namespace KryptonAccessController.RelationController
+{
+    public partial class ControllerInfo : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        AccessSdkDataBase.BLL.ControllerInfo tableControllerInfo = new AccessSdkDataBase.BLL.ControllerInfo();
+
+        private static object obj = new object();
+        static ControllerInfo _instance = null;
+        public static ControllerInfo getInstance()
+        {
+            if (_instance == null)
+            {
+                lock (obj)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new ControllerInfo(); 
+                    }
+                }
+            }
+            return _instance;
+        }
+        public ControllerInfo()
+        {
+
+            InitializeComponent();
+            dataGridViewWithCheckBox1.updateGridviewRow += updateGridViewWithCheckBoxRow;
+            initToolStripMenu();
+            
+            refreshDataGridView();
+
+        }
+        
+
+        public void refreshDataGridView() 
+        {
+            dataGridViewWithCheckBox1.DataSource = tableControllerInfo.GetAllList().Tables[0];
+        }
+        public void initToolStripMenu()
+        {
+            toolStripControllerInfo.Items.Clear();
+
+            ImageOperate.AddButtonItemToToolStrip(toolStripControllerInfo, "add.BMP", "Add", toolStripButtonAddUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripControllerInfo, "update.BMP", "Update", toolStripButtonUpdateUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripControllerInfo, "delete.BMP", "Del", toolStripButtonDeleteUserInfo_Click); 
+ 
+        }
+        private void toolStripButtonAddUserInfo_Click(object sender, EventArgs e)
+        {
+            AccessSdkDataBase.Model.ControllerInfo modeControllerInfo = new AccessSdkDataBase.Model.ControllerInfo();
+
+            FormController formController = new FormController(modeControllerInfo, OpenMode.Add);
+            formController.ShowDialog();
+            this.refreshDataGridView();
+        }
+
+        public  void updateGridViewWithCheckBoxRow(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewWithCheckBox1.Rows.Count <= 0)
+                return;
+            AccessSdkDataBase.BLL.ControllerInfo bllControllerInfo = new AccessSdkDataBase.BLL.ControllerInfo();
+            int selectIndex = dataGridViewWithCheckBox1.CurrentRow.Index;
+
+            string controllerID = dataGridViewWithCheckBox1["ControllerID", selectIndex].Value.ToString().Trim();
+
+            AccessSdkDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+
+            FormController formController = new FormController(modeControllerInfo, OpenMode.Update);
+            formController.ShowDialog();
+
+            this.refreshDataGridView();
+
+        }
+        private void toolStripButtonUpdateUserInfo_Click(object sender, EventArgs e)
+        {
+            
+            if (dataGridViewWithCheckBox1.Rows.Count <= 0)
+                return;
+            AccessSdkDataBase.BLL.ControllerInfo bllControllerInfo = new AccessSdkDataBase.BLL.ControllerInfo();
+            int selectIndex = dataGridViewWithCheckBox1.CurrentRow.Index;
+            
+            string controllerID = dataGridViewWithCheckBox1["ControllerID", selectIndex].Value.ToString().Trim();
+
+            AccessSdkDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+
+            FormController formController = new FormController(modeControllerInfo,OpenMode.Update);
+            formController.ShowDialog();
+
+            this.refreshDataGridView();
+        }
+        private void toolStripButtonDeleteUserInfo_Click(object sender, EventArgs e)
+        {
+            AccessSdkDataBase.BLL.ControllerInfo bllControllerInfo = new AccessSdkDataBase.BLL.ControllerInfo();
+            foreach (DataGridViewRow i in dataGridViewWithCheckBox1.Rows)
+            {
+                if (dataGridViewWithCheckBox1.GetRowCheckBoxState(i.Index))
+                {
+                    string controllerID = dataGridViewWithCheckBox1["ControllerID", i.Index].Value.ToString().Trim();
+
+                    AccessSdkDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+
+                    if (bllControllerInfo.Exists(modeControllerInfo.ControllerID))
+                        bllControllerInfo.Delete(modeControllerInfo.ControllerID);
+                }
+
+            }
+            
+            this.refreshDataGridView();
+        } 
+    }
+}

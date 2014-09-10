@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.WidgetThread;
+
+namespace KryptonAccessController.RelationManage
+{
+    public partial class ManagerInfo : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        AccessDataBase.BLL.Manager bllManagerInfo = new AccessDataBase.BLL.Manager();
+        public ManagerInfo()
+        {
+            initToolStripMenu();
+            refreshDataGridView();
+        }
+
+        public void refreshDataGridView()
+        {
+            DataTable dt = bllManagerInfo.GetAllList().Tables[0];
+
+            dataGridViewWithCheckBox1.DataSource = dt;
+        }
+
+        public void initToolStripMenu()
+        {
+            toolStripManagerInfo.Items.Clear();
+            ImageOperate.AddButtonItemToToolStrip(toolStripManagerInfo, "add.BMP", "Add", toolStripButtonAddUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripManagerInfo, "update.BMP", "Update", toolStripButtonUpdateUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripManagerInfo, "delete.BMP", "Del", toolStripButtonDeleteUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripManagerInfo, "download.BMP", "save to device", toolStripButtonDownLoadUserInfo_Click);
+
+        }
+        public void toolStripButtonAddUserInfo_Click(object sender, EventArgs e)
+        { }
+        public void toolStripButtonUpdateUserInfo_Click(object sender, EventArgs e)
+        { }
+        public void toolStripButtonDeleteUserInfo_Click(object sender, EventArgs e)
+        { }
+        public void toolStripButtonDownLoadUserInfo_Click(object sender, EventArgs e)
+        { }
+    }
+}

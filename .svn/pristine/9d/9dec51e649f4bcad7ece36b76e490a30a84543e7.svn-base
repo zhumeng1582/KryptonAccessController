@@ -1,0 +1,166 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+//using System.Data.DataSetExtensions;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.WidgetThread;
+using KryptonAccessController.Common;
+using System.Linq;
+using System.Data.Linq;
+using System.Xml;
+using System.Xml.Serialization;
+
+namespace KryptonAccessController.RelationUser
+{
+    public partial class UserInfo : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+
+        AccessDataBase.BLL.UserInfo bllUserInfo = new AccessDataBase.BLL.UserInfo();
+        
+        private static object obj = new object();
+        static UserInfo _instance = null;
+        public static UserInfo getInstance()
+        {
+            if (_instance == null)
+            {
+                lock (obj)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new UserInfo(); 
+                    }
+                }
+            }
+            return _instance;
+        }
+        private UserInfo()
+        {
+            InitializeComponent();
+            
+            initToolStripMenu();
+            refreshDataGridView();
+
+        }
+        private static string SerializeDataTableXml(DataTable pDt)
+        {
+            StringBuilder sb = new StringBuilder();
+            XmlWriter writer = XmlWriter.Create(sb);
+            XmlSerializer serializer = new XmlSerializer(typeof(DataTable));
+            serializer.Serialize(writer, pDt);
+            writer.Close();
+            return sb.ToString();
+        }
+
+        public void refreshDataGridView()
+        {
+            DataTable dt = bllUserInfo.GetAllList().Tables[0];
+            dt.Columns.Remove("Photograph");
+            dt.Columns.Remove("FingerPrint0");
+            dt.Columns.Remove("FingerPrint1");
+            dataGridViewWithCheckBox1.DataSource = dt; 
+        }
+        public void initToolStripMenu()
+        {
+            toolStripUserInfo.Items.Clear();
+            dataGridViewWithCheckBox1.updateGridviewRow += updateGridViewWithCheckBoxRow;
+            ImageOperate.AddButtonItemToToolStrip(toolStripUserInfo, "add.BMP", "Add", toolStripButtonAddUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripUserInfo, "update.BMP", "Update", toolStripButtonUpdateUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripUserInfo, "delete.BMP", "Del", toolStripButtonDeleteUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripUserInfo, "download.BMP", "save to device", toolStripButtonDownLoadUserInfo_Click);
+            
+        }
+        public void updateGridViewWithCheckBoxRow(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewWithCheckBox1.CurrentRow == null)
+                return;
+
+            int selectIndex = dataGridViewWithCheckBox1.CurrentRow.Index;
+            string controllerID = dataGridViewWithCheckBox1["UserID", selectIndex].Value.ToString().Trim();
+
+            AccessDataBase.Model.UserInfo modeUserInfo = bllUserInfo.GetModel(int.Parse(controllerID));
+
+            FormUser formUser = new FormUser(modeUserInfo, OpenMode.Update);
+            formUser.ShowDialog();
+
+            this.refreshDataGridView();
+
+        }
+
+        private void toolStripButtonUpdateUserInfo_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewWithCheckBox1.CurrentRow == null)
+                return;
+
+            AccessDataBase.BLL.UserInfo bllUserInfo = new AccessDataBase.BLL.UserInfo();
+
+            int selectIndex = dataGridViewWithCheckBox1.CurrentRow.Index;
+            string controllerID = dataGridViewWithCheckBox1["UserID", selectIndex].Value.ToString().Trim();
+
+            AccessDataBase.Model.UserInfo modeUserInfo = bllUserInfo.GetModel(int.Parse(controllerID));
+
+            FormUser formUser = new FormUser(modeUserInfo, OpenMode.Update);
+            formUser.ShowDialog();
+
+            this.refreshDataGridView();
+            
+
+        }
+
+        private void toolStripButtonAddUserInfo_Click(object sender, EventArgs e)
+        {
+            AccessDataBase.Model.UserInfo modeUserInfo = new AccessDataBase.Model.UserInfo();
+            AccessDataBase.BLL.UserInfo bllUserInfo = new AccessDataBase.BLL.UserInfo();
+            modeUserInfo.UserID = bllUserInfo.GetMaxId();
+
+            FormUser formUser = new FormUser(modeUserInfo,OpenMode.Add);
+            formUser.ShowDialog();
+
+            this.refreshDataGridView();
+        }
+
+        private void toolStripButtonDeleteUserInfo_Click(object sender, EventArgs e)
+        {
+            AccessDataBase.BLL.UserInfo bllUserInfo = new AccessDataBase.BLL.UserInfo();
+            if (MyMessageBox.MessageBoxOkCancel("用户信息删除后不能恢复,是否删除?") == System.Windows.Forms.DialogResult.Cancel)
+                return;
+            foreach (DataGridViewRow i in dataGridViewWithCheckBox1.Rows)
+            {
+                if (dataGridViewWithCheckBox1.GetRowCheckBoxState(i.Index))
+                {
+                    string userID = dataGridViewWithCheckBox1["UserID", i.Index].Value.ToString().Trim();
+
+                    AccessDataBase.Model.UserInfo modeUserInfo = bllUserInfo.GetModel(int.Parse(userID));
+
+                    if (bllUserInfo.Exists(modeUserInfo.UserID))
+                        bllUserInfo.Delete(modeUserInfo.UserID);
+                }
+            }
+
+            this.refreshDataGridView();
+        }
+        private void toolStripButtonDownLoadUserInfo_Click(object sender, EventArgs e)
+        {
+            AccessDataBase.BLL.ControllerInfo bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
+            if (MyMessageBox.MessageBoxOkCancel("下载用户信息至设备？") == System.Windows.Forms.DialogResult.Cancel)
+                return;
+            foreach (DataGridViewRow i in dataGridViewWithCheckBox1.Rows)
+            {
+                if (dataGridViewWithCheckBox1.GetRowCheckBoxState(i.Index))
+                {
+                    string userID = dataGridViewWithCheckBox1["UserID", i.Index].Value.ToString().Trim();
+
+                    AccessDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(userID));
+                    /*
+                     
+                     调用API函数
+                     */
+                }
+
+            }
+        }
+    }
+}

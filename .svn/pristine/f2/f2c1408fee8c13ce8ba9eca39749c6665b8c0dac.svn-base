@@ -1,0 +1,229 @@
+namespace KryptonAccessController.RelationDepartment
+{
+    partial class FormCompany
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.kryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
+            this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonLabelCompanyID = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonTextBoxCompanyID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonTextBoxCompanyName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabelCompanyName = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonTextBoxCompanyDes = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabelCompanyDes = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonTextBoxCompanyAddr = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabelCompanyAddr = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonTextBoxTelPhone2 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabelTelPhone2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonTextBoxTelPhone1 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabelTelPhone1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonColorButton1 = new ComponentFactory.Krypton.Toolkit.KryptonColorButton();
+            this.kryptonButtonCompanyOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonButtonCompanyCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
+            this.kryptonPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // kryptonPanel
+            // 
+            this.kryptonPanel.Controls.Add(this.kryptonButtonCompanyCancel);
+            this.kryptonPanel.Controls.Add(this.kryptonButtonCompanyOK);
+            this.kryptonPanel.Controls.Add(this.kryptonColorButton1);
+            this.kryptonPanel.Controls.Add(this.kryptonTextBoxTelPhone2);
+            this.kryptonPanel.Controls.Add(this.kryptonLabelTelPhone2);
+            this.kryptonPanel.Controls.Add(this.kryptonTextBoxTelPhone1);
+            this.kryptonPanel.Controls.Add(this.kryptonLabelTelPhone1);
+            this.kryptonPanel.Controls.Add(this.kryptonTextBoxCompanyAddr);
+            this.kryptonPanel.Controls.Add(this.kryptonLabelCompanyAddr);
+            this.kryptonPanel.Controls.Add(this.kryptonTextBoxCompanyDes);
+            this.kryptonPanel.Controls.Add(this.kryptonLabelCompanyDes);
+            this.kryptonPanel.Controls.Add(this.kryptonTextBoxCompanyName);
+            this.kryptonPanel.Controls.Add(this.kryptonLabelCompanyName);
+            this.kryptonPanel.Controls.Add(this.kryptonTextBoxCompanyID);
+            this.kryptonPanel.Controls.Add(this.kryptonLabelCompanyID);
+            this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel.Name = "kryptonPanel";
+            this.kryptonPanel.Size = new System.Drawing.Size(413, 303);
+            this.kryptonPanel.TabIndex = 0;
+            // 
+            // kryptonLabelCompanyID
+            // 
+            this.kryptonLabelCompanyID.Location = new System.Drawing.Point(12, 31);
+            this.kryptonLabelCompanyID.Name = "kryptonLabelCompanyID";
+            this.kryptonLabelCompanyID.Size = new System.Drawing.Size(50, 20);
+            this.kryptonLabelCompanyID.TabIndex = 0;
+            this.kryptonLabelCompanyID.Values.Text = "公司ID";
+            // 
+            // kryptonTextBoxCompanyID
+            // 
+            this.kryptonTextBoxCompanyID.Location = new System.Drawing.Point(86, 29);
+            this.kryptonTextBoxCompanyID.Name = "kryptonTextBoxCompanyID";
+            this.kryptonTextBoxCompanyID.Size = new System.Drawing.Size(100, 23);
+            this.kryptonTextBoxCompanyID.TabIndex = 1;
+            // 
+            // kryptonTextBoxCompanyName
+            // 
+            this.kryptonTextBoxCompanyName.Location = new System.Drawing.Point(86, 58);
+            this.kryptonTextBoxCompanyName.Name = "kryptonTextBoxCompanyName";
+            this.kryptonTextBoxCompanyName.Size = new System.Drawing.Size(172, 23);
+            this.kryptonTextBoxCompanyName.TabIndex = 3;
+            // 
+            // kryptonLabelCompanyName
+            // 
+            this.kryptonLabelCompanyName.Location = new System.Drawing.Point(12, 60);
+            this.kryptonLabelCompanyName.Name = "kryptonLabelCompanyName";
+            this.kryptonLabelCompanyName.Size = new System.Drawing.Size(51, 20);
+            this.kryptonLabelCompanyName.TabIndex = 2;
+            this.kryptonLabelCompanyName.Values.Text = "公司名";
+            // 
+            // kryptonTextBoxCompanyDes
+            // 
+            this.kryptonTextBoxCompanyDes.Location = new System.Drawing.Point(86, 87);
+            this.kryptonTextBoxCompanyDes.Multiline = true;
+            this.kryptonTextBoxCompanyDes.Name = "kryptonTextBoxCompanyDes";
+            this.kryptonTextBoxCompanyDes.Size = new System.Drawing.Size(220, 49);
+            this.kryptonTextBoxCompanyDes.TabIndex = 5;
+            // 
+            // kryptonLabelCompanyDes
+            // 
+            this.kryptonLabelCompanyDes.Location = new System.Drawing.Point(12, 89);
+            this.kryptonLabelCompanyDes.Name = "kryptonLabelCompanyDes";
+            this.kryptonLabelCompanyDes.Size = new System.Drawing.Size(65, 20);
+            this.kryptonLabelCompanyDes.TabIndex = 4;
+            this.kryptonLabelCompanyDes.Values.Text = "公司描述";
+            // 
+            // kryptonTextBoxCompanyAddr
+            // 
+            this.kryptonTextBoxCompanyAddr.Location = new System.Drawing.Point(86, 142);
+            this.kryptonTextBoxCompanyAddr.Multiline = true;
+            this.kryptonTextBoxCompanyAddr.Name = "kryptonTextBoxCompanyAddr";
+            this.kryptonTextBoxCompanyAddr.Size = new System.Drawing.Size(220, 48);
+            this.kryptonTextBoxCompanyAddr.TabIndex = 7;
+            // 
+            // kryptonLabelCompanyAddr
+            // 
+            this.kryptonLabelCompanyAddr.Location = new System.Drawing.Point(15, 142);
+            this.kryptonLabelCompanyAddr.Name = "kryptonLabelCompanyAddr";
+            this.kryptonLabelCompanyAddr.Size = new System.Drawing.Size(65, 20);
+            this.kryptonLabelCompanyAddr.TabIndex = 6;
+            this.kryptonLabelCompanyAddr.Values.Text = "公司地址";
+            // 
+            // kryptonTextBoxTelPhone2
+            // 
+            this.kryptonTextBoxTelPhone2.Location = new System.Drawing.Point(87, 225);
+            this.kryptonTextBoxTelPhone2.Name = "kryptonTextBoxTelPhone2";
+            this.kryptonTextBoxTelPhone2.Size = new System.Drawing.Size(100, 23);
+            this.kryptonTextBoxTelPhone2.TabIndex = 11;
+            // 
+            // kryptonLabelTelPhone2
+            // 
+            this.kryptonLabelTelPhone2.Location = new System.Drawing.Point(13, 227);
+            this.kryptonLabelTelPhone2.Name = "kryptonLabelTelPhone2";
+            this.kryptonLabelTelPhone2.Size = new System.Drawing.Size(44, 20);
+            this.kryptonLabelTelPhone2.TabIndex = 10;
+            this.kryptonLabelTelPhone2.Values.Text = "电话2";
+            // 
+            // kryptonTextBoxTelPhone1
+            // 
+            this.kryptonTextBoxTelPhone1.Location = new System.Drawing.Point(87, 196);
+            this.kryptonTextBoxTelPhone1.Name = "kryptonTextBoxTelPhone1";
+            this.kryptonTextBoxTelPhone1.Size = new System.Drawing.Size(100, 23);
+            this.kryptonTextBoxTelPhone1.TabIndex = 9;
+            // 
+            // kryptonLabelTelPhone1
+            // 
+            this.kryptonLabelTelPhone1.Location = new System.Drawing.Point(13, 198);
+            this.kryptonLabelTelPhone1.Name = "kryptonLabelTelPhone1";
+            this.kryptonLabelTelPhone1.Size = new System.Drawing.Size(44, 20);
+            this.kryptonLabelTelPhone1.TabIndex = 8;
+            this.kryptonLabelTelPhone1.Values.Text = "电话1";
+            // 
+            // kryptonColorButton1
+            // 
+            this.kryptonColorButton1.Location = new System.Drawing.Point(274, 26);
+            this.kryptonColorButton1.Name = "kryptonColorButton1";
+            this.kryptonColorButton1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonColorButton1.TabIndex = 12;
+            this.kryptonColorButton1.Values.Text = "kryptonColorButton1";
+            // 
+            // kryptonButtonCompanyOK
+            // 
+            this.kryptonButtonCompanyOK.Location = new System.Drawing.Point(61, 266);
+            this.kryptonButtonCompanyOK.Name = "kryptonButtonCompanyOK";
+            this.kryptonButtonCompanyOK.Size = new System.Drawing.Size(69, 25);
+            this.kryptonButtonCompanyOK.TabIndex = 13;
+            this.kryptonButtonCompanyOK.Values.Text = "确定";
+            this.kryptonButtonCompanyOK.Click += new System.EventHandler(this.kryptonButtonCompanyOK_Click);
+            // 
+            // kryptonButtonCompanyCancel
+            // 
+            this.kryptonButtonCompanyCancel.Location = new System.Drawing.Point(232, 266);
+            this.kryptonButtonCompanyCancel.Name = "kryptonButtonCompanyCancel";
+            this.kryptonButtonCompanyCancel.Size = new System.Drawing.Size(65, 25);
+            this.kryptonButtonCompanyCancel.TabIndex = 14;
+            this.kryptonButtonCompanyCancel.Values.Text = "取消";
+            // 
+            // FormCompany
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(413, 303);
+            this.Controls.Add(this.kryptonPanel);
+            this.Name = "FormCompany";
+            this.Text = "公司信息";
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
+            this.kryptonPanel.ResumeLayout(false);
+            this.kryptonPanel.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBoxCompanyID;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabelCompanyID;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBoxCompanyName;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabelCompanyName;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBoxCompanyDes;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabelCompanyDes;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBoxCompanyAddr;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabelCompanyAddr;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBoxTelPhone2;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabelTelPhone2;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBoxTelPhone1;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabelTelPhone1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButtonCompanyCancel;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButtonCompanyOK;
+        private ComponentFactory.Krypton.Toolkit.KryptonColorButton kryptonColorButton1;
+    }
+}
+

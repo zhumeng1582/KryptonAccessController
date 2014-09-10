@@ -1,0 +1,140 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.WidgetThread;
+using KryptonAccessController.Common;
+
+namespace KryptonAccessController.RelationController
+{
+    public partial class ControllerInfo : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        //Array ar = new Array();
+        AccessDataBase.BLL.ControllerInfo bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
+
+        private static object obj = new object();
+        static ControllerInfo _instance = null;
+        public static ControllerInfo getInstance()
+        {
+            if (_instance == null)
+            {
+                lock (obj)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new ControllerInfo(); 
+                    }
+                }
+            }
+            return _instance;
+        }
+        private ControllerInfo()
+        {
+            InitializeComponent();
+            //dataGridViewWithCheckBox1.updateGridviewRow += updateGridViewWithCheckBoxRow;
+            initToolStripMenu();
+            refreshDataGridView();
+
+        }
+
+        public void refreshDataGridView() 
+        {
+            kryptonDataGridView1.DataSource = bllControllerInfo.GetAllList().Tables[0];
+            //DataTableCollection
+        }
+        public void initToolStripMenu()
+        {
+            toolStripControllerInfo.Items.Clear();
+
+            ImageOperate.AddButtonItemToToolStrip(toolStripControllerInfo, "add.BMP", "Add", toolStripButtonAddControllerInfoInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripControllerInfo, "update.BMP", "Update", toolStripButtonUpdateUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripControllerInfo, "delete.BMP", "Del", toolStripButtonDeleteControllerInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripControllerInfo, "download.BMP", "save to device", toolStripButtonDownLoadControllerInfo_Click);
+ 
+        }
+        private void toolStripButtonAddControllerInfoInfo_Click(object sender, EventArgs e)
+        {
+            AccessDataBase.Model.ControllerInfo modeControllerInfo = new AccessDataBase.Model.ControllerInfo();
+
+            AccessDataBase.BLL.ControllerInfo bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
+            modeControllerInfo.ControllerID = bllControllerInfo.GetMaxId();
+
+            FormController formController = new FormController(modeControllerInfo, OpenMode.Add);
+            formController.ShowDialog();
+            this.refreshDataGridView();
+        }
+        /*
+        public  void updateGridViewWithCheckBoxRow(object sender, DataGridViewCellEventArgs e)
+        {
+            if (kryptonDataGridView1.Rows.Count <= 0)
+                return;
+            AccessDataBase.BLL.ControllerInfo bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
+            int selectIndex = kryptonDataGridView1.CurrentRow.Index;
+
+            string controllerID = kryptonDataGridView1["ControllerID", selectIndex].Value.ToString().Trim();
+
+            AccessDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+            FormController formController = new FormController(modeControllerInfo, OpenMode.Update);
+            formController.ShowDialog();
+
+            this.refreshDataGridView();
+        }*/
+        private void toolStripButtonUpdateUserInfo_Click(object sender, EventArgs e)
+        {
+            if (kryptonDataGridView1.CurrentRow == null)
+                return;
+
+            AccessDataBase.BLL.ControllerInfo bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
+            int selectIndex = kryptonDataGridView1.CurrentRow.Index;
+
+            string controllerID = kryptonDataGridView1["ControllerID", selectIndex].Value.ToString().Trim();
+
+            AccessDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+            FormController formController = new FormController(modeControllerInfo,OpenMode.Update);
+            formController.ShowDialog();
+
+            this.refreshDataGridView();
+        }
+        private void toolStripButtonDeleteControllerInfo_Click(object sender, EventArgs e)
+        {
+            if (kryptonDataGridView1.CurrentRow == null)
+                return;
+
+            AccessDataBase.BLL.ControllerInfo bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
+            if (ClassMessageBox.MessageBoxOkCancel("控制器信息删除后不能恢复,是否删除?") == System.Windows.Forms.DialogResult.Cancel)
+                return;
+            int selectIndex = kryptonDataGridView1.CurrentRow.Index;
+
+            string controllerID = kryptonDataGridView1["ControllerID", selectIndex].Value.ToString().Trim();
+
+            AccessDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+
+            if (bllControllerInfo.Exists(modeControllerInfo.ControllerID))
+                bllControllerInfo.Delete(modeControllerInfo.ControllerID);
+            
+            this.refreshDataGridView();
+        }
+        private void toolStripButtonDownLoadControllerInfo_Click(object sender, EventArgs e)
+        {
+            AccessDataBase.BLL.ControllerInfo bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
+            if (ClassMessageBox.MessageBoxOkCancel("下载控制器信息至设备？") == System.Windows.Forms.DialogResult.Cancel)
+                return;
+            int selectIndex = kryptonDataGridView1.CurrentRow.Index;
+            string controllerID = kryptonDataGridView1["ControllerID", selectIndex].Value.ToString().Trim();
+
+            AccessDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+            /*
+             * 调用API函数
+             */
+        }
+
+        private void kryptonDataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+        }
+    }
+}

@@ -1,0 +1,1355 @@
+﻿namespace KryptonAccessController.Tool
+{
+    partial class KryptonFormDeviceManage
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.statusStripMessage = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.kryptonComboBoxDeviceIP = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.buttonDelRecord = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonSynchronizeTime = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.listBoxSearch = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
+            this.buttonSearch = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonConnect = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelDeviceIp = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonRestart = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelNewDeviceIP = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelMask = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonDelHolidayTime = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonDelAccessTime = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelGateway = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelDNS = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelMAC = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.textBoxNewDeviceIP = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.textBoxMask = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.textBoxGateway = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonHolidaySum = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.textBoxDNS = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.textBoxHolidaySum = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.textBoxMAC = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.labelHolidaySum = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonSetNewDeviceIP = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonGetNewDeviceIP = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonSetMask = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonGetMask = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonSetGateway = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonGetGateway = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonSetDNS = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonGetMAC = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.textBoxDeviceDateTime = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonGetDNS = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelDeviceDateTime = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonSetMAC = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonGetRecordSum = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelDeviceID = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.textBoxRecordSum = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.textBoxDeviceID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.labelRecordSum = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonGetDeviceID = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonSetDoorSensorType = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonSetDeviceID = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonGetDoorSensorType = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonGetDeviceDateTime = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.textBoxDoorSensorType = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonSetDeviceDateTime = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelDoorSensorType = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelDoorDriverTime = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonSetDoorDriverTime = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.textBoxDoorDriverTime = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonGetDoorDriverTime = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelViewBlackCardID = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelGetCardInfoSum = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelViewBlackCard = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonDeleteCard = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.textBoxViewBlackCardID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonSearchUserByCardID = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.textBoxBlackCardSum = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.labelDeleteUserInfo = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.textBoxCardInfoSum = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.labelCardID = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.textBoxUserName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.labelDeleteBlackCard = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.textBoxBlackCard = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.labelDelBackCardInfo = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.textBoxSearchUserCardID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonDeleteBlackCard = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.textBoxCard = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.labelViewUserInfoByCardID = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonViewBlackCardID = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelViewUserCardId = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelGetBlackCardInfo = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonSearchUserByUserName = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelViewUserInfoByUserName = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonBlackCardSum = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelViewUserName = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelBlackCardSum = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelCardInfoSum = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonDelBlackAllCardInfo = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonCardInfoSum = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonDelAllCardInfo = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.textBoxDeleteTriggerEvent = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonDelAllTriggerEvent = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonDeleteTriggerEvent = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonGetTriggerEvent = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.labelDeleteTriggerEventID = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelGetTriggerEventSum = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelDeleteTriggerEvent = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.labelTriggerEventSum = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.textBoxGetTriggerEventSum = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.textBoxFilePath = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonSelectProgram = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.labelUpdatePath = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.buttonUpdateProgram = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonTextBoxDataBase = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonSelectDataBase = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.buttonUpdateDataBase = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.kryptonLabelUpdateDataBase = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.flatTabControl1 = new MyComponents.FlatTabControl();
+            this.tabPageParaSet = new System.Windows.Forms.TabPage();
+            this.tabPageUserInfor = new System.Windows.Forms.TabPage();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tabPageTriggerEvent = new System.Windows.Forms.TabPage();
+            this.tabPageUpdateProgram = new System.Windows.Forms.TabPage();
+            this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.statusStripMessage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxDeviceIP)).BeginInit();
+            this.flatTabControl1.SuspendLayout();
+            this.tabPageParaSet.SuspendLayout();
+            this.tabPageUserInfor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
+            this.tabPageTriggerEvent.SuspendLayout();
+            this.tabPageUpdateProgram.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
+            this.kryptonPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).BeginInit();
+            this.kryptonPanel4.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // statusStripMessage
+            // 
+            this.statusStripMessage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
+            this.statusStripMessage.Location = new System.Drawing.Point(0, 569);
+            this.statusStripMessage.Name = "statusStripMessage";
+            this.statusStripMessage.Size = new System.Drawing.Size(1080, 22);
+            this.statusStripMessage.TabIndex = 7;
+            this.statusStripMessage.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(41, 17);
+            this.toolStripStatusLabel1.Text = "提示：";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(131, 17);
+            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            // 
+            // kryptonComboBoxDeviceIP
+            // 
+            this.kryptonComboBoxDeviceIP.DropDownWidth = 113;
+            this.kryptonComboBoxDeviceIP.Location = new System.Drawing.Point(86, 32);
+            this.kryptonComboBoxDeviceIP.Name = "kryptonComboBoxDeviceIP";
+            this.kryptonComboBoxDeviceIP.Size = new System.Drawing.Size(113, 23);
+            this.kryptonComboBoxDeviceIP.TabIndex = 126;
+            // 
+            // buttonDelRecord
+            // 
+            this.buttonDelRecord.Location = new System.Drawing.Point(541, 216);
+            this.buttonDelRecord.Name = "buttonDelRecord";
+            this.buttonDelRecord.Size = new System.Drawing.Size(91, 25);
+            this.buttonDelRecord.TabIndex = 125;
+            this.buttonDelRecord.Values.Text = "删除记录";
+            this.buttonDelRecord.Click += new System.EventHandler(this.buttonDelRecord_Click);
+            // 
+            // buttonSynchronizeTime
+            // 
+            this.buttonSynchronizeTime.Location = new System.Drawing.Point(429, 321);
+            this.buttonSynchronizeTime.Name = "buttonSynchronizeTime";
+            this.buttonSynchronizeTime.Size = new System.Drawing.Size(91, 25);
+            this.buttonSynchronizeTime.TabIndex = 124;
+            this.buttonSynchronizeTime.Values.Text = "同步时间";
+            this.buttonSynchronizeTime.Click += new System.EventHandler(this.buttonSynchronizeTime_Click);
+            // 
+            // listBoxSearch
+            // 
+            this.listBoxSearch.FormattingEnabled = true;
+            this.listBoxSearch.Location = new System.Drawing.Point(16, 300);
+            this.listBoxSearch.Name = "listBoxSearch";
+            this.listBoxSearch.Size = new System.Drawing.Size(318, 52);
+            this.listBoxSearch.TabIndex = 123;
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(16, 271);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(127, 25);
+            this.buttonSearch.TabIndex = 122;
+            this.buttonSearch.Values.Text = "搜索局域网内设备";
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // buttonConnect
+            // 
+            this.buttonConnect.Location = new System.Drawing.Point(214, 31);
+            this.buttonConnect.Name = "buttonConnect";
+            this.buttonConnect.Size = new System.Drawing.Size(90, 25);
+            this.buttonConnect.TabIndex = 76;
+            this.buttonConnect.Values.Text = "连接";
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
+            // 
+            // labelDeviceIp
+            // 
+            this.labelDeviceIp.Location = new System.Drawing.Point(14, 36);
+            this.labelDeviceIp.Name = "labelDeviceIp";
+            this.labelDeviceIp.Size = new System.Drawing.Size(48, 20);
+            this.labelDeviceIp.TabIndex = 74;
+            this.labelDeviceIp.Values.Text = "设备IP";
+            // 
+            // buttonRestart
+            // 
+            this.buttonRestart.Location = new System.Drawing.Point(541, 321);
+            this.buttonRestart.Name = "buttonRestart";
+            this.buttonRestart.Size = new System.Drawing.Size(94, 25);
+            this.buttonRestart.TabIndex = 96;
+            this.buttonRestart.Values.Text = "远程重启";
+            this.buttonRestart.Click += new System.EventHandler(this.buttonRestart_Click);
+            // 
+            // labelNewDeviceIP
+            // 
+            this.labelNewDeviceIP.Location = new System.Drawing.Point(14, 79);
+            this.labelNewDeviceIP.Name = "labelNewDeviceIP";
+            this.labelNewDeviceIP.Size = new System.Drawing.Size(34, 20);
+            this.labelNewDeviceIP.TabIndex = 97;
+            this.labelNewDeviceIP.Values.Text = "新IP";
+            // 
+            // labelMask
+            // 
+            this.labelMask.Location = new System.Drawing.Point(14, 121);
+            this.labelMask.Name = "labelMask";
+            this.labelMask.Size = new System.Drawing.Size(65, 20);
+            this.labelMask.TabIndex = 98;
+            this.labelMask.Values.Text = "子网掩码";
+            // 
+            // buttonDelHolidayTime
+            // 
+            this.buttonDelHolidayTime.Location = new System.Drawing.Point(541, 290);
+            this.buttonDelHolidayTime.Name = "buttonDelHolidayTime";
+            this.buttonDelHolidayTime.Size = new System.Drawing.Size(94, 25);
+            this.buttonDelHolidayTime.TabIndex = 118;
+            this.buttonDelHolidayTime.Values.Text = "删除节假日表";
+            this.buttonDelHolidayTime.Click += new System.EventHandler(this.buttonDelHolidayTime_Click);
+            // 
+            // buttonDelAccessTime
+            // 
+            this.buttonDelAccessTime.Location = new System.Drawing.Point(429, 290);
+            this.buttonDelAccessTime.Name = "buttonDelAccessTime";
+            this.buttonDelAccessTime.Size = new System.Drawing.Size(91, 25);
+            this.buttonDelAccessTime.TabIndex = 117;
+            this.buttonDelAccessTime.Values.Text = "删除门禁表";
+            this.buttonDelAccessTime.Click += new System.EventHandler(this.buttonDelAccessTime_Click);
+            // 
+            // labelGateway
+            // 
+            this.labelGateway.Location = new System.Drawing.Point(14, 169);
+            this.labelGateway.Name = "labelGateway";
+            this.labelGateway.Size = new System.Drawing.Size(38, 20);
+            this.labelGateway.TabIndex = 99;
+            this.labelGateway.Values.Text = "网关";
+            // 
+            // labelDNS
+            // 
+            this.labelDNS.Location = new System.Drawing.Point(14, 208);
+            this.labelDNS.Name = "labelDNS";
+            this.labelDNS.Size = new System.Drawing.Size(38, 20);
+            this.labelDNS.TabIndex = 100;
+            this.labelDNS.Values.Text = "域名";
+            // 
+            // labelMAC
+            // 
+            this.labelMAC.Location = new System.Drawing.Point(14, 248);
+            this.labelMAC.Name = "labelMAC";
+            this.labelMAC.Size = new System.Drawing.Size(37, 20);
+            this.labelMAC.TabIndex = 101;
+            this.labelMAC.Values.Text = "MAC";
+            // 
+            // textBoxNewDeviceIP
+            // 
+            this.textBoxNewDeviceIP.Location = new System.Drawing.Point(86, 75);
+            this.textBoxNewDeviceIP.Name = "textBoxNewDeviceIP";
+            this.textBoxNewDeviceIP.Size = new System.Drawing.Size(113, 23);
+            this.textBoxNewDeviceIP.TabIndex = 102;
+            this.textBoxNewDeviceIP.Text = "192.168.1.230";
+            // 
+            // textBoxMask
+            // 
+            this.textBoxMask.Location = new System.Drawing.Point(86, 117);
+            this.textBoxMask.Name = "textBoxMask";
+            this.textBoxMask.Size = new System.Drawing.Size(113, 23);
+            this.textBoxMask.TabIndex = 103;
+            this.textBoxMask.Text = "255.255.255.0";
+            // 
+            // textBoxGateway
+            // 
+            this.textBoxGateway.Location = new System.Drawing.Point(86, 165);
+            this.textBoxGateway.Name = "textBoxGateway";
+            this.textBoxGateway.Size = new System.Drawing.Size(113, 23);
+            this.textBoxGateway.TabIndex = 104;
+            this.textBoxGateway.Text = "192.168.1.1";
+            // 
+            // buttonHolidaySum
+            // 
+            this.buttonHolidaySum.Location = new System.Drawing.Point(548, 254);
+            this.buttonHolidaySum.Name = "buttonHolidaySum";
+            this.buttonHolidaySum.Size = new System.Drawing.Size(84, 25);
+            this.buttonHolidaySum.TabIndex = 121;
+            this.buttonHolidaySum.Values.Text = "节假日";
+            this.buttonHolidaySum.Click += new System.EventHandler(this.buttonHolidaySum_Click);
+            // 
+            // textBoxDNS
+            // 
+            this.textBoxDNS.Location = new System.Drawing.Point(86, 204);
+            this.textBoxDNS.Name = "textBoxDNS";
+            this.textBoxDNS.Size = new System.Drawing.Size(113, 23);
+            this.textBoxDNS.TabIndex = 105;
+            this.textBoxDNS.Text = "192.168.1.1";
+            // 
+            // textBoxHolidaySum
+            // 
+            this.textBoxHolidaySum.Location = new System.Drawing.Point(416, 255);
+            this.textBoxHolidaySum.Name = "textBoxHolidaySum";
+            this.textBoxHolidaySum.Size = new System.Drawing.Size(113, 23);
+            this.textBoxHolidaySum.TabIndex = 120;
+            // 
+            // textBoxMAC
+            // 
+            this.textBoxMAC.Location = new System.Drawing.Point(86, 244);
+            this.textBoxMAC.Name = "textBoxMAC";
+            this.textBoxMAC.Size = new System.Drawing.Size(113, 23);
+            this.textBoxMAC.TabIndex = 106;
+            this.textBoxMAC.Text = "00:17:61:01:88:27";
+            // 
+            // labelHolidaySum
+            // 
+            this.labelHolidaySum.Location = new System.Drawing.Point(332, 256);
+            this.labelHolidaySum.Name = "labelHolidaySum";
+            this.labelHolidaySum.Size = new System.Drawing.Size(65, 20);
+            this.labelHolidaySum.TabIndex = 119;
+            this.labelHolidaySum.Values.Text = "节假日数";
+            // 
+            // buttonSetNewDeviceIP
+            // 
+            this.buttonSetNewDeviceIP.Location = new System.Drawing.Point(263, 74);
+            this.buttonSetNewDeviceIP.Name = "buttonSetNewDeviceIP";
+            this.buttonSetNewDeviceIP.Size = new System.Drawing.Size(41, 25);
+            this.buttonSetNewDeviceIP.TabIndex = 107;
+            this.buttonSetNewDeviceIP.Values.Text = "设置";
+            this.buttonSetNewDeviceIP.Click += new System.EventHandler(this.buttonSetNewDeviceIP_Click);
+            // 
+            // buttonGetNewDeviceIP
+            // 
+            this.buttonGetNewDeviceIP.Location = new System.Drawing.Point(216, 74);
+            this.buttonGetNewDeviceIP.Name = "buttonGetNewDeviceIP";
+            this.buttonGetNewDeviceIP.Size = new System.Drawing.Size(41, 25);
+            this.buttonGetNewDeviceIP.TabIndex = 108;
+            this.buttonGetNewDeviceIP.Values.Text = "获取";
+            this.buttonGetNewDeviceIP.Click += new System.EventHandler(this.buttonGetNewDeviceIP_Click);
+            // 
+            // buttonSetMask
+            // 
+            this.buttonSetMask.Location = new System.Drawing.Point(263, 116);
+            this.buttonSetMask.Name = "buttonSetMask";
+            this.buttonSetMask.Size = new System.Drawing.Size(41, 25);
+            this.buttonSetMask.TabIndex = 109;
+            this.buttonSetMask.Values.Text = "设置";
+            this.buttonSetMask.Click += new System.EventHandler(this.buttonSetMask_Click);
+            // 
+            // buttonGetMask
+            // 
+            this.buttonGetMask.Location = new System.Drawing.Point(216, 116);
+            this.buttonGetMask.Name = "buttonGetMask";
+            this.buttonGetMask.Size = new System.Drawing.Size(41, 25);
+            this.buttonGetMask.TabIndex = 110;
+            this.buttonGetMask.Values.Text = "获取";
+            this.buttonGetMask.Click += new System.EventHandler(this.buttonGetMask_Click);
+            // 
+            // buttonSetGateway
+            // 
+            this.buttonSetGateway.Location = new System.Drawing.Point(263, 164);
+            this.buttonSetGateway.Name = "buttonSetGateway";
+            this.buttonSetGateway.Size = new System.Drawing.Size(41, 25);
+            this.buttonSetGateway.TabIndex = 111;
+            this.buttonSetGateway.Values.Text = "设置";
+            this.buttonSetGateway.Click += new System.EventHandler(this.buttonSetGateway_Click);
+            // 
+            // buttonGetGateway
+            // 
+            this.buttonGetGateway.Location = new System.Drawing.Point(216, 164);
+            this.buttonGetGateway.Name = "buttonGetGateway";
+            this.buttonGetGateway.Size = new System.Drawing.Size(41, 25);
+            this.buttonGetGateway.TabIndex = 112;
+            this.buttonGetGateway.Values.Text = "获取";
+            this.buttonGetGateway.Click += new System.EventHandler(this.buttonGetGateway_Click);
+            // 
+            // buttonSetDNS
+            // 
+            this.buttonSetDNS.Location = new System.Drawing.Point(263, 203);
+            this.buttonSetDNS.Name = "buttonSetDNS";
+            this.buttonSetDNS.Size = new System.Drawing.Size(41, 25);
+            this.buttonSetDNS.TabIndex = 113;
+            this.buttonSetDNS.Values.Text = "设置";
+            this.buttonSetDNS.Click += new System.EventHandler(this.buttonSetDNS_Click);
+            // 
+            // buttonGetMAC
+            // 
+            this.buttonGetMAC.Location = new System.Drawing.Point(216, 243);
+            this.buttonGetMAC.Name = "buttonGetMAC";
+            this.buttonGetMAC.Size = new System.Drawing.Size(41, 25);
+            this.buttonGetMAC.TabIndex = 116;
+            this.buttonGetMAC.Values.Text = "获取";
+            this.buttonGetMAC.Click += new System.EventHandler(this.buttonGetMAC_Click);
+            // 
+            // textBoxDeviceDateTime
+            // 
+            this.textBoxDeviceDateTime.Location = new System.Drawing.Point(416, 141);
+            this.textBoxDeviceDateTime.Name = "textBoxDeviceDateTime";
+            this.textBoxDeviceDateTime.Size = new System.Drawing.Size(113, 23);
+            this.textBoxDeviceDateTime.TabIndex = 95;
+            // 
+            // buttonGetDNS
+            // 
+            this.buttonGetDNS.Location = new System.Drawing.Point(216, 203);
+            this.buttonGetDNS.Name = "buttonGetDNS";
+            this.buttonGetDNS.Size = new System.Drawing.Size(41, 25);
+            this.buttonGetDNS.TabIndex = 114;
+            this.buttonGetDNS.Values.Text = "获取";
+            this.buttonGetDNS.Click += new System.EventHandler(this.buttonGetDNS_Click);
+            // 
+            // labelDeviceDateTime
+            // 
+            this.labelDeviceDateTime.Location = new System.Drawing.Point(332, 142);
+            this.labelDeviceDateTime.Name = "labelDeviceDateTime";
+            this.labelDeviceDateTime.Size = new System.Drawing.Size(65, 20);
+            this.labelDeviceDateTime.TabIndex = 94;
+            this.labelDeviceDateTime.Values.Text = "设备时间";
+            // 
+            // buttonSetMAC
+            // 
+            this.buttonSetMAC.Location = new System.Drawing.Point(263, 243);
+            this.buttonSetMAC.Name = "buttonSetMAC";
+            this.buttonSetMAC.Size = new System.Drawing.Size(41, 25);
+            this.buttonSetMAC.TabIndex = 115;
+            this.buttonSetMAC.Values.Text = "设置";
+            this.buttonSetMAC.Click += new System.EventHandler(this.buttonSetMAC_Click);
+            // 
+            // buttonGetRecordSum
+            // 
+            this.buttonGetRecordSum.Location = new System.Drawing.Point(548, 176);
+            this.buttonGetRecordSum.Name = "buttonGetRecordSum";
+            this.buttonGetRecordSum.Size = new System.Drawing.Size(84, 25);
+            this.buttonGetRecordSum.TabIndex = 93;
+            this.buttonGetRecordSum.Values.Text = "获取记录数";
+            this.buttonGetRecordSum.Click += new System.EventHandler(this.buttonGetRecordSum_Click);
+            // 
+            // labelDeviceID
+            // 
+            this.labelDeviceID.Location = new System.Drawing.Point(332, 31);
+            this.labelDeviceID.Name = "labelDeviceID";
+            this.labelDeviceID.Size = new System.Drawing.Size(50, 20);
+            this.labelDeviceID.TabIndex = 77;
+            this.labelDeviceID.Values.Text = "设备ID";
+            // 
+            // textBoxRecordSum
+            // 
+            this.textBoxRecordSum.Location = new System.Drawing.Point(416, 178);
+            this.textBoxRecordSum.Name = "textBoxRecordSum";
+            this.textBoxRecordSum.Size = new System.Drawing.Size(113, 23);
+            this.textBoxRecordSum.TabIndex = 92;
+            // 
+            // textBoxDeviceID
+            // 
+            this.textBoxDeviceID.Location = new System.Drawing.Point(416, 31);
+            this.textBoxDeviceID.Name = "textBoxDeviceID";
+            this.textBoxDeviceID.Size = new System.Drawing.Size(113, 23);
+            this.textBoxDeviceID.TabIndex = 78;
+            // 
+            // labelRecordSum
+            // 
+            this.labelRecordSum.Location = new System.Drawing.Point(332, 179);
+            this.labelRecordSum.Name = "labelRecordSum";
+            this.labelRecordSum.Size = new System.Drawing.Size(51, 20);
+            this.labelRecordSum.TabIndex = 91;
+            this.labelRecordSum.Values.Text = "记录数";
+            // 
+            // buttonGetDeviceID
+            // 
+            this.buttonGetDeviceID.Location = new System.Drawing.Point(548, 29);
+            this.buttonGetDeviceID.Name = "buttonGetDeviceID";
+            this.buttonGetDeviceID.Size = new System.Drawing.Size(39, 25);
+            this.buttonGetDeviceID.TabIndex = 79;
+            this.buttonGetDeviceID.Values.Text = "获取";
+            this.buttonGetDeviceID.Click += new System.EventHandler(this.buttonGetDeviceID_Click);
+            // 
+            // buttonSetDoorSensorType
+            // 
+            this.buttonSetDoorSensorType.Location = new System.Drawing.Point(593, 102);
+            this.buttonSetDoorSensorType.Name = "buttonSetDoorSensorType";
+            this.buttonSetDoorSensorType.Size = new System.Drawing.Size(39, 25);
+            this.buttonSetDoorSensorType.TabIndex = 90;
+            this.buttonSetDoorSensorType.Values.Text = "设置";
+            this.buttonSetDoorSensorType.Click += new System.EventHandler(this.buttonSetDoorSensorType_Click);
+            // 
+            // buttonSetDeviceID
+            // 
+            this.buttonSetDeviceID.Location = new System.Drawing.Point(593, 29);
+            this.buttonSetDeviceID.Name = "buttonSetDeviceID";
+            this.buttonSetDeviceID.Size = new System.Drawing.Size(39, 25);
+            this.buttonSetDeviceID.TabIndex = 80;
+            this.buttonSetDeviceID.Values.Text = "设置";
+            this.buttonSetDeviceID.Click += new System.EventHandler(this.buttonSetDeviceID_Click);
+            // 
+            // buttonGetDoorSensorType
+            // 
+            this.buttonGetDoorSensorType.Location = new System.Drawing.Point(548, 102);
+            this.buttonGetDoorSensorType.Name = "buttonGetDoorSensorType";
+            this.buttonGetDoorSensorType.Size = new System.Drawing.Size(39, 25);
+            this.buttonGetDoorSensorType.TabIndex = 89;
+            this.buttonGetDoorSensorType.Values.Text = "获取";
+            this.buttonGetDoorSensorType.Click += new System.EventHandler(this.buttonGetDoorSensorType_Click);
+            // 
+            // buttonGetDeviceDateTime
+            // 
+            this.buttonGetDeviceDateTime.Location = new System.Drawing.Point(548, 139);
+            this.buttonGetDeviceDateTime.Name = "buttonGetDeviceDateTime";
+            this.buttonGetDeviceDateTime.Size = new System.Drawing.Size(39, 25);
+            this.buttonGetDeviceDateTime.TabIndex = 81;
+            this.buttonGetDeviceDateTime.Values.Text = "获取";
+            this.buttonGetDeviceDateTime.Click += new System.EventHandler(this.buttonGetDeviceDateTime_Click);
+            // 
+            // textBoxDoorSensorType
+            // 
+            this.textBoxDoorSensorType.Location = new System.Drawing.Point(416, 104);
+            this.textBoxDoorSensorType.Name = "textBoxDoorSensorType";
+            this.textBoxDoorSensorType.Size = new System.Drawing.Size(113, 23);
+            this.textBoxDoorSensorType.TabIndex = 88;
+            // 
+            // buttonSetDeviceDateTime
+            // 
+            this.buttonSetDeviceDateTime.Location = new System.Drawing.Point(593, 139);
+            this.buttonSetDeviceDateTime.Name = "buttonSetDeviceDateTime";
+            this.buttonSetDeviceDateTime.Size = new System.Drawing.Size(39, 25);
+            this.buttonSetDeviceDateTime.TabIndex = 82;
+            this.buttonSetDeviceDateTime.Values.Text = "设置";
+            this.buttonSetDeviceDateTime.Click += new System.EventHandler(this.buttonSetDeviceDateTime_Click);
+            // 
+            // labelDoorSensorType
+            // 
+            this.labelDoorSensorType.Location = new System.Drawing.Point(332, 105);
+            this.labelDoorSensorType.Name = "labelDoorSensorType";
+            this.labelDoorSensorType.Size = new System.Drawing.Size(65, 20);
+            this.labelDoorSensorType.TabIndex = 87;
+            this.labelDoorSensorType.Values.Text = "门磁类型";
+            // 
+            // labelDoorDriverTime
+            // 
+            this.labelDoorDriverTime.Location = new System.Drawing.Point(332, 68);
+            this.labelDoorDriverTime.Name = "labelDoorDriverTime";
+            this.labelDoorDriverTime.Size = new System.Drawing.Size(78, 20);
+            this.labelDoorDriverTime.TabIndex = 83;
+            this.labelDoorDriverTime.Values.Text = "锁驱动时长";
+            // 
+            // buttonSetDoorDriverTime
+            // 
+            this.buttonSetDoorDriverTime.Location = new System.Drawing.Point(593, 65);
+            this.buttonSetDoorDriverTime.Name = "buttonSetDoorDriverTime";
+            this.buttonSetDoorDriverTime.Size = new System.Drawing.Size(39, 25);
+            this.buttonSetDoorDriverTime.TabIndex = 86;
+            this.buttonSetDoorDriverTime.Values.Text = "设置";
+            this.buttonSetDoorDriverTime.Click += new System.EventHandler(this.buttonSetDoorDriverTime_Click);
+            // 
+            // textBoxDoorDriverTime
+            // 
+            this.textBoxDoorDriverTime.Location = new System.Drawing.Point(416, 67);
+            this.textBoxDoorDriverTime.Name = "textBoxDoorDriverTime";
+            this.textBoxDoorDriverTime.Size = new System.Drawing.Size(113, 23);
+            this.textBoxDoorDriverTime.TabIndex = 84;
+            // 
+            // buttonGetDoorDriverTime
+            // 
+            this.buttonGetDoorDriverTime.Location = new System.Drawing.Point(548, 65);
+            this.buttonGetDoorDriverTime.Name = "buttonGetDoorDriverTime";
+            this.buttonGetDoorDriverTime.Size = new System.Drawing.Size(39, 25);
+            this.buttonGetDoorDriverTime.TabIndex = 85;
+            this.buttonGetDoorDriverTime.Values.Text = "获取";
+            this.buttonGetDoorDriverTime.Click += new System.EventHandler(this.buttonGetDoorDriverTime_Click);
+            // 
+            // labelViewBlackCardID
+            // 
+            this.labelViewBlackCardID.Location = new System.Drawing.Point(314, 163);
+            this.labelViewBlackCardID.Name = "labelViewBlackCardID";
+            this.labelViewBlackCardID.Size = new System.Drawing.Size(40, 20);
+            this.labelViewBlackCardID.TabIndex = 96;
+            this.labelViewBlackCardID.Values.Text = "卡号:";
+            // 
+            // labelGetCardInfoSum
+            // 
+            this.labelGetCardInfoSum.Location = new System.Drawing.Point(21, 26);
+            this.labelGetCardInfoSum.Name = "labelGetCardInfoSum";
+            this.labelGetCardInfoSum.Size = new System.Drawing.Size(78, 20);
+            this.labelGetCardInfoSum.TabIndex = 91;
+            this.labelGetCardInfoSum.Values.Text = "获取注册数";
+            // 
+            // labelViewBlackCard
+            // 
+            this.labelViewBlackCard.Location = new System.Drawing.Point(314, 133);
+            this.labelViewBlackCard.Name = "labelViewBlackCard";
+            this.labelViewBlackCard.Size = new System.Drawing.Size(136, 20);
+            this.labelViewBlackCard.TabIndex = 95;
+            this.labelViewBlackCard.Values.Text = "按卡号查询用户信息:";
+            // 
+            // buttonDeleteCard
+            // 
+            this.buttonDeleteCard.Location = new System.Drawing.Point(200, 282);
+            this.buttonDeleteCard.Name = "buttonDeleteCard";
+            this.buttonDeleteCard.Size = new System.Drawing.Size(58, 25);
+            this.buttonDeleteCard.TabIndex = 66;
+            this.buttonDeleteCard.Values.Text = "删除";
+            this.buttonDeleteCard.Click += new System.EventHandler(this.buttonDeleteCard_Click);
+            // 
+            // textBoxViewBlackCardID
+            // 
+            this.textBoxViewBlackCardID.Location = new System.Drawing.Point(384, 159);
+            this.textBoxViewBlackCardID.Name = "textBoxViewBlackCardID";
+            this.textBoxViewBlackCardID.Size = new System.Drawing.Size(83, 23);
+            this.textBoxViewBlackCardID.TabIndex = 94;
+            // 
+            // buttonSearchUserByCardID
+            // 
+            this.buttonSearchUserByCardID.Location = new System.Drawing.Point(200, 137);
+            this.buttonSearchUserByCardID.Name = "buttonSearchUserByCardID";
+            this.buttonSearchUserByCardID.Size = new System.Drawing.Size(58, 25);
+            this.buttonSearchUserByCardID.TabIndex = 67;
+            this.buttonSearchUserByCardID.Values.Text = "查询";
+            this.buttonSearchUserByCardID.Click += new System.EventHandler(this.buttonSearchUser_Click);
+            // 
+            // textBoxBlackCardSum
+            // 
+            this.textBoxBlackCardSum.Location = new System.Drawing.Point(384, 73);
+            this.textBoxBlackCardSum.Name = "textBoxBlackCardSum";
+            this.textBoxBlackCardSum.Size = new System.Drawing.Size(83, 23);
+            this.textBoxBlackCardSum.TabIndex = 89;
+            // 
+            // labelDeleteUserInfo
+            // 
+            this.labelDeleteUserInfo.Location = new System.Drawing.Point(21, 252);
+            this.labelDeleteUserInfo.Name = "labelDeleteUserInfo";
+            this.labelDeleteUserInfo.Size = new System.Drawing.Size(95, 20);
+            this.labelDeleteUserInfo.TabIndex = 71;
+            this.labelDeleteUserInfo.Values.Text = "删除用户信息:";
+            // 
+            // textBoxCardInfoSum
+            // 
+            this.textBoxCardInfoSum.Location = new System.Drawing.Point(91, 52);
+            this.textBoxCardInfoSum.Name = "textBoxCardInfoSum";
+            this.textBoxCardInfoSum.Size = new System.Drawing.Size(86, 23);
+            this.textBoxCardInfoSum.TabIndex = 84;
+            // 
+            // labelCardID
+            // 
+            this.labelCardID.Location = new System.Drawing.Point(21, 288);
+            this.labelCardID.Name = "labelCardID";
+            this.labelCardID.Size = new System.Drawing.Size(40, 20);
+            this.labelCardID.TabIndex = 72;
+            this.labelCardID.Values.Text = "卡号:";
+            // 
+            // textBoxUserName
+            // 
+            this.textBoxUserName.Location = new System.Drawing.Point(91, 204);
+            this.textBoxUserName.Name = "textBoxUserName";
+            this.textBoxUserName.Size = new System.Drawing.Size(87, 23);
+            this.textBoxUserName.TabIndex = 80;
+            // 
+            // labelDeleteBlackCard
+            // 
+            this.labelDeleteBlackCard.Location = new System.Drawing.Point(319, 268);
+            this.labelDeleteBlackCard.Name = "labelDeleteBlackCard";
+            this.labelDeleteBlackCard.Size = new System.Drawing.Size(81, 20);
+            this.labelDeleteBlackCard.TabIndex = 73;
+            this.labelDeleteBlackCard.Values.Text = "删除黑名单:";
+            // 
+            // textBoxBlackCard
+            // 
+            this.textBoxBlackCard.Location = new System.Drawing.Point(384, 300);
+            this.textBoxBlackCard.Name = "textBoxBlackCard";
+            this.textBoxBlackCard.Size = new System.Drawing.Size(83, 23);
+            this.textBoxBlackCard.TabIndex = 75;
+            // 
+            // labelDelBackCardInfo
+            // 
+            this.labelDelBackCardInfo.Location = new System.Drawing.Point(319, 304);
+            this.labelDelBackCardInfo.Name = "labelDelBackCardInfo";
+            this.labelDelBackCardInfo.Size = new System.Drawing.Size(40, 20);
+            this.labelDelBackCardInfo.TabIndex = 74;
+            this.labelDelBackCardInfo.Values.Text = "卡号:";
+            // 
+            // textBoxSearchUserCardID
+            // 
+            this.textBoxSearchUserCardID.Location = new System.Drawing.Point(91, 137);
+            this.textBoxSearchUserCardID.Name = "textBoxSearchUserCardID";
+            this.textBoxSearchUserCardID.Size = new System.Drawing.Size(87, 23);
+            this.textBoxSearchUserCardID.TabIndex = 68;
+            // 
+            // buttonDeleteBlackCard
+            // 
+            this.buttonDeleteBlackCard.Location = new System.Drawing.Point(486, 299);
+            this.buttonDeleteBlackCard.Name = "buttonDeleteBlackCard";
+            this.buttonDeleteBlackCard.Size = new System.Drawing.Size(52, 25);
+            this.buttonDeleteBlackCard.TabIndex = 76;
+            this.buttonDeleteBlackCard.Values.Text = "删除";
+            this.buttonDeleteBlackCard.Click += new System.EventHandler(this.buttonDeleteBlackCard_Click);
+            // 
+            // textBoxCard
+            // 
+            this.textBoxCard.Location = new System.Drawing.Point(91, 284);
+            this.textBoxCard.Name = "textBoxCard";
+            this.textBoxCard.Size = new System.Drawing.Size(87, 23);
+            this.textBoxCard.TabIndex = 65;
+            // 
+            // labelViewUserInfoByCardID
+            // 
+            this.labelViewUserInfoByCardID.Location = new System.Drawing.Point(21, 112);
+            this.labelViewUserInfoByCardID.Name = "labelViewUserInfoByCardID";
+            this.labelViewUserInfoByCardID.Size = new System.Drawing.Size(136, 20);
+            this.labelViewUserInfoByCardID.TabIndex = 77;
+            this.labelViewUserInfoByCardID.Values.Text = "按卡号查询用户信息:";
+            // 
+            // buttonViewBlackCardID
+            // 
+            this.buttonViewBlackCardID.Location = new System.Drawing.Point(486, 158);
+            this.buttonViewBlackCardID.Name = "buttonViewBlackCardID";
+            this.buttonViewBlackCardID.Size = new System.Drawing.Size(52, 25);
+            this.buttonViewBlackCardID.TabIndex = 93;
+            this.buttonViewBlackCardID.Values.Text = "查询";
+            this.buttonViewBlackCardID.Click += new System.EventHandler(this.buttonViewBlackCardID_Click);
+            // 
+            // labelViewUserCardId
+            // 
+            this.labelViewUserCardId.Location = new System.Drawing.Point(21, 142);
+            this.labelViewUserCardId.Name = "labelViewUserCardId";
+            this.labelViewUserCardId.Size = new System.Drawing.Size(40, 20);
+            this.labelViewUserCardId.TabIndex = 78;
+            this.labelViewUserCardId.Values.Text = "卡号:";
+            // 
+            // labelGetBlackCardInfo
+            // 
+            this.labelGetBlackCardInfo.Location = new System.Drawing.Point(312, 47);
+            this.labelGetBlackCardInfo.Name = "labelGetBlackCardInfo";
+            this.labelGetBlackCardInfo.Size = new System.Drawing.Size(92, 20);
+            this.labelGetBlackCardInfo.TabIndex = 92;
+            this.labelGetBlackCardInfo.Values.Text = "获取黑名单数";
+            // 
+            // buttonSearchUserByUserName
+            // 
+            this.buttonSearchUserByUserName.Location = new System.Drawing.Point(200, 202);
+            this.buttonSearchUserByUserName.Name = "buttonSearchUserByUserName";
+            this.buttonSearchUserByUserName.Size = new System.Drawing.Size(58, 25);
+            this.buttonSearchUserByUserName.TabIndex = 79;
+            this.buttonSearchUserByUserName.Values.Text = "查询";
+            this.buttonSearchUserByUserName.Click += new System.EventHandler(this.buttonSearchUserByUserName_Click);
+            // 
+            // labelViewUserInfoByUserName
+            // 
+            this.labelViewUserInfoByUserName.Location = new System.Drawing.Point(21, 176);
+            this.labelViewUserInfoByUserName.Name = "labelViewUserInfoByUserName";
+            this.labelViewUserInfoByUserName.Size = new System.Drawing.Size(136, 20);
+            this.labelViewUserInfoByUserName.TabIndex = 81;
+            this.labelViewUserInfoByUserName.Values.Text = "按卡号查询用户信息:";
+            // 
+            // buttonBlackCardSum
+            // 
+            this.buttonBlackCardSum.Location = new System.Drawing.Point(486, 72);
+            this.buttonBlackCardSum.Name = "buttonBlackCardSum";
+            this.buttonBlackCardSum.Size = new System.Drawing.Size(52, 25);
+            this.buttonBlackCardSum.TabIndex = 90;
+            this.buttonBlackCardSum.Values.Text = "获取";
+            this.buttonBlackCardSum.Click += new System.EventHandler(this.buttonBlackCardSum_Click);
+            // 
+            // labelViewUserName
+            // 
+            this.labelViewUserName.Location = new System.Drawing.Point(21, 207);
+            this.labelViewUserName.Name = "labelViewUserName";
+            this.labelViewUserName.Size = new System.Drawing.Size(40, 20);
+            this.labelViewUserName.TabIndex = 82;
+            this.labelViewUserName.Values.Text = "姓名:";
+            // 
+            // labelBlackCardSum
+            // 
+            this.labelBlackCardSum.Location = new System.Drawing.Point(312, 77);
+            this.labelBlackCardSum.Name = "labelBlackCardSum";
+            this.labelBlackCardSum.Size = new System.Drawing.Size(65, 20);
+            this.labelBlackCardSum.TabIndex = 88;
+            this.labelBlackCardSum.Values.Text = "黑名单数";
+            // 
+            // labelCardInfoSum
+            // 
+            this.labelCardInfoSum.Location = new System.Drawing.Point(21, 56);
+            this.labelCardInfoSum.Name = "labelCardInfoSum";
+            this.labelCardInfoSum.Size = new System.Drawing.Size(51, 20);
+            this.labelCardInfoSum.TabIndex = 83;
+            this.labelCardInfoSum.Values.Text = "注册数";
+            // 
+            // buttonDelBlackAllCardInfo
+            // 
+            this.buttonDelBlackAllCardInfo.Location = new System.Drawing.Point(432, 342);
+            this.buttonDelBlackAllCardInfo.Name = "buttonDelBlackAllCardInfo";
+            this.buttonDelBlackAllCardInfo.Size = new System.Drawing.Size(106, 25);
+            this.buttonDelBlackAllCardInfo.TabIndex = 87;
+            this.buttonDelBlackAllCardInfo.Values.Text = "删除黑名单信息";
+            this.buttonDelBlackAllCardInfo.Click += new System.EventHandler(this.buttonDelBlackCardInfo_Click);
+            // 
+            // buttonCardInfoSum
+            // 
+            this.buttonCardInfoSum.Location = new System.Drawing.Point(200, 51);
+            this.buttonCardInfoSum.Name = "buttonCardInfoSum";
+            this.buttonCardInfoSum.Size = new System.Drawing.Size(58, 25);
+            this.buttonCardInfoSum.TabIndex = 85;
+            this.buttonCardInfoSum.Values.Text = "获取";
+            this.buttonCardInfoSum.Click += new System.EventHandler(this.buttonCardInfoSum_Click);
+            // 
+            // buttonDelAllCardInfo
+            // 
+            this.buttonDelAllCardInfo.Location = new System.Drawing.Point(155, 327);
+            this.buttonDelAllCardInfo.Name = "buttonDelAllCardInfo";
+            this.buttonDelAllCardInfo.Size = new System.Drawing.Size(103, 25);
+            this.buttonDelAllCardInfo.TabIndex = 86;
+            this.buttonDelAllCardInfo.Values.Text = "删除卡片信息";
+            this.buttonDelAllCardInfo.Click += new System.EventHandler(this.buttonDelCardInfo_Click);
+            // 
+            // textBoxDeleteTriggerEvent
+            // 
+            this.textBoxDeleteTriggerEvent.Location = new System.Drawing.Point(153, 203);
+            this.textBoxDeleteTriggerEvent.Name = "textBoxDeleteTriggerEvent";
+            this.textBoxDeleteTriggerEvent.Size = new System.Drawing.Size(86, 23);
+            this.textBoxDeleteTriggerEvent.TabIndex = 79;
+            // 
+            // buttonDelAllTriggerEvent
+            // 
+            this.buttonDelAllTriggerEvent.Location = new System.Drawing.Point(187, 252);
+            this.buttonDelAllTriggerEvent.Name = "buttonDelAllTriggerEvent";
+            this.buttonDelAllTriggerEvent.Size = new System.Drawing.Size(122, 25);
+            this.buttonDelAllTriggerEvent.TabIndex = 96;
+            this.buttonDelAllTriggerEvent.Values.Text = "删除触发事件表";
+            this.buttonDelAllTriggerEvent.Click += new System.EventHandler(this.buttonDelTriggerEvent_Click);
+            // 
+            // buttonDeleteTriggerEvent
+            // 
+            this.buttonDeleteTriggerEvent.Location = new System.Drawing.Point(251, 203);
+            this.buttonDeleteTriggerEvent.Name = "buttonDeleteTriggerEvent";
+            this.buttonDeleteTriggerEvent.Size = new System.Drawing.Size(52, 25);
+            this.buttonDeleteTriggerEvent.TabIndex = 80;
+            this.buttonDeleteTriggerEvent.Values.Text = "删除";
+            this.buttonDeleteTriggerEvent.Click += new System.EventHandler(this.buttonDeleteTriggerEvent_Click);
+            // 
+            // buttonGetTriggerEvent
+            // 
+            this.buttonGetTriggerEvent.Location = new System.Drawing.Point(260, 80);
+            this.buttonGetTriggerEvent.Name = "buttonGetTriggerEvent";
+            this.buttonGetTriggerEvent.Size = new System.Drawing.Size(43, 25);
+            this.buttonGetTriggerEvent.TabIndex = 94;
+            this.buttonGetTriggerEvent.Values.Text = "获取";
+            this.buttonGetTriggerEvent.Click += new System.EventHandler(this.buttonGetTriggerEvent_Click);
+            // 
+            // labelDeleteTriggerEventID
+            // 
+            this.labelDeleteTriggerEventID.Location = new System.Drawing.Point(68, 208);
+            this.labelDeleteTriggerEventID.Name = "labelDeleteTriggerEventID";
+            this.labelDeleteTriggerEventID.Size = new System.Drawing.Size(80, 20);
+            this.labelDeleteTriggerEventID.TabIndex = 78;
+            this.labelDeleteTriggerEventID.Values.Text = "触发事件ID:";
+            // 
+            // labelGetTriggerEventSum
+            // 
+            this.labelGetTriggerEventSum.Location = new System.Drawing.Point(61, 54);
+            this.labelGetTriggerEventSum.Name = "labelGetTriggerEventSum";
+            this.labelGetTriggerEventSum.Size = new System.Drawing.Size(106, 20);
+            this.labelGetTriggerEventSum.TabIndex = 95;
+            this.labelGetTriggerEventSum.Values.Text = "获取触发事件数";
+            // 
+            // labelDeleteTriggerEvent
+            // 
+            this.labelDeleteTriggerEvent.Location = new System.Drawing.Point(68, 172);
+            this.labelDeleteTriggerEvent.Name = "labelDeleteTriggerEvent";
+            this.labelDeleteTriggerEvent.Size = new System.Drawing.Size(95, 20);
+            this.labelDeleteTriggerEvent.TabIndex = 77;
+            this.labelDeleteTriggerEvent.Values.Text = "删除触发事件:";
+            // 
+            // labelTriggerEventSum
+            // 
+            this.labelTriggerEventSum.Location = new System.Drawing.Point(61, 84);
+            this.labelTriggerEventSum.Name = "labelTriggerEventSum";
+            this.labelTriggerEventSum.Size = new System.Drawing.Size(78, 20);
+            this.labelTriggerEventSum.TabIndex = 92;
+            this.labelTriggerEventSum.Values.Text = "触发事件数";
+            // 
+            // textBoxGetTriggerEventSum
+            // 
+            this.textBoxGetTriggerEventSum.Location = new System.Drawing.Point(153, 80);
+            this.textBoxGetTriggerEventSum.Name = "textBoxGetTriggerEventSum";
+            this.textBoxGetTriggerEventSum.Size = new System.Drawing.Size(86, 23);
+            this.textBoxGetTriggerEventSum.TabIndex = 93;
+            // 
+            // textBoxFilePath
+            // 
+            this.textBoxFilePath.Location = new System.Drawing.Point(140, 43);
+            this.textBoxFilePath.Name = "textBoxFilePath";
+            this.textBoxFilePath.Size = new System.Drawing.Size(113, 23);
+            this.textBoxFilePath.TabIndex = 71;
+            // 
+            // buttonSelectProgram
+            // 
+            this.buttonSelectProgram.Location = new System.Drawing.Point(259, 42);
+            this.buttonSelectProgram.Name = "buttonSelectProgram";
+            this.buttonSelectProgram.Size = new System.Drawing.Size(58, 25);
+            this.buttonSelectProgram.TabIndex = 70;
+            this.buttonSelectProgram.Values.Text = "...";
+            this.buttonSelectProgram.Click += new System.EventHandler(this.buttonSelectProgram_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(70, 100);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(247, 25);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 74;
+            // 
+            // labelUpdatePath
+            // 
+            this.labelUpdatePath.Location = new System.Drawing.Point(68, 47);
+            this.labelUpdatePath.Name = "labelUpdatePath";
+            this.labelUpdatePath.Size = new System.Drawing.Size(65, 20);
+            this.labelUpdatePath.TabIndex = 72;
+            this.labelUpdatePath.Values.Text = "程序路径";
+            // 
+            // buttonUpdateProgram
+            // 
+            this.buttonUpdateProgram.Location = new System.Drawing.Point(227, 71);
+            this.buttonUpdateProgram.Name = "buttonUpdateProgram";
+            this.buttonUpdateProgram.Size = new System.Drawing.Size(90, 25);
+            this.buttonUpdateProgram.TabIndex = 73;
+            this.buttonUpdateProgram.Values.Text = "更新程序";
+            this.buttonUpdateProgram.Click += new System.EventHandler(this.buttonUpdateProgram_Click);
+            // 
+            // kryptonTextBoxDataBase
+            // 
+            this.kryptonTextBoxDataBase.Location = new System.Drawing.Point(140, 220);
+            this.kryptonTextBoxDataBase.Name = "kryptonTextBoxDataBase";
+            this.kryptonTextBoxDataBase.Size = new System.Drawing.Size(113, 23);
+            this.kryptonTextBoxDataBase.TabIndex = 76;
+            // 
+            // buttonSelectDataBase
+            // 
+            this.buttonSelectDataBase.Location = new System.Drawing.Point(259, 219);
+            this.buttonSelectDataBase.Name = "buttonSelectDataBase";
+            this.buttonSelectDataBase.Size = new System.Drawing.Size(58, 25);
+            this.buttonSelectDataBase.TabIndex = 75;
+            this.buttonSelectDataBase.Values.Text = "...";
+            this.buttonSelectDataBase.Click += new System.EventHandler(this.buttonSelectDataBase_Click);
+            // 
+            // buttonUpdateDataBase
+            // 
+            this.buttonUpdateDataBase.Location = new System.Drawing.Point(227, 248);
+            this.buttonUpdateDataBase.Name = "buttonUpdateDataBase";
+            this.buttonUpdateDataBase.Size = new System.Drawing.Size(90, 25);
+            this.buttonUpdateDataBase.TabIndex = 78;
+            this.buttonUpdateDataBase.Values.Text = "更新程序";
+            this.buttonUpdateDataBase.Click += new System.EventHandler(this.buttonUpdateDataBase_Click);
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(70, 277);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(247, 25);
+            this.progressBar2.TabIndex = 79;
+            // 
+            // kryptonLabelUpdateDataBase
+            // 
+            this.kryptonLabelUpdateDataBase.Location = new System.Drawing.Point(68, 224);
+            this.kryptonLabelUpdateDataBase.Name = "kryptonLabelUpdateDataBase";
+            this.kryptonLabelUpdateDataBase.Size = new System.Drawing.Size(65, 20);
+            this.kryptonLabelUpdateDataBase.TabIndex = 77;
+            this.kryptonLabelUpdateDataBase.Values.Text = "程序路径";
+            // 
+            // flatTabControl1
+            // 
+            this.flatTabControl1.Controls.Add(this.tabPageParaSet);
+            this.flatTabControl1.Controls.Add(this.tabPageUserInfor);
+            this.flatTabControl1.Controls.Add(this.tabPageTriggerEvent);
+            this.flatTabControl1.Controls.Add(this.tabPageUpdateProgram);
+            this.flatTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flatTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.flatTabControl1.Name = "flatTabControl1";
+            this.flatTabControl1.SelectedIndex = 0;
+            this.flatTabControl1.Size = new System.Drawing.Size(1080, 569);
+            this.flatTabControl1.TabIndex = 68;
+            // 
+            // tabPageParaSet
+            // 
+            this.tabPageParaSet.Controls.Add(this.kryptonPanel1);
+            this.tabPageParaSet.Location = new System.Drawing.Point(4, 25);
+            this.tabPageParaSet.Name = "tabPageParaSet";
+            this.tabPageParaSet.Size = new System.Drawing.Size(650, 375);
+            this.tabPageParaSet.TabIndex = 0;
+            this.tabPageParaSet.Text = "tabPage1";
+            this.tabPageParaSet.UseVisualStyleBackColor = true;
+            // 
+            // tabPageUserInfor
+            // 
+            this.tabPageUserInfor.Controls.Add(this.kryptonPanel2);
+            this.tabPageUserInfor.Location = new System.Drawing.Point(4, 25);
+            this.tabPageUserInfor.Name = "tabPageUserInfor";
+            this.tabPageUserInfor.Size = new System.Drawing.Size(650, 375);
+            this.tabPageUserInfor.TabIndex = 1;
+            this.tabPageUserInfor.Text = "tabPage2";
+            this.tabPageUserInfor.UseVisualStyleBackColor = true;
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Controls.Add(this.kryptonComboBoxDeviceIP);
+            this.kryptonPanel1.Controls.Add(this.buttonGetDoorSensorType);
+            this.kryptonPanel1.Controls.Add(this.labelDeviceIp);
+            this.kryptonPanel1.Controls.Add(this.labelHolidaySum);
+            this.kryptonPanel1.Controls.Add(this.listBoxSearch);
+            this.kryptonPanel1.Controls.Add(this.buttonDelRecord);
+            this.kryptonPanel1.Controls.Add(this.buttonSearch);
+            this.kryptonPanel1.Controls.Add(this.textBoxDeviceDateTime);
+            this.kryptonPanel1.Controls.Add(this.buttonConnect);
+            this.kryptonPanel1.Controls.Add(this.labelNewDeviceIP);
+            this.kryptonPanel1.Controls.Add(this.buttonGetDoorDriverTime);
+            this.kryptonPanel1.Controls.Add(this.labelMask);
+            this.kryptonPanel1.Controls.Add(this.textBoxHolidaySum);
+            this.kryptonPanel1.Controls.Add(this.labelGateway);
+            this.kryptonPanel1.Controls.Add(this.buttonSynchronizeTime);
+            this.kryptonPanel1.Controls.Add(this.labelDNS);
+            this.kryptonPanel1.Controls.Add(this.labelDeviceDateTime);
+            this.kryptonPanel1.Controls.Add(this.labelMAC);
+            this.kryptonPanel1.Controls.Add(this.textBoxDoorDriverTime);
+            this.kryptonPanel1.Controls.Add(this.textBoxNewDeviceIP);
+            this.kryptonPanel1.Controls.Add(this.buttonHolidaySum);
+            this.kryptonPanel1.Controls.Add(this.textBoxMask);
+            this.kryptonPanel1.Controls.Add(this.buttonGetRecordSum);
+            this.kryptonPanel1.Controls.Add(this.textBoxGateway);
+            this.kryptonPanel1.Controls.Add(this.buttonSetDoorDriverTime);
+            this.kryptonPanel1.Controls.Add(this.buttonSetMAC);
+            this.kryptonPanel1.Controls.Add(this.labelDeviceID);
+            this.kryptonPanel1.Controls.Add(this.textBoxDNS);
+            this.kryptonPanel1.Controls.Add(this.textBoxRecordSum);
+            this.kryptonPanel1.Controls.Add(this.buttonGetDNS);
+            this.kryptonPanel1.Controls.Add(this.labelDoorDriverTime);
+            this.kryptonPanel1.Controls.Add(this.textBoxMAC);
+            this.kryptonPanel1.Controls.Add(this.textBoxDeviceID);
+            this.kryptonPanel1.Controls.Add(this.buttonGetMAC);
+            this.kryptonPanel1.Controls.Add(this.labelRecordSum);
+            this.kryptonPanel1.Controls.Add(this.buttonSetNewDeviceIP);
+            this.kryptonPanel1.Controls.Add(this.labelDoorSensorType);
+            this.kryptonPanel1.Controls.Add(this.buttonSetDNS);
+            this.kryptonPanel1.Controls.Add(this.buttonGetDeviceID);
+            this.kryptonPanel1.Controls.Add(this.buttonGetNewDeviceIP);
+            this.kryptonPanel1.Controls.Add(this.buttonSetDeviceDateTime);
+            this.kryptonPanel1.Controls.Add(this.buttonGetGateway);
+            this.kryptonPanel1.Controls.Add(this.buttonSetDoorSensorType);
+            this.kryptonPanel1.Controls.Add(this.buttonSetMask);
+            this.kryptonPanel1.Controls.Add(this.buttonRestart);
+            this.kryptonPanel1.Controls.Add(this.buttonSetGateway);
+            this.kryptonPanel1.Controls.Add(this.buttonDelAccessTime);
+            this.kryptonPanel1.Controls.Add(this.buttonGetMask);
+            this.kryptonPanel1.Controls.Add(this.textBoxDoorSensorType);
+            this.kryptonPanel1.Controls.Add(this.buttonSetDeviceID);
+            this.kryptonPanel1.Controls.Add(this.buttonDelHolidayTime);
+            this.kryptonPanel1.Controls.Add(this.buttonGetDeviceDateTime);
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(650, 375);
+            this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.Controls.Add(this.labelViewBlackCardID);
+            this.kryptonPanel2.Controls.Add(this.textBoxSearchUserCardID);
+            this.kryptonPanel2.Controls.Add(this.labelViewBlackCard);
+            this.kryptonPanel2.Controls.Add(this.labelCardInfoSum);
+            this.kryptonPanel2.Controls.Add(this.textBoxViewBlackCardID);
+            this.kryptonPanel2.Controls.Add(this.textBoxUserName);
+            this.kryptonPanel2.Controls.Add(this.textBoxBlackCardSum);
+            this.kryptonPanel2.Controls.Add(this.labelCardID);
+            this.kryptonPanel2.Controls.Add(this.labelDeleteBlackCard);
+            this.kryptonPanel2.Controls.Add(this.labelGetCardInfoSum);
+            this.kryptonPanel2.Controls.Add(this.textBoxBlackCard);
+            this.kryptonPanel2.Controls.Add(this.textBoxCard);
+            this.kryptonPanel2.Controls.Add(this.labelDelBackCardInfo);
+            this.kryptonPanel2.Controls.Add(this.textBoxCardInfoSum);
+            this.kryptonPanel2.Controls.Add(this.buttonDeleteBlackCard);
+            this.kryptonPanel2.Controls.Add(this.buttonDelAllCardInfo);
+            this.kryptonPanel2.Controls.Add(this.buttonViewBlackCardID);
+            this.kryptonPanel2.Controls.Add(this.labelViewUserInfoByCardID);
+            this.kryptonPanel2.Controls.Add(this.labelGetBlackCardInfo);
+            this.kryptonPanel2.Controls.Add(this.labelDeleteUserInfo);
+            this.kryptonPanel2.Controls.Add(this.buttonBlackCardSum);
+            this.kryptonPanel2.Controls.Add(this.buttonCardInfoSum);
+            this.kryptonPanel2.Controls.Add(this.labelBlackCardSum);
+            this.kryptonPanel2.Controls.Add(this.buttonDelBlackAllCardInfo);
+            this.kryptonPanel2.Controls.Add(this.labelViewUserCardId);
+            this.kryptonPanel2.Controls.Add(this.buttonSearchUserByUserName);
+            this.kryptonPanel2.Controls.Add(this.buttonDeleteCard);
+            this.kryptonPanel2.Controls.Add(this.buttonSearchUserByCardID);
+            this.kryptonPanel2.Controls.Add(this.labelViewUserInfoByUserName);
+            this.kryptonPanel2.Controls.Add(this.labelViewUserName);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.Size = new System.Drawing.Size(650, 375);
+            this.kryptonPanel2.TabIndex = 0;
+            // 
+            // tabPageTriggerEvent
+            // 
+            this.tabPageTriggerEvent.Controls.Add(this.kryptonPanel3);
+            this.tabPageTriggerEvent.Location = new System.Drawing.Point(4, 25);
+            this.tabPageTriggerEvent.Name = "tabPageTriggerEvent";
+            this.tabPageTriggerEvent.Size = new System.Drawing.Size(650, 375);
+            this.tabPageTriggerEvent.TabIndex = 2;
+            this.tabPageTriggerEvent.Text = "tabPage3";
+            this.tabPageTriggerEvent.UseVisualStyleBackColor = true;
+            // 
+            // tabPageUpdateProgram
+            // 
+            this.tabPageUpdateProgram.Controls.Add(this.kryptonPanel4);
+            this.tabPageUpdateProgram.Location = new System.Drawing.Point(4, 25);
+            this.tabPageUpdateProgram.Name = "tabPageUpdateProgram";
+            this.tabPageUpdateProgram.Size = new System.Drawing.Size(1072, 540);
+            this.tabPageUpdateProgram.TabIndex = 3;
+            this.tabPageUpdateProgram.Text = "tabPage4";
+            this.tabPageUpdateProgram.UseVisualStyleBackColor = true;
+            // 
+            // kryptonPanel3
+            // 
+            this.kryptonPanel3.Controls.Add(this.textBoxDeleteTriggerEvent);
+            this.kryptonPanel3.Controls.Add(this.labelGetTriggerEventSum);
+            this.kryptonPanel3.Controls.Add(this.labelDeleteTriggerEventID);
+            this.kryptonPanel3.Controls.Add(this.buttonDelAllTriggerEvent);
+            this.kryptonPanel3.Controls.Add(this.labelDeleteTriggerEvent);
+            this.kryptonPanel3.Controls.Add(this.textBoxGetTriggerEventSum);
+            this.kryptonPanel3.Controls.Add(this.buttonGetTriggerEvent);
+            this.kryptonPanel3.Controls.Add(this.buttonDeleteTriggerEvent);
+            this.kryptonPanel3.Controls.Add(this.labelTriggerEventSum);
+            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel3.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel3.Name = "kryptonPanel3";
+            this.kryptonPanel3.Size = new System.Drawing.Size(650, 375);
+            this.kryptonPanel3.TabIndex = 0;
+            // 
+            // kryptonPanel4
+            // 
+            this.kryptonPanel4.Controls.Add(this.kryptonTextBoxDataBase);
+            this.kryptonPanel4.Controls.Add(this.buttonSelectProgram);
+            this.kryptonPanel4.Controls.Add(this.buttonSelectDataBase);
+            this.kryptonPanel4.Controls.Add(this.labelUpdatePath);
+            this.kryptonPanel4.Controls.Add(this.buttonUpdateDataBase);
+            this.kryptonPanel4.Controls.Add(this.progressBar1);
+            this.kryptonPanel4.Controls.Add(this.progressBar2);
+            this.kryptonPanel4.Controls.Add(this.buttonUpdateProgram);
+            this.kryptonPanel4.Controls.Add(this.kryptonLabelUpdateDataBase);
+            this.kryptonPanel4.Controls.Add(this.textBoxFilePath);
+            this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel4.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel4.Name = "kryptonPanel4";
+            this.kryptonPanel4.Size = new System.Drawing.Size(1072, 540);
+            this.kryptonPanel4.TabIndex = 0;
+            // 
+            // KryptonFormDeviceManage
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1080, 591);
+            this.Controls.Add(this.flatTabControl1);
+            this.Controls.Add(this.statusStripMessage);
+            this.Name = "KryptonFormDeviceManage";
+            this.Text = "设备参数管理";
+            this.Load += new System.EventHandler(this.FormDeviceManage_Load);
+            this.statusStripMessage.ResumeLayout(false);
+            this.statusStripMessage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxDeviceIP)).EndInit();
+            this.flatTabControl1.ResumeLayout(false);
+            this.tabPageParaSet.ResumeLayout(false);
+            this.tabPageUserInfor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
+            this.kryptonPanel2.PerformLayout();
+            this.tabPageTriggerEvent.ResumeLayout(false);
+            this.tabPageUpdateProgram.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
+            this.kryptonPanel3.ResumeLayout(false);
+            this.kryptonPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).EndInit();
+            this.kryptonPanel4.ResumeLayout(false);
+            this.kryptonPanel4.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.StatusStrip statusStripMessage;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonDelRecord;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSynchronizeTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonListBox listBoxSearch;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSearch;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonConnect;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDeviceIp;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonRestart;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelNewDeviceIP;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelMask;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonDelHolidayTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonDelAccessTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelGateway;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDNS;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelMAC;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxNewDeviceIP;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxMask;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxGateway;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonHolidaySum;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxDNS;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxHolidaySum;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxMAC;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelHolidaySum;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSetNewDeviceIP;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetNewDeviceIP;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSetMask;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetMask;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSetGateway;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetGateway;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSetDNS;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetMAC;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxDeviceDateTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetDNS;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDeviceDateTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSetMAC;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetRecordSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDeviceID;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxRecordSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxDeviceID;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelRecordSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetDeviceID;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSetDoorSensorType;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSetDeviceID;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetDoorSensorType;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetDeviceDateTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxDoorSensorType;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSetDeviceDateTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDoorSensorType;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDoorDriverTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSetDoorDriverTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxDoorDriverTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetDoorDriverTime;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxFilePath;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonUpdateProgram;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelUpdatePath;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSelectProgram;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonDelAllTriggerEvent;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelGetTriggerEventSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonGetTriggerEvent;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxGetTriggerEventSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxDeleteTriggerEvent;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelTriggerEventSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonDeleteTriggerEvent;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDeleteTriggerEventID;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDeleteTriggerEvent;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelViewBlackCardID;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelViewBlackCard;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxViewBlackCardID;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxBlackCardSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxCardInfoSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxUserName;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxBlackCard;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxSearchUserCardID;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBoxCard;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonViewBlackCardID;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelGetBlackCardInfo;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelGetCardInfoSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonBlackCardSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelBlackCardSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonDelBlackAllCardInfo;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonDelAllCardInfo;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonCardInfoSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelCardInfoSum;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelViewUserName;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelViewUserInfoByUserName;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSearchUserByUserName;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelViewUserCardId;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelViewUserInfoByCardID;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonDeleteBlackCard;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDelBackCardInfo;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDeleteBlackCard;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelCardID;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelDeleteUserInfo;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSearchUserByCardID;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonDeleteCard;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBoxDeviceIP;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBoxDataBase;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonSelectDataBase;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton buttonUpdateDataBase;
+        private System.Windows.Forms.ProgressBar progressBar2;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabelUpdateDataBase;
+        private MyComponents.FlatTabControl flatTabControl1;
+        private System.Windows.Forms.TabPage tabPageParaSet;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private System.Windows.Forms.TabPage tabPageUserInfor;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
+        private System.Windows.Forms.TabPage tabPageTriggerEvent;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel3;
+        private System.Windows.Forms.TabPage tabPageUpdateProgram;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel4;
+        
+    }
+}

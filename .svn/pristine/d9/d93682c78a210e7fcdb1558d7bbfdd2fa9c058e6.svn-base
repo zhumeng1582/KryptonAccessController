@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.WidgetThread;
+
+namespace KryptonAccessController.RelationUser
+{
+    public partial class CardInfo : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        AccessDataBase.BLL.CardInfo bllCardInfo = new AccessDataBase.BLL.CardInfo();
+
+        private static object obj = new object();
+        static CardInfo _instance = null;
+        public static CardInfo getInstance()
+        {
+            if (_instance == null)
+            {
+                lock (obj)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new CardInfo();
+                    }
+                }
+            }
+            return _instance;
+        }
+        public CardInfo()
+        {
+            InitializeComponent();
+
+            initToolStripMenu();
+            refreshDataGridView();
+        }
+
+        public void refreshDataGridView()
+        {
+            DataTable dt = bllCardInfo.GetAllList().Tables[0];
+
+            dataGridViewWithCheckBox1.DataSource = dt;
+        }
+        public void initToolStripMenu()
+        {
+            toolStripCardInfo.Items.Clear();
+            ImageOperate.AddButtonItemToToolStrip(toolStripCardInfo, "add.BMP", "Add", toolStripButtonAddUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripCardInfo, "update.BMP", "Update", toolStripButtonUpdateUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripCardInfo, "delete.BMP", "Del", toolStripButtonDeleteUserInfo_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripCardInfo, "download.BMP", "save to device", toolStripButtonDownLoadUserInfo_Click);
+
+        }
+        public void toolStripButtonAddUserInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void toolStripButtonUpdateUserInfo_Click(object sender, EventArgs e)
+        { }
+        public void toolStripButtonDeleteUserInfo_Click(object sender, EventArgs e)
+        { }
+        public void toolStripButtonDownLoadUserInfo_Click(object sender, EventArgs e)
+        { }
+    }
+}

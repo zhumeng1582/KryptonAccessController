@@ -1,0 +1,320 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+using KryptonAccessController.Common;
+using KryptonAccessController.AccessSdkDataBase;
+
+namespace KryptonAccessController.RelationController
+{
+    public partial class FormController : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        private AccessSdkDataBase.Model.ControllerInfo controllerInfo = new AccessSdkDataBase.Model.ControllerInfo();
+        private AccessSdkDataBase.BLL.DoorUnitInfo BllDoorUnitInfo = new AccessSdkDataBase.BLL.DoorUnitInfo();
+        private AccessSdkDataBase.Model.DoorUnitInfo modeDoorUnitInfo = new AccessSdkDataBase.Model.DoorUnitInfo();
+
+        private OpenMode openMode;
+        public FormController(AccessSdkDataBase.Model.ControllerInfo controllerInfo, OpenMode openMode)
+        {
+            InitializeComponent();
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            this.controllerInfo = controllerInfo;
+            this.openMode = openMode;
+            if (openMode == OpenMode.Add)
+            {
+                showAddPara();
+            }
+            else if (openMode == OpenMode.Update)
+            {
+                showUpdatePara();
+            }
+        }
+        private void showAddPara()
+        {
+            kryptonTextBoxControllerID.Text = controllerInfo.ControllerID.ToString();
+        }
+        private void showUpdatePara()
+        {
+            #region 基本参数
+            kryptonTextBoxControllerID.Text = controllerInfo.ControllerID.ToString();
+            kryptonTextBoxControllerName.Text = controllerInfo.ControllerName.Trim();
+            kryptonComboBoxControllerType.SelectedIndex = controllerInfo.ControllerType.HasValue ? controllerInfo.ControllerType.Value-1:0;
+            kryptonTextBoxControllerLoaction.Text = controllerInfo.ControllerLocation.Trim();
+            kryptonLabelControllerVersion.Text = controllerInfo.ControllerVersion.Trim();
+            #endregion 基本参数
+
+            #region 通讯参数
+            if (controllerInfo.CommunicateType == 1)
+            {
+                kryptonCheckBoxCommunicateTypeTCP.Checked = true;
+                textBoxNewDeviceIP.Text = controllerInfo.ControllerIP;
+                textBoxMask.Text = controllerInfo.ControllerSubnetMask;
+                textBoxGateway.Text = controllerInfo.ControllerGateway;
+                textBoxMAC.Text = controllerInfo.ControllerMAC;
+                textBoxDNS.Text = controllerInfo.ControllerDNS;
+                kryptonTextBoxBackUpDNS.Text = controllerInfo.ControllerBUDNS;
+
+                kryptonCheckBoxCommunicateType485.Checked = false;
+                kryptonGroupBox485.Enabled = false;
+            }
+            else if (controllerInfo.CommunicateType == 2)
+            {
+                kryptonCheckBoxCommunicateTypeTCP.Checked = false;
+                kryptonGroupBoxTCP.Enabled = false;
+
+                kryptonCheckBoxCommunicateType485.Checked = true;
+                kryptonTextBoxControllerAddr485.Text = controllerInfo.ControllerAddr485.ToString();
+                kryptonTextBoxControllerBaudrate.Text = controllerInfo.ControllerBaudrate.ToString();
+                kryptonTextBoxControllerDataBits.Text = controllerInfo.ControllerDataBits.ToString();
+            }
+            else
+            {
+                kryptonCheckBoxCommunicateTypeTCP.Checked = true;
+                textBoxNewDeviceIP.Text = controllerInfo.ControllerIP;
+                textBoxMask.Text = controllerInfo.ControllerSubnetMask;
+                textBoxGateway.Text = controllerInfo.ControllerGateway;
+                textBoxMAC.Text = controllerInfo.ControllerMAC;
+                textBoxDNS.Text = controllerInfo.ControllerDNS;
+                kryptonTextBoxBackUpDNS.Text = controllerInfo.ControllerBUDNS;
+
+                kryptonCheckBoxCommunicateType485.Checked = true;
+                kryptonCheckBoxCommunicateType485.Checked = true;
+                kryptonTextBoxControllerAddr485.Text = controllerInfo.ControllerAddr485.ToString();
+                kryptonTextBoxControllerBaudrate.Text = controllerInfo.ControllerBaudrate.ToString();
+                kryptonTextBoxControllerDataBits.Text = controllerInfo.ControllerDataBits.ToString();
+
+            }
+            #endregion 通讯参数
+
+            #region 辅助单元
+            kryptonComboBoxInputStateType0.SelectedIndex = controllerInfo.InputStateType == 2 ? 0 : 1;
+            kryptonTextBoxAuxOutPutPoint.Text = controllerInfo.AuxOutPutPointID.ToString();
+            kryptonTextBoxFireSensing.Text = controllerInfo.FireSensingID.ToString();
+            kryptonTextBoxTamperSensing.Text = controllerInfo.TamperSensingID.ToString();
+            kryptonTextBoxLowVoltage.Text = controllerInfo.LowVoltageID.ToString();
+            kryptonTextBoxPowerOutage.Text = controllerInfo.PowerOutageID.ToString();
+            #endregion 辅助单元
+
+            #region 门单元1
+            if (controllerInfo.DoorUnitID1.HasValue && controllerInfo.DoorUnitEnable1)
+            {
+                modeDoorUnitInfo = BllDoorUnitInfo.GetModel(controllerInfo.DoorUnitID1.Value, 1);
+                kryptonComboBoxInputStateType1.SelectedIndex = modeDoorUnitInfo.InputStateType == 2 ? 0 : 1;
+                kryptonTextBoxOutPoint1.Text = modeDoorUnitInfo.OutPutLockID.ToString();
+                kryptonTextBoxExitButton1.Text = modeDoorUnitInfo.ExitButtonID.ToString();
+                kryptonTextBoxDoorContact1.Text = modeDoorUnitInfo.DoorContactID.ToString();
+                kryptonTextBoxDoorPosition1.Text = modeDoorUnitInfo.DoorPositionID.ToString();
+                kryptonTextBoxBreakGlass1.Text = modeDoorUnitInfo.BreakGlassID.ToString();
+                kryptonTextBoxReader1_1.Text = modeDoorUnitInfo.ReadID1.ToString();
+                kryptonButtonReader1_2.Text = modeDoorUnitInfo.ReadID2.ToString();
+            }
+            #endregion 门单元1
+
+            #region 门单元2
+            if (controllerInfo.DoorUnitID2.HasValue && controllerInfo.DoorUnitEnable2)
+            {
+                modeDoorUnitInfo = BllDoorUnitInfo.GetModel(controllerInfo.DoorUnitID2.Value, 2);
+                kryptonComboBoxInputStateType2.SelectedIndex = modeDoorUnitInfo.InputStateType == 2 ? 0 : 1;
+                kryptonTextBoxOutPoint2.Text = modeDoorUnitInfo.OutPutLockID.ToString();
+                kryptonTextBoxExitButton2.Text = modeDoorUnitInfo.ExitButtonID.ToString();
+                kryptonTextBoxDoorContact2.Text = modeDoorUnitInfo.DoorContactID.ToString();
+                kryptonTextBoxDoorPosition2.Text = modeDoorUnitInfo.DoorPositionID.ToString();
+                kryptonTextBoxBreakGlass2.Text = modeDoorUnitInfo.BreakGlassID.ToString();
+                kryptonTextBoxReader2_1.Text = modeDoorUnitInfo.ReadID1.ToString();
+                kryptonButtonReader2_2.Text = modeDoorUnitInfo.ReadID2.ToString();
+            }
+            #endregion 门单元2
+
+            #region 门单元3
+            if (controllerInfo.DoorUnitID3.HasValue && controllerInfo.DoorUnitEnable3)
+            {
+                modeDoorUnitInfo = BllDoorUnitInfo.GetModel(controllerInfo.DoorUnitID3.Value, 3);
+                kryptonComboBoxInputStateType3.SelectedIndex = modeDoorUnitInfo.InputStateType == 2 ? 0 : 1;
+                kryptonTextBoxOutPoint3.Text = modeDoorUnitInfo.OutPutLockID.ToString();
+                kryptonTextBoxExitButton3.Text = modeDoorUnitInfo.ExitButtonID.ToString();
+                kryptonTextBoxDoorContact3.Text = modeDoorUnitInfo.DoorContactID.ToString();
+                kryptonTextBoxDoorPosition3.Text = modeDoorUnitInfo.DoorPositionID.ToString();
+                kryptonTextBoxBreakGlass3.Text = modeDoorUnitInfo.BreakGlassID.ToString();
+                kryptonTextBoxReader3_1.Text = modeDoorUnitInfo.ReadID1.ToString();
+                kryptonButtonReader3_2.Text = modeDoorUnitInfo.ReadID2.ToString();
+            }
+            #endregion 门单元3
+
+            #region 门单元4
+            if (controllerInfo.DoorUnitID4.HasValue && controllerInfo.DoorUnitEnable4)
+            {
+                modeDoorUnitInfo = BllDoorUnitInfo.GetModel(controllerInfo.DoorUnitID4.Value, 4);
+                kryptonComboBoxInputStateType4.SelectedIndex = modeDoorUnitInfo.InputStateType == 2 ? 0 : 1;
+                kryptonTextBoxOutPoint4.Text = modeDoorUnitInfo.OutPutLockID.ToString();
+                kryptonTextBoxExitButton4.Text = modeDoorUnitInfo.ExitButtonID.ToString();
+                kryptonTextBoxDoorContact4.Text = modeDoorUnitInfo.DoorContactID.ToString();
+                kryptonTextBoxDoorPosition4.Text = modeDoorUnitInfo.DoorPositionID.ToString();
+                kryptonTextBoxBreakGlass4.Text = modeDoorUnitInfo.BreakGlassID.ToString();
+                kryptonTextBoxReader4_1.Text = modeDoorUnitInfo.ReadID1.ToString();
+                kryptonButtonReader4_2.Text = modeDoorUnitInfo.ReadID2.ToString();
+            }
+            #endregion 门单元4
+
+            #region 集成IO
+            #endregion 集成IO
+
+            #region 扩展IO1
+            #endregion 扩展IO1
+
+            #region 扩展IO2
+            #endregion 扩展IO2
+
+            #region 扩展IO3
+            #endregion 扩展IO3
+
+            #region 扩展IO4
+            #endregion 扩展IO4
+
+        }
+
+        private void kryptonButtonControllerCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void kryptonButtonControllerOK_Click(object sender, EventArgs e)
+        {
+            AccessSdkDataBase.Model.ControllerInfo modeControllerInfo = controllerInfo;
+
+            #region 控制器信息
+            modeControllerInfo.ControllerID = int.Parse(kryptonTextBoxControllerID.Text.Trim());
+            modeControllerInfo.ControllerName = kryptonTextBoxControllerName.Text.Trim();
+            modeControllerInfo.ControllerType = kryptonComboBoxControllerType.SelectedIndex+1;
+            modeControllerInfo.ControllerLocation = kryptonTextBoxControllerLoaction.Text.Trim();
+            modeControllerInfo.ControllerIP =textBoxNewDeviceIP.Text.Trim();
+            modeControllerInfo.ControllerSubnetMask = textBoxMask.Text.Trim();
+            modeControllerInfo.ControllerGateway = textBoxGateway.Text.Trim();
+            modeControllerInfo.ControllerMAC = textBoxMAC.Text;
+            modeControllerInfo.ControllerDNS = textBoxDNS.Text;
+            modeControllerInfo.ControllerBUDNS = kryptonTextBoxBackUpDNS.Text;
+            #endregion 控制器信息
+
+            #region 门单元1信息
+            #endregion 门单元1信息
+
+            #region 门单元2信息
+            #endregion 门单2元信息
+
+            #region 门单元3信息
+            #endregion 门单元3信息
+
+            #region 门单元4信息
+            #endregion 门单元4信息
+
+            AccessSdkDataBase.BLL.ControllerInfo bllControllerInfo = new AccessSdkDataBase.BLL.ControllerInfo();
+
+            if (openMode == OpenMode.Update)
+            {
+                if (bllControllerInfo.Update(modeControllerInfo) == true)
+                    this.Close();
+            }
+            else if (openMode == OpenMode.Add)
+            {
+                if (bllControllerInfo.Exists(modeControllerInfo.ControllerID))
+                    ClassMessageBox.MessageBoxOK("控制器已经存在");
+                else
+                {
+                    if (bllControllerInfo.Add(modeControllerInfo) == true)
+                        this.Close();
+                }
+            }
+
+        }
+
+        private void kryptonCheckBoxCommunicateTypeTCP_CheckedChanged(object sender, EventArgs e)
+        {
+            if (kryptonCheckBoxCommunicateTypeTCP.Checked == true)
+                kryptonGroupBoxTCP.Enabled = true;
+            else
+                kryptonGroupBoxTCP.Enabled = false;
+        }
+
+        private void kryptonCheckBoxCommunicateType485_CheckedChanged(object sender, EventArgs e)
+        {
+            if (kryptonCheckBoxCommunicateType485.Checked == true)
+                kryptonGroupBox485.Enabled = true;
+            else
+                kryptonGroupBox485.Enabled = false;
+        }
+
+        private void openReadInfoDialog(int readerID,OpenMode openMode)
+        {
+            AccessSdkDataBase.Model.ReaderInfo modelReaderInfo = new AccessSdkDataBase.Model.ReaderInfo();
+            modelReaderInfo.ReaderID = readerID;
+            FormReaderInfo formReaderInfo = new FormReaderInfo(modelReaderInfo,openMode);
+            formReaderInfo.Show();
+        }
+        private void kryptonButtonReader1_1_Click(object sender, EventArgs e)
+        {
+            openReadInfoDialog(int.Parse(kryptonTextBoxReader1_1.Text.Trim()), openMode);
+        }
+
+        private void kryptonButtonReader1_2_Click(object sender, EventArgs e)
+        {
+
+            openReadInfoDialog(int.Parse(kryptonTextBoxReader1_2.Text.Trim()), openMode);
+        }
+
+        private void kryptonButtonReader2_1_Click(object sender, EventArgs e)
+        {
+            openReadInfoDialog(int.Parse(kryptonTextBoxReader2_1.Text.Trim()), openMode);
+        }
+
+        private void kryptonButtonReader2_2_Click(object sender, EventArgs e)
+        {
+            openReadInfoDialog(int.Parse(kryptonTextBoxReader2_2.Text.Trim()), openMode);
+        }
+
+        private void kryptonButtonReader3_1_Click(object sender, EventArgs e)
+        {
+            openReadInfoDialog(int.Parse(kryptonTextBoxReader3_1.Text.Trim()), openMode);
+        }
+
+        private void kryptonButtonReader3_2_Click(object sender, EventArgs e)
+        {
+            openReadInfoDialog(int.Parse(kryptonTextBoxReader3_2.Text.Trim()), openMode);
+        }
+
+        private void kryptonButtonReader4_1_Click(object sender, EventArgs e)
+        {
+            openReadInfoDialog(int.Parse(kryptonTextBoxReader4_1.Text.Trim()), openMode);
+        }
+
+        private void kryptonButtonReader4_2_Click(object sender, EventArgs e)
+        {
+            openReadInfoDialog(int.Parse(kryptonTextBoxReader4_2.Text.Trim()), openMode);
+        }
+
+        private void kryptonComboBoxControllerType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+            if (kryptonComboBoxControllerType.SelectedIndex == 0)
+            {
+                
+                
+            }
+            else if (kryptonComboBoxControllerType.SelectedIndex == 1)
+            {
+                
+            }
+            else if (kryptonComboBoxControllerType.SelectedIndex == 2)
+            {
+               
+            }
+        }
+    }
+}

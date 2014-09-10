@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.Common;
+
+namespace KryptonAccessController.RelationManage
+{
+    public partial class FormChangePassword : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        public FormChangePassword()
+        {
+            InitializeComponent();
+        }
+        private Boolean VerifyOldPassword()
+        {
+
+            if (string.IsNullOrEmpty(kryptonTextBoxOldPassword.Text.Trim()))
+            {
+                string text = "密码不能为空";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+            }
+
+            if (RegexMatch.IsManagerPassword(kryptonTextBoxOldPassword.Text.Trim()) == false)
+            {
+                string text = "密码格式无效";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+
+            }
+            return true;
+        }
+        private Boolean VerifyNewPassword1()
+        {
+
+            if (string.IsNullOrEmpty(kryptonLabelNewPassword1.Text.Trim()))
+            {
+                string text = "密码不能为空";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+            }
+
+            if (RegexMatch.IsManagerPassword(kryptonLabelNewPassword1.Text.Trim()) == false)
+            {
+                string text = "密码格式无效";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+
+            }
+            return true;
+        }
+        private Boolean VerifyNewPassword2()
+        {
+
+            if (string.IsNullOrEmpty(kryptonLabelOldPassword2.Text.Trim()))
+            {
+                string text = "密码不能为空";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+            }
+
+            if (RegexMatch.IsManagerPassword(kryptonLabelOldPassword2.Text.Trim()) == false)
+            {
+                string text = "密码格式无效";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+
+            }
+            return true;
+        }
+
+        private void kryptonButtonOK_Click(object sender, EventArgs e)
+        {
+            VerifyOldPassword();
+            VerifyNewPassword1();
+            VerifyNewPassword2();
+
+        }
+    }
+}

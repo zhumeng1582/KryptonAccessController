@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BDCA19E-2977-43AF-BF13-F738836286A6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KryptonAccessController</RootNamespace>
+    <AssemblyName>AccessController</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\AccessControllerSystem.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Docking, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
+    <Reference Include="ComponentFactory.Krypton.Navigator, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
+    <Reference Include="ComponentFactory.Krypton.Ribbon, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
+    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Workspace, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
+    <Reference Include="Maticsoft.Common">
+      <HintPath>.\Maticsoft.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Maticsoft.DBUtility">
+      <HintPath>.\Maticsoft.DBUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessSdkDataBase\BLL\AntiPassBack.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\BlackListCardInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\CardInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\ControllerInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\ControllerInfoInLAN.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\DoorUnitInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\ElectronicMap.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\EventCodeInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\EventInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\EventInterControlProgramGroup.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\EventPictureInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\EventStandardOperateProcedureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\ExpansionBoardInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\Holiday.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\InputInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\InteractHoliday.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\InteractHolidayTimeICPGList.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\InteractHolidayTimeSOPGList.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\InterControlProgram.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\InterControlProgramGroup.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\InterLock.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\Manager.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\ManagerRightList.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\MediaPicture.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\MediaVideo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\MediaVideoGroup.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\MendiaPictureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\Menu.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\OutPutInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\PictureGroupPictureList.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\PlayMediaInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\ReaderHoliday.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\ReaderHolidayList.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\ReaderInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\ReaderTimeAccess.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\ReaderTimeZone.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\StandardOperateProcedure.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\StandardOperateProcedureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\TimeAccess.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\TimeInterControlProgramGroup.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\TimeStandardOperateProcedureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\TimeZone.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\UserGroup.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\UserGroupHolidayList.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\UserInfo.cs" />
+    <Compile Include="AccessSdkDataBase\BLL\VideoGroupVideoList.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\AntiPassBack.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\BlackListCardInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\CardInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\ControllerInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\ControllerInfoInLAN.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\DoorUnitInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\ElectronicMap.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\EventCodeInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\EventInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\EventInterControlProgramGroup.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\EventPictureInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\EventStandardOperateProcedureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\ExpansionBoardInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\Holiday.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\InputInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\InteractHoliday.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\InteractHolidayTimeICPGList.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\InteractHolidayTimeSOPGList.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\InterControlProgram.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\InterControlProgramGroup.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\InterLock.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\Manager.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\ManagerRightList.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\MediaPicture.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\MediaVideo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\MediaVideoGroup.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\MendiaPictureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\Menu.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\OutPutInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\PictureGroupPictureList.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\PlayMediaInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\ReaderHoliday.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\ReaderHolidayList.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\ReaderInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\ReaderTimeAccess.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\ReaderTimeZone.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\StandardOperateProcedure.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\StandardOperateProcedureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\TimeAccess.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\TimeInterControlProgramGroup.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\TimeStandardOperateProcedureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\TimeZone.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\UserGroup.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\UserGroupHolidayList.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\UserInfo.cs" />
+    <Compile Include="AccessSdkDataBase\DAL\VideoGroupVideoList.cs" />
+    <Compile Include="AccessSdkDataBase\Model\AntiPassBack.cs" />
+    <Compile Include="AccessSdkDataBase\Model\BlackListCardInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\CardInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\ControllerInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\ControllerInfoInLAN.cs" />
+    <Compile Include="AccessSdkDataBase\Model\DoorUnitInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\ElectronicMap.cs" />
+    <Compile Include="AccessSdkDataBase\Model\EventCodeInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\EventInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\EventInterControlProgramGroup.cs" />
+    <Compile Include="AccessSdkDataBase\Model\EventPictureInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\EventStandardOperateProcedureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\Model\ExpansionBoardInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\Holiday.cs" />
+    <Compile Include="AccessSdkDataBase\Model\InputInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\InteractHoliday.cs" />
+    <Compile Include="AccessSdkDataBase\Model\InteractHolidayTimeICPGList.cs" />
+    <Compile Include="AccessSdkDataBase\Model\InteractHolidayTimeSOPGList.cs" />
+    <Compile Include="AccessSdkDataBase\Model\InterControlProgram.cs" />
+    <Compile Include="AccessSdkDataBase\Model\InterControlProgramGroup.cs" />
+    <Compile Include="AccessSdkDataBase\Model\InterLock.cs" />
+    <Compile Include="AccessSdkDataBase\Model\Manager.cs" />
+    <Compile Include="AccessSdkDataBase\Model\ManagerRightList.cs" />
+    <Compile Include="AccessSdkDataBase\Model\MediaPicture.cs" />
+    <Compile Include="AccessSdkDataBase\Model\MediaVideo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\MediaVideoGroup.cs" />
+    <Compile Include="AccessSdkDataBase\Model\MendiaPictureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\Model\Menu.cs" />
+    <Compile Include="AccessSdkDataBase\Model\OutPutInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\PictureGroupPictureList.cs" />
+    <Compile Include="AccessSdkDataBase\Model\PlayMediaInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\ReaderHoliday.cs" />
+    <Compile Include="AccessSdkDataBase\Model\ReaderHolidayList.cs" />
+    <Compile Include="AccessSdkDataBase\Model\ReaderInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\ReaderTimeAccess.cs" />
+    <Compile Include="AccessSdkDataBase\Model\ReaderTimeZone.cs" />
+    <Compile Include="AccessSdkDataBase\Model\StandardOperateProcedure.cs" />
+    <Compile Include="AccessSdkDataBase\Model\StandardOperateProcedureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\Model\TimeAccess.cs" />
+    <Compile Include="AccessSdkDataBase\Model\TimeInterControlProgramGroup.cs" />
+    <Compile Include="AccessSdkDataBase\Model\TimeStandardOperateProcedureGroup.cs" />
+    <Compile Include="AccessSdkDataBase\Model\TimeZone.cs" />
+    <Compile Include="AccessSdkDataBase\Model\UserGroup.cs" />
+    <Compile Include="AccessSdkDataBase\Model\UserGroupHolidayList.cs" />
+    <Compile Include="AccessSdkDataBase\Model\UserInfo.cs" />
+    <Compile Include="AccessSdkDataBase\Model\VideoGroupVideoList.cs" />
+    <Compile Include="Common\RegexMatch.cs" />
+    <Compile Include="Common\ClassMessageBox.cs" />
+    <Compile Include="Dll\Dll530-S-A.cs" />
+    <Compile Include="Dll\DllC0402.cs" />
+    <Compile Include="Help\FormAboutUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\FormAboutUs.Designer.cs">
+      <DependentUpon>FormAboutUs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home\webServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home\webServer.Designer.cs">
+      <DependentUpon>webServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="International\English.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>English.resx</DependentUpon>
+    </Compile>
+    <Compile Include="International\International.cs" />
+    <Compile Include="MyComponents\FlatTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyComponents\DataGridViewWithCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyComponents\DataGridViewWithCheckBox.Designer.cs">
+      <DependentUpon>DataGridViewWithCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyComponents\Win32.cs" />
+    <Compile Include="MyComponents\DataGridViewColumnHeaderCell.cs" />
+    <Compile Include="RelationController\ControllerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationController\ControllerInfo.Designer.cs">
+      <DependentUpon>ControllerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationController\FormController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationController\FormController.Designer.cs">
+      <DependentUpon>FormController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationController\FormReaderHoliday.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationController\FormReaderHoliday.Designer.cs">
+      <DependentUpon>FormReaderHoliday.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationController\FormReaderInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationController\FormReaderInfo.Designer.cs">
+      <DependentUpon>FormReaderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationManage\FormDataBaseValidator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationManage\FormDataBaseValidator.Designer.cs">
+      <DependentUpon>FormDataBaseValidator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationManage\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationManage\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OperationFile\IniFile.cs" />
+    <Compile Include="OperationFile\TxtFile.cs" />
+    <Compile Include="OperationFile\Win32.cs" />
+    <Compile Include="RelationUser\FormUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationUser\FormUser.Designer.cs">
+      <DependentUpon>FormUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationUser\UserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationUser\UserInfo.Designer.cs">
+      <DependentUpon>UserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResourcesFile\GetSystemIcon.cs" />
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\DownLoadThread.cs" />
+    <Compile Include="Tool\FormDeviceManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\FormDeviceManage.Designer.cs">
+      <DependentUpon>FormDeviceManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WidgetThread\ImageOperate.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WidgetThread\WidgetThread.cs" />
+    <EmbeddedResource Include="FormMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\FormAboutUs.resx">
+      <DependentUpon>FormAboutUs.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home\webServer.resx">
+      <DependentUpon>webServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="International\English.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>English.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyComponents\FlatTabControl.resx">
+      <DependentUpon>FlatTabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationController\ControllerInfo.resx">
+      <DependentUpon>ControllerInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationController\FormController.resx">
+      <DependentUpon>FormController.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationController\FormReaderHoliday.resx">
+      <DependentUpon>FormReaderHoliday.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationController\FormReaderInfo.resx">
+      <DependentUpon>FormReaderInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationManage\FormDataBaseValidator.resx">
+      <DependentUpon>FormDataBaseValidator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationManage\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RelationUser\FormUser.resx">
+      <DependentUpon>FormUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationUser\UserInfo.resx">
+      <DependentUpon>UserInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\FormDeviceManage.resx">
+      <DependentUpon>FormDeviceManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="bin\Debug\AccessController.exe.config" />
+    <None Include="bin\Debug\AccessController.vshost.exe.config" />
+    <None Include="bin\Debug\config.ini" />
+    <None Include="bin\Debug\Icon\AccessControllerSystem.ico" />
+    <None Include="bin\Debug\向上标题.bmp" />
+    <None Include="bin\Debug\向下标题.bmp" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\向上标题.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\向下标题.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AccessControllerSystem.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\AccessController.exe" />
+    <Content Include="bin\Debug\AccessController.pdb" />
+    <Content Include="bin\Debug\AccessController.vshost.exe" />
+    <Content Include="bin\Debug\Maticsoft.Common.dll" />
+    <Content Include="bin\Debug\Maticsoft.DBUtility.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

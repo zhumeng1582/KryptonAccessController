@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+
+namespace KryptonAccessController.RelationDepartment
+{
+    public partial class FormCompany : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        public FormCompany(AccessDataBase.Model.CompanyInfo companyInfo, OpenMode openMode)
+        {
+            InitializeComponent();
+
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            if (openMode == OpenMode.Add)
+            {
+
+            }
+            else if (openMode == OpenMode.Update)
+            {
+
+            }
+        }
+    }
+}

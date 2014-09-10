@@ -1,0 +1,133 @@
+
+using System;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.International;
+using KryptonAccessController.ResourcesFile;
+namespace KryptonAccessController.RelationManage
+{
+    public partial class FormLogin : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        readonly string patternname = @"^[a-zA-Z]\w{0,7}$";
+        readonly string patternpassword = @"^[a-zA-Z0-9]{1,8}$";//正则式子
+        AccessSdkDataBase.BLL.Manager manager = new AccessSdkDataBase.BLL.Manager();
+
+        public FormLogin(OpenMode openMode)
+        {
+            InitializeComponent();
+            initUserInterface();
+        }
+        private void initUserInterface()
+        {
+            if (System.Globalization.CultureInfo.InstalledUICulture.Name == "zh-CN")
+                return;
+
+            this.Text = English.FormLoginText;
+            labelUserName.Text = English.UserName;
+            labelUserPassword.Text = English.UserPassword;
+            labelFailInfo.Text = English.FailInfo;
+            buttonLogin.Text = English.Login;
+            buttonCancel.Text = English.Cancel;
+        }
+        private Boolean VerifyUserName()
+        {
+            comboBoxUserName.Focus();
+            Match nameValidator = Regex.Match(comboBoxUserName.Text.Trim(), patternname);   // 匹配正则表达式
+
+            if (string.IsNullOrEmpty(comboBoxUserName.Text.Trim()))
+            {
+                string text = "用户名不能为空";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+            }
+            else if (!nameValidator.Success)
+            {
+                string text = "用户名格式不对";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+            }
+            return true;
+        }
+        private Boolean VerifyPassword()
+        {
+            textBoxUserPassword.Focus(); Match passwordValidator = Regex.Match(textBoxUserPassword.Text.Trim(), patternpassword);
+
+            if (string.IsNullOrEmpty(textBoxUserPassword.Text.Trim()))
+            {
+                string text = "密码不能为空";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+            }
+            else if (!passwordValidator.Success)
+            {
+                string text = "密码格式无效";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+
+            }
+            return true;
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            if (VerifyUserName() == false) return;
+            if (VerifyPassword() == false) return;
+
+            AccessSdkDataBase.Model.Manager model = new AccessSdkDataBase.Model.Manager();
+            model.ManagerName = comboBoxUserName.Text.Trim();
+            model.ManagerPassWord = textBoxUserPassword.Text.Trim();
+
+            AccessSdkDataBase.Model.Manager newModel = manager.GetModel(model);
+            if (newModel != null)
+            {
+                this.Hide();
+                FormMain AccessControl = new FormMain(newModel);
+                AccessControl.ShowDialog();
+            }
+            else
+            {
+                string text = "用户名或密码不对";
+                labelFailInfo.Text = text;
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+            }
+        }
+        //初始化登录窗体的用户名控件
+        private void initComboBoxUserName(KryptonComboBox comboBoxName)
+        {
+
+        }
+        private void Ktypton1_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+            //this.FormBorderStyle = FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+
+            this.Icon = GetResourcesFile.getSystemIco();
+            initComboBoxUserName(comboBoxUserName);
+            labelFailInfo.Text = "";
+        }
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
+        private void login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
+
+        private void textBoxUserPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonLogin_Click(sender, e);
+            }
+
+        }
+    }
+}

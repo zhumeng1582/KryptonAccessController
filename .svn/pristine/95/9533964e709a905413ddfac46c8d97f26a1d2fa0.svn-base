@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+
+namespace KryptonAccessController.Help
+{
+    public partial class FormAboutUs : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        public FormAboutUs()
+        {
+            InitializeComponent();
+
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.Icon = GetResourcesFile.getSystemIco();
+        }
+
+        public void initUserInterface()
+        {
+            this.Text = "关于我们";
+        }
+        private void linkLabelCompanyWeb_LinkClicked_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(linkLabelCompanyWeb.Text); 
+        }
+
+        private void FormAboutUs_Load(object sender, EventArgs e)
+        {
+            initUserInterface();
+        }
+    }
+}

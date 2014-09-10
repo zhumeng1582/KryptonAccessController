@@ -1,0 +1,1045 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BDCA19E-2977-43AF-BF13-F738836286A6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KryptonAccessController</RootNamespace>
+    <AssemblyName>AccessController</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\AccessControllerSystem.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Docking, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
+    <Reference Include="ComponentFactory.Krypton.Navigator, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
+    <Reference Include="ComponentFactory.Krypton.Ribbon, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
+    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Workspace, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
+    <Reference Include="Components">
+      <HintPath>..\Components\bin\Debug\Components.dll</HintPath>
+    </Reference>
+    <Reference Include="Maticsoft.Common">
+      <HintPath>.\Maticsoft.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Maticsoft.DBUtility">
+      <HintPath>.\Maticsoft.DBUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="system.data.datasetextensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite, Version=1.0.80.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Json\JSON.cs" />
+    <Compile Include="Json\JsonObject.cs" />
+    <Compile Include="Json\TestJson.cs" />
+    <Compile Include="SQLite\BLL\ControllerRelation\AuxiliaryUnit.cs" />
+    <Compile Include="SQLite\BLL\ControllerRelation\ControllerInfo.cs" />
+    <Compile Include="SQLite\BLL\ControllerRelation\DoorUnitInfo.cs" />
+    <Compile Include="SQLite\BLL\ControllerRelation\ExpansionBoardInfo.cs" />
+    <Compile Include="SQLite\BLL\ControllerRelation\ExpansionBoardPointInfo.cs" />
+    <Compile Include="SQLite\BLL\ControllerRelation\ReaderHoliday.cs" />
+    <Compile Include="SQLite\BLL\ControllerRelation\ReaderInfo.cs" />
+    <Compile Include="SQLite\BLL\ControllerRelation\ReaderTimeAccess.cs" />
+    <Compile Include="SQLite\BLL\ControllerRelation\ReaderTimeZone.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\AntiPassBack.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\ControllerInfoInLAN.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\EventCodeInfo.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\EventICP.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\EventInfo.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\EventPictureInfo.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\EventSOP.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\HolidayICP.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\HolidaySOP.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\InterControlProgram.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\InterLock.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\StandardOperateProcedure.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\TimeICP.cs" />
+    <Compile Include="SQLite\BLL\InteractRelation\TimeSOP.cs" />
+    <Compile Include="SQLite\BLL\LCDRelation\MediaPicture.cs" />
+    <Compile Include="SQLite\BLL\LCDRelation\MediaVideo.cs" />
+    <Compile Include="SQLite\BLL\LCDRelation\MediaVideoGroup.cs" />
+    <Compile Include="SQLite\BLL\LCDRelation\MendiaPictureGroup.cs" />
+    <Compile Include="SQLite\BLL\LCDRelation\PlayMediaInfo.cs" />
+    <Compile Include="SQLite\BLL\ManagerRelation\Manager.cs" />
+    <Compile Include="SQLite\BLL\ManagerRelation\ManagerRightList.cs" />
+    <Compile Include="SQLite\BLL\ManagerRelation\Menu.cs" />
+    <Compile Include="SQLite\BLL\ManagerRelation\MenuIconInfo.cs" />
+    <Compile Include="SQLite\BLL\UserRelation\BlackListCardInfo.cs" />
+    <Compile Include="SQLite\BLL\UserRelation\CardInfo.cs" />
+    <Compile Include="SQLite\BLL\UserRelation\Holiday.cs" />
+    <Compile Include="SQLite\BLL\UserRelation\TimeAccess.cs" />
+    <Compile Include="SQLite\BLL\UserRelation\TimeZone.cs" />
+    <Compile Include="SQLite\BLL\UserRelation\UserGroup.cs" />
+    <Compile Include="SQLite\BLL\UserRelation\UserInfo.cs" />
+    <Compile Include="SQLite\DAL\ControllerRelation\AuxiliaryUnit.cs" />
+    <Compile Include="SQLite\DAL\ControllerRelation\ControllerInfo.cs" />
+    <Compile Include="SQLite\DAL\ControllerRelation\DoorUnitInfo.cs" />
+    <Compile Include="SQLite\DAL\ControllerRelation\ExpansionBoardInfo.cs" />
+    <Compile Include="SQLite\DAL\ControllerRelation\ExpansionBoardPointInfo.cs" />
+    <Compile Include="SQLite\DAL\ControllerRelation\ReaderHoliday.cs" />
+    <Compile Include="SQLite\DAL\ControllerRelation\ReaderInfo.cs" />
+    <Compile Include="SQLite\DAL\ControllerRelation\ReaderTimeAccess.cs" />
+    <Compile Include="SQLite\DAL\ControllerRelation\ReaderTimeZone.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\AntiPassBack.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\ControllerInfoInLAN.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\EventCodeInfo.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\EventICP.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\EventInfo.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\EventPictureInfo.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\EventSOP.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\HolidayICP.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\HolidaySOP.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\InterControlProgram.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\InterLock.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\StandardOperateProcedure.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\TimeICP.cs" />
+    <Compile Include="SQLite\DAL\InteractRelation\TimeSOP.cs" />
+    <Compile Include="SQLite\DAL\LCDRelation\MediaPicture.cs" />
+    <Compile Include="SQLite\DAL\LCDRelation\MediaVideo.cs" />
+    <Compile Include="SQLite\DAL\LCDRelation\MediaVideoGroup.cs" />
+    <Compile Include="SQLite\DAL\LCDRelation\MendiaPictureGroup.cs" />
+    <Compile Include="SQLite\DAL\LCDRelation\PlayMediaInfo.cs" />
+    <Compile Include="SQLite\DAL\ManagerRelation\Manager.cs" />
+    <Compile Include="SQLite\DAL\ManagerRelation\ManagerRightList.cs" />
+    <Compile Include="SQLite\DAL\ManagerRelation\Menu.cs" />
+    <Compile Include="SQLite\DAL\ManagerRelation\MenuIconInfo.cs" />
+    <Compile Include="SQLite\DAL\UserRelation\BlackListCardInfo.cs" />
+    <Compile Include="SQLite\DAL\UserRelation\CardInfo.cs" />
+    <Compile Include="SQLite\DAL\UserRelation\Holiday.cs" />
+    <Compile Include="SQLite\DAL\UserRelation\TimeAccess.cs" />
+    <Compile Include="SQLite\DAL\UserRelation\TimeZone.cs" />
+    <Compile Include="SQLite\DAL\UserRelation\UserGroup.cs" />
+    <Compile Include="SQLite\DAL\UserRelation\UserInfo.cs" />
+    <Compile Include="SQLite\DbHelperSQLite.cs" />
+    <Compile Include="SQLite\Model\ControllerRelation\AuxiliaryUnit.cs" />
+    <Compile Include="SQLite\Model\ControllerRelation\ControllerInfo.cs" />
+    <Compile Include="SQLite\Model\ControllerRelation\DoorUnitInfo.cs" />
+    <Compile Include="SQLite\Model\ControllerRelation\ExpansionBoardInfo.cs" />
+    <Compile Include="SQLite\Model\ControllerRelation\ExpansionBoardPointInfo.cs" />
+    <Compile Include="SQLite\Model\ControllerRelation\ReaderHoliday.cs" />
+    <Compile Include="SQLite\Model\ControllerRelation\ReaderInfo.cs" />
+    <Compile Include="SQLite\Model\ControllerRelation\ReaderTimeAccess.cs" />
+    <Compile Include="SQLite\Model\ControllerRelation\ReaderTimeZone.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\AntiPassBack.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\ControllerInfoInLAN.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\EventCodeInfo.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\EventICP.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\EventInfo.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\EventPictureInfo.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\EventSOP.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\HolidayICP.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\HolidaySOP.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\InterControlProgram.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\InterLock.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\StandardOperateProcedure.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\TimeICP.cs" />
+    <Compile Include="SQLite\Model\InteractRelation\TimeSOP.cs" />
+    <Compile Include="SQLite\Model\LCDRelation\MediaPicture.cs" />
+    <Compile Include="SQLite\Model\LCDRelation\MediaVideo.cs" />
+    <Compile Include="SQLite\Model\LCDRelation\MediaVideoGroup.cs" />
+    <Compile Include="SQLite\Model\LCDRelation\MendiaPictureGroup.cs" />
+    <Compile Include="SQLite\Model\LCDRelation\PlayMediaInfo.cs" />
+    <Compile Include="SQLite\Model\ManagerRelation\Manager.cs" />
+    <Compile Include="SQLite\Model\ManagerRelation\ManagerRightList.cs" />
+    <Compile Include="SQLite\Model\ManagerRelation\Menu.cs" />
+    <Compile Include="SQLite\Model\ManagerRelation\MenuIconInfo.cs" />
+    <Compile Include="SQLite\Model\UserRelation\BlackListCardInfo.cs" />
+    <Compile Include="SQLite\Model\UserRelation\CardInfo.cs" />
+    <Compile Include="SQLite\Model\UserRelation\Holiday.cs" />
+    <Compile Include="SQLite\Model\UserRelation\TimeAccess.cs" />
+    <Compile Include="SQLite\Model\UserRelation\TimeZone.cs" />
+    <Compile Include="SQLite\Model\UserRelation\UserGroup.cs" />
+    <Compile Include="SQLite\Model\UserRelation\UserInfo.cs" />
+    <Compile Include="SQLServerDataBase\BLL\AntiPassBack.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\BlackListCardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\CardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\CompanyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\ControllerInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\ControllerInfoInLAN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\DepartmentInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\DoorUnitInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\ElectronicMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\EventCodeInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\EventInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\EventInterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\EventPictureInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\EventStandardOperateProcedureGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\ExpansionBoardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\ExpansionBoardPointInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\Holiday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\HolidayICP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\HolidayStandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\InteractHoliday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\InterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\InterLock.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\Manager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\ManagerRightList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\Media.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\MendiaGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\MenuInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\PlayMediaInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\ReaderHoliday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\ReaderInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\ReaderTimeAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\ReaderTimeZone.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\StandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\TimeAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\TimeInterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\TimeStandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\TimeZone.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\UserGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\BLL\UserInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\DALFactory\DataAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IAntiPassBack.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IBlackListCardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\ICardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\ICompanyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IControllerInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IControllerInfoInLAN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IDepartmentInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IDoorUnitInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IElectronicMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IEventCodeInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IEventInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IEventInterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IEventPictureInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IEventStandardOperateProcedureGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IExpansionBoardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IExpansionBoardPointInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IHoliday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IHolidayICP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IHolidayStandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IInteractHoliday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IInterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IInterLock.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IManagerRightList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IMedia.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IMendiaGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IMenuInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IPlayMediaInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IReaderHoliday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IReaderInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IReaderTimeAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IReaderTimeZone.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IStandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\ITimeAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\ITimeInterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\ITimeStandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\ITimeZone.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IUserGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\IDAL\IUserInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\AntiPassBack.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\BlackListCardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\CardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\CompanyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ControllerInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ControllerInfoInLAN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\DepartmentInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\DoorUnitInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ElectronicMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\EventCodeInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\EventInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\EventInterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\EventPictureInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\EventStandardOperateProcedureGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ExpansionBoardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ExpansionBoardPointInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\Holiday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\HolidayICP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\HolidayStandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\InteractHoliday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\InterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\InterLock.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\Manager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ManagerRightList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\Media.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\MendiaGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\MenuInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\PlayMediaInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ReaderHoliday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ReaderHolidayList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ReaderInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ReaderTimeAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\ReaderTimeZone.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\StandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\TimeAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\TimeInterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\TimeStandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\TimeZone.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\UserGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\Model\UserInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\AntiPassBack.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\BlackListCardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\CardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\CompanyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\ControllerInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\ControllerInfoInLAN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\DepartmentInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\DoorUnitInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\ElectronicMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\EventCodeInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\EventInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\EventInterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\EventPictureInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\EventStandardOperateProcedureGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\ExpansionBoardInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\ExpansionBoardPointInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\Holiday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\HolidayICP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\HolidayStandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\InteractHoliday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\InterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\InterLock.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\Manager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\ManagerRightList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\Media.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\MendiaGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\MenuInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\PlayMediaInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\ReaderHoliday.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\ReaderInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\ReaderTimeAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\ReaderTimeZone.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\StandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\TimeAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\TimeInterControlProgram.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\TimeStandardOperateProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\TimeZone.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\UserGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SQLServerDataBase\SQLServerDAL\UserInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\MyImageOperate.cs" />
+    <Compile Include="Common\RegexMatch.cs" />
+    <Compile Include="Common\MyMessageBox.cs" />
+    <Compile Include="Dll\Dll530-S-A.cs" />
+    <Compile Include="Dll\DllC0402.cs" />
+    <Compile Include="Help\FormAboutUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\FormAboutUs.Designer.cs">
+      <DependentUpon>FormAboutUs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home\webServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home\webServer.Designer.cs">
+      <DependentUpon>webServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="International\English.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>English.resx</DependentUpon>
+    </Compile>
+    <Compile Include="International\International.cs" />
+    <Compile Include="RelationController\ControllerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationController\ControllerInfo.Designer.cs">
+      <DependentUpon>ControllerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationController\DoorUnitInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationController\DoorUnitInfo.Designer.cs">
+      <DependentUpon>DoorUnitInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationController\FormController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationController\FormController.Designer.cs">
+      <DependentUpon>FormController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationController\FormReaderHoliday.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationController\FormReaderHoliday.Designer.cs">
+      <DependentUpon>FormReaderHoliday.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationController\FormReaderInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationController\FormReaderInfo.Designer.cs">
+      <DependentUpon>FormReaderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationDepartment\CompanyInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationDepartment\CompanyInfo.Designer.cs">
+      <DependentUpon>CompanyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationDepartment\DepartmentInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationDepartment\DepartmentInfo.Designer.cs">
+      <DependentUpon>DepartmentInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationDepartment\FormCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationDepartment\FormCompany.Designer.cs">
+      <DependentUpon>FormCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationDepartment\FormDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationDepartment\FormDepartment.Designer.cs">
+      <DependentUpon>FormDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationManage\FormChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationManage\FormChangePassword.Designer.cs">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationManage\FormDataBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationManage\FormDataBase.Designer.cs">
+      <DependentUpon>FormDataBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationManage\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationManage\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OperationFile\IniFile.cs" />
+    <Compile Include="OperationFile\TxtFile.cs" />
+    <Compile Include="OperationFile\Win32.cs" />
+    <Compile Include="RelationManage\FormManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationManage\FormManager.Designer.cs">
+      <DependentUpon>FormManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationManage\ManagerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationManage\ManagerInfo.Designer.cs">
+      <DependentUpon>ManagerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationRealTimeMoni\FormElectronicMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationRealTimeMoni\FormElectronicMap.Designer.cs">
+      <DependentUpon>FormElectronicMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationRealTimeMoni\FormPictureMovable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationRealTimeMoni\FormPictureMovable.Designer.cs">
+      <DependentUpon>FormPictureMovable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationRealTimeMoni\FormRealTimeMoni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationRealTimeMoni\FormRealTimeMoni.Designer.cs">
+      <DependentUpon>FormRealTimeMoni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationRealTimeMoni\RealTimeMonitor.cs" />
+    <Compile Include="RelationTimePlan\TimeAccessInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationTimePlan\TimeAccessInfo.Designer.cs">
+      <DependentUpon>TimeAccessInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationUser\CardInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationUser\CardInfo.Designer.cs">
+      <DependentUpon>CardInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationUser\FormCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationUser\FormCard.Designer.cs">
+      <DependentUpon>FormCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationUser\FormUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationUser\FormUser.Designer.cs">
+      <DependentUpon>FormUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelationUser\UserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationUser\UserInfo.Designer.cs">
+      <DependentUpon>UserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResourcesFile\GetSystemIcon.cs" />
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\DownLoadThread.cs" />
+    <Compile Include="Tool\FormDeviceManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\FormDeviceManage.Designer.cs">
+      <DependentUpon>FormDeviceManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WidgetThread\ImageOperate.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WidgetThread\WidgetThread.cs" />
+    <EmbeddedResource Include="FormMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\FormAboutUs.resx">
+      <DependentUpon>FormAboutUs.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home\webServer.resx">
+      <DependentUpon>webServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="International\English.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>English.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationController\ControllerInfo.resx">
+      <DependentUpon>ControllerInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationController\DoorUnitInfo.resx">
+      <DependentUpon>DoorUnitInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationController\FormController.resx">
+      <DependentUpon>FormController.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationController\FormReaderHoliday.resx">
+      <DependentUpon>FormReaderHoliday.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationController\FormReaderInfo.resx">
+      <DependentUpon>FormReaderInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationDepartment\CompanyInfo.resx">
+      <DependentUpon>CompanyInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationDepartment\DepartmentInfo.resx">
+      <DependentUpon>DepartmentInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationDepartment\FormCompany.resx">
+      <DependentUpon>FormCompany.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationDepartment\FormDepartment.resx">
+      <DependentUpon>FormDepartment.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationManage\FormChangePassword.resx">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationManage\FormDataBase.resx">
+      <DependentUpon>FormDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationManage\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RelationManage\FormManager.resx">
+      <DependentUpon>FormManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationManage\ManagerInfo.resx">
+      <DependentUpon>ManagerInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationRealTimeMoni\FormElectronicMap.resx">
+      <DependentUpon>FormElectronicMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationRealTimeMoni\FormPictureMovable.resx">
+      <DependentUpon>FormPictureMovable.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationRealTimeMoni\FormRealTimeMoni.resx">
+      <DependentUpon>FormRealTimeMoni.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationTimePlan\TimeAccessInfo.resx">
+      <DependentUpon>TimeAccessInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationUser\CardInfo.resx">
+      <DependentUpon>CardInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationUser\FormCard.resx">
+      <DependentUpon>FormCard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationUser\FormUser.resx">
+      <DependentUpon>FormUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelationUser\UserInfo.resx">
+      <DependentUpon>UserInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\FormDeviceManage.resx">
+      <DependentUpon>FormDeviceManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\向上标题.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\向下标题.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AccessControllerSystem.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\内容.JPG" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

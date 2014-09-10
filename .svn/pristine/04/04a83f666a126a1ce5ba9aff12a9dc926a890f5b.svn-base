@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+
+namespace KryptonAccessController.RelationDepartment
+{
+    public partial class FormDepartment : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        public FormDepartment(AccessDataBase.Model.DepartmentInfo departmentInfo, OpenMode openMode)
+        {
+            InitializeComponent();
+            InitComboBoxCompany();
+
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            if (openMode == OpenMode.Add)
+            {
+                kryptonTextBoxDepartmentID.Text = departmentInfo.DepartmentID.ToString();
+            }
+            else if (openMode == OpenMode.Update)
+            {
+ 
+            }
+        }
+        private void InitComboBoxCompany()
+        {
+            AccessDataBase.BLL.CompanyInfo bllCompanyInfo = new AccessDataBase.BLL.CompanyInfo();
+            DataTable dt = bllCompanyInfo.GetAllList().Tables[0];
+
+            kryptonComboBoxCompany.Items.Clear();
+            foreach (DataRow row in dt.Rows)
+            {
+                kryptonComboBoxCompany.Items.Add(row["CompanyName"]);
+            }
+        }
+    }
+}

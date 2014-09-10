@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+using KryptonAccessController.Common;
+
+namespace KryptonAccessController.RelationManage
+{
+    public partial class FormManager : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        private OpenMode openMode;
+        private AccessDataBase.Model.Manager modelManager = new AccessDataBase.Model.Manager();
+        private AccessDataBase.BLL.Manager bllManager = new AccessDataBase.BLL.Manager();
+        
+        public FormManager(AccessDataBase.Model.Manager modelManager,OpenMode openMode)
+        {
+            InitializeComponent();
+
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            this.modelManager = modelManager;
+            this.openMode = openMode;
+            if (openMode == OpenMode.Update)
+            {
+                kryptonTextBoxName.Text = modelManager.ManagerName;
+                kryptonTextBoxName.Enabled = false;
+            }
+        }
+
+        private void kryptonButtonOK_Click(object sender, EventArgs e)
+        {
+            modelManager.ManagerName = kryptonTextBoxName.Text.Trim();
+            modelManager.ManagerPassWord = kryptonTextBoxPassword.Text.Trim();
+            if (openMode == OpenMode.Add)
+            {
+                if (bllManager.Exists(modelManager.ManagerName) == true)
+                    MyMessageBox.MessageBoxOK("用户已经存在");
+                else
+                { 
+                    bllManager.Add(modelManager);
+                    this.Close();
+                }
+            }
+            else if (openMode == OpenMode.Update)
+            {
+                bllManager.Update(modelManager);
+                this.Close();
+            }
+        }
+
+        private void kryptonButtonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}

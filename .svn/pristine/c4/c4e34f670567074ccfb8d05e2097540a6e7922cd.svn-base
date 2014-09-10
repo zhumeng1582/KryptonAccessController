@@ -1,0 +1,139 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.Common;
+
+namespace KryptonAccessController.RelationManage
+{
+    public partial class FormChangePassword : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        AccessDataBase.Model.Manager modelManager = new AccessDataBase.Model.Manager();
+        AccessDataBase.BLL.Manager bllManager = new AccessDataBase.BLL.Manager();
+        public FormChangePassword()
+        {
+            InitializeComponent();
+        }
+        private Boolean VerifyOldPassword()
+        {
+
+            if (string.IsNullOrEmpty(kryptonTextBoxOldPassword.Text.Trim()))
+            {
+                labelFailInfo.Text = "密码不能为空";
+                return false;
+            }
+
+            if (RegexMatch.IsManagerPassword(kryptonTextBoxOldPassword.Text.Trim()) == false)
+            {
+                labelFailInfo.Text =  "密码格式无效";
+                return false;
+
+            }
+            if (!Admin.password.Equals(kryptonTextBoxOldPassword.Text))
+            {
+                labelFailInfo.Text = "密码错误";
+                return false;
+            }
+            return true;
+        }
+        private Boolean VerifyNewPassword1()
+        {
+
+            if (string.IsNullOrEmpty(kryptonTextBoxNewPassword1.Text.Trim()))
+            {
+                labelFailInfo.Text = "密码不能为空";
+                return false;
+            }
+
+            if (RegexMatch.IsManagerPassword(kryptonTextBoxNewPassword1.Text.Trim()) == false)
+            {
+                labelFailInfo.Text = "密码格式无效";
+                return false;
+
+            }
+            return true;
+        }
+        private Boolean VerifyNewPassword2()
+        {
+
+            if (string.IsNullOrEmpty(kryptonTextBoxNewPassword2.Text.Trim()))
+            {
+                labelFailInfo.Text = "密码不能为空";
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+            }
+
+            if (RegexMatch.IsManagerPassword(kryptonTextBoxNewPassword2.Text.Trim()) == false)
+            {
+                labelFailInfo.Text = "密码格式无效";
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                return false;
+
+            }
+            return true;
+        }
+
+        private void kryptonButtonOK_Click(object sender, EventArgs e)
+        {
+            #region 验证旧密码
+            if (VerifyOldPassword() == false)
+            {
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                kryptonTextBoxOldPassword.Focus();
+                return;
+            }
+            #endregion
+
+            #region 验证新密码1
+            if (VerifyNewPassword1() == false)
+            {
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                kryptonTextBoxNewPassword1.Focus();
+                return;
+            } 
+            #endregion
+
+            #region 验证新密码2
+            if (VerifyNewPassword2() == false)
+            {
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+                kryptonTextBoxNewPassword2.Focus();
+                return;
+            }
+            #endregion
+
+            #region 对比密码1 和密码2
+            if (!kryptonTextBoxNewPassword1.Text.Trim().Equals(kryptonTextBoxNewPassword2.Text.Trim()))
+            {
+                labelFailInfo.Text = "密码1 和密码2 不相同";
+                WidgetThread.WidgetThread.shakeLable(labelFailInfo);
+
+                kryptonTextBoxNewPassword2.Focus();
+                return;
+            }
+            #endregion
+
+            modelManager.ManagerName = Admin.name;
+            modelManager.ManagerPassWord = kryptonTextBoxNewPassword2.Text.Trim();
+
+            if (bllManager.Update(modelManager))
+            {
+                MyMessageBox.MessageBoxOK("更新密码成功");
+                this.Close();
+            }
+            else
+            {
+                MyMessageBox.MessageBoxOK("更新密码失败");
+            }
+        }
+
+        private void kryptonButtonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}

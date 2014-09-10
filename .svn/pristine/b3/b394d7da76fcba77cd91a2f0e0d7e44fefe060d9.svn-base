@@ -1,0 +1,32 @@
+using System;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+
+using KryptonAccessController.OperationFile;
+using KryptonAccessController.RelationManage;
+namespace KryptonAccessController
+{
+    public enum Language { Error = 0, Chinese = 1, English = 2 };
+    public enum OpenMode { Add, Update, View,ChangeCard,Login,Unclock };
+    public class Admin
+    {
+        public static string name;
+        public static string password;
+    }
+
+    static class Program
+    {
+        //IniFile iniFile = new IniFile();
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            //.InstalledUICulture.Name
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FormDataBase());
+        }
+    }
+}

@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+using KryptonAccessController.WidgetThread;
+
+namespace KryptonAccessController.RelationRealTimeMoni
+{
+    public partial class FormRealTimeMoni : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        private Font Var_Font = new Font("宋体", 11);
+
+        static FormRealTimeMoni instance = null;
+        public static FormRealTimeMoni getInstance()
+        {
+            if (instance == null)
+                instance = new FormRealTimeMoni();
+
+            return instance;
+        }
+
+
+        private FormRealTimeMoni()
+        {
+            InitializeComponent();
+            initToolStripControlConsole();
+            initPictureBoxTitle();
+
+            this.CenterToParent();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+        }
+        private void initPictureBoxTitle()
+        {
+            ImageOperate.DrawStringToPictureBox(pictureBoxAccessList.Image, "设备列表", Var_Font);
+            ImageOperate.DrawStringToPictureBox(pictureBoxMapList.Image,"地图列表", Var_Font);
+        }
+        private void initToolStripControlConsole()
+        {
+            string[] items = { "20%", "40%", "50%", "80%", "100%", "150%", "200%", "400%", "500%", "800%" };
+            toolStripControlConsole.Items.Clear();
+            ImageOperate.AddButtonItemToToolStrip(toolStripControlConsole, "update.BMP", "disTextUpdateMap1", toolStripButtonUpdateElectricMap_Click);
+            ImageOperate.AddButtonItemToToolStrip(toolStripControlConsole, "MonitorOpen.bmp", "disTextOpenRealWatch", toolStripButtonOpenRealWatch_Click);
+            ImageOperate.AddComboBoxItemToToolStrip(toolStripControlConsole, items, "disTextScale", toolStripComboBoxScale_TextChanged);
+        }
+        private void toolStripButtonUpdateElectricMap_Click(object sender, EventArgs e)
+        { }
+        private void toolStripButtonOpenRealWatch_Click(object sender, EventArgs e)
+        { }
+        private void toolStripComboBoxScale_TextChanged(object sender, EventArgs e)
+        { }
+    }
+}

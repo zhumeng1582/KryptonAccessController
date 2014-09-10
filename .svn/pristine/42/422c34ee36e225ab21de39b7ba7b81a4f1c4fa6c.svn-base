@@ -1,0 +1,106 @@
+namespace KryptonAccessController.RelationController
+{
+    partial class ControllerInfo
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.kryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
+            this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.dataGridViewWithCheckBox1 = new KryptonAccessController.MyComponents.DataGridViewWithCheckBox();
+            this.toolStripControllerInfo = new System.Windows.Forms.ToolStrip();
+            this.EditColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewLinkColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
+            this.kryptonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWithCheckBox1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // kryptonPanel
+            // 
+            this.kryptonPanel.Controls.Add(this.dataGridViewWithCheckBox1);
+            this.kryptonPanel.Controls.Add(this.toolStripControllerInfo);
+            this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel.Name = "kryptonPanel";
+            this.kryptonPanel.Size = new System.Drawing.Size(496, 302);
+            this.kryptonPanel.TabIndex = 0;
+            // 
+            // dataGridViewWithCheckBox1
+            // 
+            this.dataGridViewWithCheckBox1.AllowUserToAddRows = false;
+            this.dataGridViewWithCheckBox1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWithCheckBox1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EditColumn});
+            this.dataGridViewWithCheckBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewWithCheckBox1.HaveCheckbox = true;
+            this.dataGridViewWithCheckBox1.Location = new System.Drawing.Point(0, 25);
+            this.dataGridViewWithCheckBox1.Name = "dataGridViewWithCheckBox1";
+            this.dataGridViewWithCheckBox1.RowTemplate.Height = 23;
+            this.dataGridViewWithCheckBox1.Size = new System.Drawing.Size(496, 277);
+            this.dataGridViewWithCheckBox1.TabIndex = 2;
+            // 
+            // toolStripControllerInfo
+            // 
+            this.toolStripControllerInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripControllerInfo.Location = new System.Drawing.Point(0, 0);
+            this.toolStripControllerInfo.Name = "toolStripControllerInfo";
+            this.toolStripControllerInfo.Size = new System.Drawing.Size(496, 25);
+            this.toolStripControllerInfo.TabIndex = 1;
+            this.toolStripControllerInfo.Text = "toolStrip1";
+            // 
+            // EditColumn
+            // 
+            this.EditColumn.HeaderText = "Edit";
+            this.EditColumn.Name = "EditColumn";
+            this.EditColumn.UseColumnTextForLinkValue = true;
+            // 
+            // ControllerInfo
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(496, 302);
+            this.Controls.Add(this.kryptonPanel);
+            this.Name = "ControllerInfo";
+            this.Text = "ControllerInfo";
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
+            this.kryptonPanel.ResumeLayout(false);
+            this.kryptonPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWithCheckBox1)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel;
+        private System.Windows.Forms.ToolStrip toolStripControllerInfo;
+        private MyComponents.DataGridViewWithCheckBox dataGridViewWithCheckBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewLinkColumn EditColumn;
+    }
+}
+

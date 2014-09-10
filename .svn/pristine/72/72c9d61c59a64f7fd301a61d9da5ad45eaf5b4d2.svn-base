@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+using KryptonAccessController.AccessSdkDataBase.BLL;
+namespace KryptonAccessController.RelationController
+{
+    public partial class FormReaderInfo : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        AccessSdkDataBase.Model.ReaderInfo modelReaderInfo = new AccessSdkDataBase.Model.ReaderInfo();
+        AccessSdkDataBase.Model.ReaderHoliday holiay = new AccessSdkDataBase.Model.ReaderHoliday();
+        AccessSdkDataBase.Model.ReaderHolidayList HolidayList = new AccessSdkDataBase.Model.ReaderHolidayList();
+        public FormReaderInfo(AccessSdkDataBase.Model.ReaderInfo modelReaderInfo, OpenMode openMode)
+        {
+            InitializeComponent();
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+            if (openMode == OpenMode.Update)
+            {
+                this.modelReaderInfo = modelReaderInfo;
+                kryptonTextBoxReaderID.Text = modelReaderInfo.ReaderID.ToString();
+                kryptonTextBoxReaderPointID.Text = modelReaderInfo.ReaderPointID.ToString();
+                textBoxDeviceIP.Text = modelReaderInfo.ReaderIP.Trim();
+                textBoxMask.Text = modelReaderInfo.ReaderSubnet.Trim();
+                textBoxGateway.Text = modelReaderInfo.ReaderGateway.Trim();
+                textBoxDNS.Text = modelReaderInfo.ReaderDNS== null?"": modelReaderInfo.ReaderDNS.Trim();
+                kryptonTextBoxBackUpDNS.Text = modelReaderInfo.ReaderBuDNS== null?"": modelReaderInfo.ReaderBuDNS.Trim();
+
+                kryptonTextBoxControllerAddr485.Text = modelReaderInfo.ReaderAddr483.ToString();
+                kryptonTextBoxControllerBaudrate.Text = modelReaderInfo.ReaderBaudrate.ToString();
+                kryptonLabelControllerDataBits.Text = modelReaderInfo.ReaderDataBits.ToString();
+                kryptonTextBoxControllerStopBits.Text = modelReaderInfo.ReaderStopBits.ToString();
+                kryptonComboBoxControllerParityCheck.Text = modelReaderInfo.ReaderParityCheck.ToString();
+                kryptonTextBoxControllerFlowControl.Text = modelReaderInfo.ReaderFlowControl.ToString();
+                
+            }
+        }
+
+        private void FormReaderInfo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonButtonReaderOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonButtonReaderCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

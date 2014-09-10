@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+
+namespace KryptonAccessController.RelationUser
+{
+    public partial class FormCard : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        private AccessDataBase.Model.CardInfo modelCardInfo = new AccessDataBase.Model.CardInfo();
+        private AccessDataBase.BLL.CardInfo bllCardInfo = new AccessDataBase.BLL.CardInfo();
+        public FormCard(AccessDataBase.Model.CardInfo cardInfo, OpenMode openMode)
+        {
+            InitializeComponent();
+
+            this.modelCardInfo = cardInfo;
+
+            if (openMode == OpenMode.Add)
+            {
+                showAddPara();
+            }
+            else if (openMode == OpenMode.Update)
+            {
+                showUpdatePara();
+            }
+        }
+        /// <summary>
+        /// 显示添加参数
+        /// </summary>
+        private void showAddPara()
+        {
+           
+        }
+        /// <summary>
+        /// 显示更新参数
+        /// </summary>
+        private void showUpdatePara()
+        {
+            
+        }
+        private void kryptonButtonOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonButtonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}

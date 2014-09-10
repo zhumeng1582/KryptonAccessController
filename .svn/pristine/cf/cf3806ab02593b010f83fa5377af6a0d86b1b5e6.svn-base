@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
+using KryptonAccessController.ResourcesFile;
+
+namespace KryptonAccessController.RelationUser
+{
+    public partial class FormUser : ComponentFactory.Krypton.Toolkit.KryptonForm
+    {
+        private AccessSdkDataBase.Model.UserInfo userInfo = new AccessSdkDataBase.Model.UserInfo();
+        private AccessSdkDataBase.BLL.UserInfo BllUserInfo = new AccessSdkDataBase.BLL.UserInfo();
+
+        private OpenMode openMode;
+        public FormUser(AccessSdkDataBase.Model.UserInfo userInfo, OpenMode openMode)
+        {
+            InitializeComponent();
+
+            this.CenterToScreen();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Icon = GetResourcesFile.getSystemIco();
+
+            this.userInfo = userInfo;
+            this.openMode = openMode;
+
+        }
+    }
+}

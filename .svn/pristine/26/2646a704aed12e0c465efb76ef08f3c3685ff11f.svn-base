@@ -1,0 +1,210 @@
+namespace KryptonAccessController.RelationUser
+{
+    partial class FormUser
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.kryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
+            this.kryptonPaneUserInfo = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.flatTabControl1 = new KryptonAccessController.MyComponents.FlatTabControl();
+            this.tabPagePersonInfo = new System.Windows.Forms.TabPage();
+            this.kryptonPanelPersonInfo = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tabPageCardInfo = new System.Windows.Forms.TabPage();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanelUserID = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonTextBoxUserID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonTextBoxUserName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabelUserName = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabelUserID = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonGroupBoxCredentials = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPaneUserInfo)).BeginInit();
+            this.kryptonPaneUserInfo.SuspendLayout();
+            this.flatTabControl1.SuspendLayout();
+            this.tabPagePersonInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelPersonInfo)).BeginInit();
+            this.kryptonPanelPersonInfo.SuspendLayout();
+            this.tabPageCardInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelUserID)).BeginInit();
+            this.kryptonPanelUserID.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBoxCredentials)).BeginInit();
+            this.kryptonGroupBoxCredentials.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // kryptonPaneUserInfo
+            // 
+            this.kryptonPaneUserInfo.Controls.Add(this.flatTabControl1);
+            this.kryptonPaneUserInfo.Controls.Add(this.kryptonPanelUserID);
+            this.kryptonPaneUserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPaneUserInfo.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPaneUserInfo.Name = "kryptonPaneUserInfo";
+            this.kryptonPaneUserInfo.Size = new System.Drawing.Size(671, 392);
+            this.kryptonPaneUserInfo.TabIndex = 0;
+            // 
+            // flatTabControl1
+            // 
+            this.flatTabControl1.Controls.Add(this.tabPagePersonInfo);
+            this.flatTabControl1.Controls.Add(this.tabPageCardInfo);
+            this.flatTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flatTabControl1.Location = new System.Drawing.Point(0, 100);
+            this.flatTabControl1.Name = "flatTabControl1";
+            this.flatTabControl1.SelectedIndex = 0;
+            this.flatTabControl1.Size = new System.Drawing.Size(671, 292);
+            this.flatTabControl1.TabIndex = 4;
+            // 
+            // tabPagePersonInfo
+            // 
+            this.tabPagePersonInfo.Controls.Add(this.kryptonPanelPersonInfo);
+            this.tabPagePersonInfo.Location = new System.Drawing.Point(4, 25);
+            this.tabPagePersonInfo.Name = "tabPagePersonInfo";
+            this.tabPagePersonInfo.Size = new System.Drawing.Size(663, 263);
+            this.tabPagePersonInfo.TabIndex = 0;
+            this.tabPagePersonInfo.Text = "个人信息";
+            this.tabPagePersonInfo.UseVisualStyleBackColor = true;
+            // 
+            // kryptonPanelPersonInfo
+            // 
+            this.kryptonPanelPersonInfo.Controls.Add(this.kryptonGroupBoxCredentials);
+            this.kryptonPanelPersonInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanelPersonInfo.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanelPersonInfo.Name = "kryptonPanelPersonInfo";
+            this.kryptonPanelPersonInfo.Size = new System.Drawing.Size(663, 263);
+            this.kryptonPanelPersonInfo.TabIndex = 0;
+            // 
+            // tabPageCardInfo
+            // 
+            this.tabPageCardInfo.Controls.Add(this.kryptonPanel1);
+            this.tabPageCardInfo.Location = new System.Drawing.Point(4, 25);
+            this.tabPageCardInfo.Name = "tabPageCardInfo";
+            this.tabPageCardInfo.Size = new System.Drawing.Size(663, 263);
+            this.tabPageCardInfo.TabIndex = 1;
+            this.tabPageCardInfo.Text = "卡片信息";
+            this.tabPageCardInfo.UseVisualStyleBackColor = true;
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(663, 263);
+            this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kryptonPanelUserID
+            // 
+            this.kryptonPanelUserID.Controls.Add(this.kryptonTextBoxUserID);
+            this.kryptonPanelUserID.Controls.Add(this.kryptonTextBoxUserName);
+            this.kryptonPanelUserID.Controls.Add(this.kryptonLabelUserName);
+            this.kryptonPanelUserID.Controls.Add(this.kryptonLabelUserID);
+            this.kryptonPanelUserID.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonPanelUserID.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanelUserID.Name = "kryptonPanelUserID";
+            this.kryptonPanelUserID.Size = new System.Drawing.Size(671, 100);
+            this.kryptonPanelUserID.TabIndex = 5;
+            // 
+            // kryptonTextBoxUserID
+            // 
+            this.kryptonTextBoxUserID.Location = new System.Drawing.Point(80, 20);
+            this.kryptonTextBoxUserID.Name = "kryptonTextBoxUserID";
+            this.kryptonTextBoxUserID.Size = new System.Drawing.Size(100, 23);
+            this.kryptonTextBoxUserID.TabIndex = 3;
+            // 
+            // kryptonTextBoxUserName
+            // 
+            this.kryptonTextBoxUserName.Location = new System.Drawing.Point(80, 49);
+            this.kryptonTextBoxUserName.Name = "kryptonTextBoxUserName";
+            this.kryptonTextBoxUserName.Size = new System.Drawing.Size(100, 23);
+            this.kryptonTextBoxUserName.TabIndex = 0;
+            // 
+            // kryptonLabelUserName
+            // 
+            this.kryptonLabelUserName.Location = new System.Drawing.Point(23, 52);
+            this.kryptonLabelUserName.Name = "kryptonLabelUserName";
+            this.kryptonLabelUserName.Size = new System.Drawing.Size(51, 20);
+            this.kryptonLabelUserName.TabIndex = 1;
+            this.kryptonLabelUserName.Values.Text = "用户名";
+            // 
+            // kryptonLabelUserID
+            // 
+            this.kryptonLabelUserID.Location = new System.Drawing.Point(23, 26);
+            this.kryptonLabelUserID.Name = "kryptonLabelUserID";
+            this.kryptonLabelUserID.Size = new System.Drawing.Size(50, 20);
+            this.kryptonLabelUserID.TabIndex = 2;
+            this.kryptonLabelUserID.Values.Text = "用户ID";
+            // 
+            // kryptonGroupBoxCredentials
+            // 
+            this.kryptonGroupBoxCredentials.Location = new System.Drawing.Point(19, 17);
+            this.kryptonGroupBoxCredentials.Name = "kryptonGroupBoxCredentials";
+            this.kryptonGroupBoxCredentials.Size = new System.Drawing.Size(207, 162);
+            this.kryptonGroupBoxCredentials.TabIndex = 0;
+            this.kryptonGroupBoxCredentials.Text = "证件信息";
+            this.kryptonGroupBoxCredentials.Values.Heading = "证件信息";
+            // 
+            // FormUser
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(671, 392);
+            this.Controls.Add(this.kryptonPaneUserInfo);
+            this.Name = "FormUser";
+            this.Text = "FormUser";
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPaneUserInfo)).EndInit();
+            this.kryptonPaneUserInfo.ResumeLayout(false);
+            this.flatTabControl1.ResumeLayout(false);
+            this.tabPagePersonInfo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelPersonInfo)).EndInit();
+            this.kryptonPanelPersonInfo.ResumeLayout(false);
+            this.tabPageCardInfo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelUserID)).EndInit();
+            this.kryptonPanelUserID.ResumeLayout(false);
+            this.kryptonPanelUserID.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBoxCredentials)).EndInit();
+            this.kryptonGroupBoxCredentials.ResumeLayout(false);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPaneUserInfo;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabelUserName;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBoxUserName;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabelUserID;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBoxUserID;
+        private MyComponents.FlatTabControl flatTabControl1;
+        private System.Windows.Forms.TabPage tabPagePersonInfo;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanelPersonInfo;
+        private System.Windows.Forms.TabPage tabPageCardInfo;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanelUserID;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBoxCredentials;
+    }
+}
+
