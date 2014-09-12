@@ -21,8 +21,7 @@ namespace KryptonAccessController.RelationController
 
         AccessDataBase.BLL.ReaderTimeZone bllReaderTimeZone = new AccessDataBase.BLL.ReaderTimeZone();
         AccessDataBase.Model.ReaderTimeZone[] arrarymodelReaderTimeZone = new AccessDataBase.Model.ReaderTimeZone[7];
-        //AccessDataBase.Model.ReaderTimeZone modelReaderTimeZone = new AccessDataBase.Model.ReaderTimeZone();
-
+        
         AccessDataBase.BLL.ReaderHoliday bllHoliday = new  AccessDataBase.BLL.ReaderHoliday();
         AccessDataBase.Model.ReaderHoliday modelHoliday = new AccessDataBase.Model.ReaderHoliday();
         List<AccessDataBase.Model.ReaderHoliday> listModelHoliday = new List<AccessDataBase.Model.ReaderHoliday>();
@@ -244,27 +243,22 @@ namespace KryptonAccessController.RelationController
 
         private void getModelReaderTimeZone(ref AccessDataBase.Model.ReaderTimeZone modelReaderTimeZone,ref MyComponents.TimeMode timeModeAccessTime)
         {
-            //AccessDataBase.BLL.ReaderTimeZone bllReaderTimeZone = new AccessDataBase.BLL.ReaderTimeZone();
-
-            //modelReaderTimeZone = new AccessDataBase.Model.ReaderTimeZone();
-            //modelReaderTimeZone.ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
-
-            modelReaderTimeZone.TimeZone1 = timeModeAccessTime.KryptonDateTimePickerAccessTime1.Value.ToLongTimeString().Substring(0, 5);
+            modelReaderTimeZone.TimeZone1 = timeModeAccessTime.KryptonDateTimePickerAccessTime1.Value.ToShortTimeString();
             modelReaderTimeZone.OperateMode1 = timeModeAccessTime.KryptonComboBoxAccessTime1.SelectedIndex;
 
-            modelReaderTimeZone.TimeZone2 = timeModeAccessTime.KryptonDateTimePickerAccessTime2.Value.ToLongTimeString().Substring(0, 5);
+            modelReaderTimeZone.TimeZone2 = timeModeAccessTime.KryptonDateTimePickerAccessTime2.Value.ToShortTimeString();
             modelReaderTimeZone.OperateMode2 = timeModeAccessTime.KryptonComboBoxAccessTime2.SelectedIndex;
 
-            modelReaderTimeZone.TimeZone3 = timeModeAccessTime.KryptonDateTimePickerAccessTime3.Value.ToLongTimeString().Substring(0, 5);
+            modelReaderTimeZone.TimeZone3 = timeModeAccessTime.KryptonDateTimePickerAccessTime3.Value.ToShortTimeString();
             modelReaderTimeZone.OperateMode3 = timeModeAccessTime.KryptonComboBoxAccessTime3.SelectedIndex;
 
-            modelReaderTimeZone.TimeZone4 = timeModeAccessTime.KryptonDateTimePickerAccessTime4.Value.ToLongTimeString().Substring(0, 5);
+            modelReaderTimeZone.TimeZone4 = timeModeAccessTime.KryptonDateTimePickerAccessTime4.Value.ToShortTimeString();
             modelReaderTimeZone.OperateMode4 = timeModeAccessTime.KryptonComboBoxAccessTime4.SelectedIndex;
 
-            modelReaderTimeZone.TimeZone5 = timeModeAccessTime.KryptonDateTimePickerAccessTime5.Value.ToLongTimeString().Substring(0, 5);
+            modelReaderTimeZone.TimeZone5 = timeModeAccessTime.KryptonDateTimePickerAccessTime5.Value.ToShortTimeString();
             modelReaderTimeZone.OperateMode5 = timeModeAccessTime.KryptonComboBoxAccessTime5.SelectedIndex;
 
-            modelReaderTimeZone.TimeZone6 = timeModeAccessTime.KryptonDateTimePickerAccessTime6.Value.ToLongTimeString().Substring(0, 5);
+            modelReaderTimeZone.TimeZone6 = timeModeAccessTime.KryptonDateTimePickerAccessTime6.Value.ToShortTimeString();
             modelReaderTimeZone.OperateMode6 = timeModeAccessTime.KryptonComboBoxAccessTime6.SelectedIndex;
         }
         private void getModelReaderTimeZoneGroup()
@@ -280,7 +274,6 @@ namespace KryptonAccessController.RelationController
 
         private void addReaderTimeAccess(ref AccessDataBase.Model.ReaderTimeAccess modelReaderTimeAccess)
         {
-            #region 周工作模式
             modelReaderTimeAccess.ReaderTimeAccessName = "周工作模式" + modelReaderTimeAccess.ReaderTimeAccessID;
 
             getModelReaderTimeZoneGroup();
@@ -297,7 +290,6 @@ namespace KryptonAccessController.RelationController
             modelReaderTimeAccess.Fri = arrarymodelReaderTimeZone[4].ReaderTimeZoneID;
             modelReaderTimeAccess.Sat = arrarymodelReaderTimeZone[5].ReaderTimeZoneID;
             modelReaderTimeAccess.Sun = arrarymodelReaderTimeZone[6].ReaderTimeZoneID;
-            #endregion
         }
         private void addReaderInfo(ref AccessDataBase.Model.ReaderInfo modelReaderInfo)
         {
@@ -411,6 +403,8 @@ namespace KryptonAccessController.RelationController
         }
         private void getReaderInfo(ref AccessDataBase.Model.ReaderInfo modelReaderInfo)
         {
+            modelReaderInfo.CommunicateType = kryptonComboBoxCommunicateType.SelectedIndex;
+
             #region TCP通信参数
             modelReaderInfo.ReaderIP = textBoxDeviceIP.Text.ToString();
             modelReaderInfo.ReaderSubnet = textBoxMask.Text.ToString();
@@ -430,15 +424,116 @@ namespace KryptonAccessController.RelationController
         }
         private void kryptonButtonReaderOK_Click(object sender, EventArgs e)
         {
+            int readerID,readerPointID;
+            bool ret = int.TryParse(kryptonTextBoxReaderID.Text.ToString(), out readerID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("读卡器ID不能为空");
+                return;
+            }
 
-            modelReaderInfo.ReaderID = int.Parse(kryptonTextBoxReaderID.Text.ToString());
-            modelReaderInfo.ReaderPointID = int.Parse(kryptonTextBoxReaderPointID.Text.ToString());
-            
-            getReaderInfo(ref modelReaderInfo);
-            if(openMode == OpenMode.Add)
-                addReaderInfo(ref modelReaderInfo);
-            else if (openMode == OpenMode.Update)
-                updateReaderInfo(ref modelReaderInfo);
+            ret = int.TryParse(kryptonTextBoxReaderPointID.Text.ToString(), out readerPointID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("读卡器端口ID不能为空");
+                return;
+            }
+            if (openMode == OpenMode.Add)
+            {
+                #region 添加读卡器工作时区
+                arrarymodelReaderTimeZone[0].ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[0], ref timeModeAccessTime1);
+                bllReaderTimeZone.Add(arrarymodelReaderTimeZone[0]);
+
+                arrarymodelReaderTimeZone[1].ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[1], ref timeModeAccessTime2);
+                bllReaderTimeZone.Add(arrarymodelReaderTimeZone[1]);
+
+                arrarymodelReaderTimeZone[2].ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[2], ref timeModeAccessTime3);
+                bllReaderTimeZone.Add(arrarymodelReaderTimeZone[2]);
+
+                arrarymodelReaderTimeZone[3].ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[3], ref timeModeAccessTime4);
+                bllReaderTimeZone.Add(arrarymodelReaderTimeZone[3]);
+
+                arrarymodelReaderTimeZone[4].ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[4], ref timeModeAccessTime5);
+                bllReaderTimeZone.Add(arrarymodelReaderTimeZone[4]);
+
+                arrarymodelReaderTimeZone[5].ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[5], ref timeModeAccessTime6);
+                bllReaderTimeZone.Add(arrarymodelReaderTimeZone[5]);
+
+                arrarymodelReaderTimeZone[6].ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[6], ref timeModeAccessTime7);
+                bllReaderTimeZone.Add(arrarymodelReaderTimeZone[6]);
+                #endregion
+
+                #region 添加读卡器周工作模式
+                modelReaderTimeAccess.ReaderTimeAccessID = bllReaderTimeAccess.GetMaxId();
+                modelReaderTimeAccess.ReaderTimeAccessName = "";
+
+                modelReaderTimeAccess.Mon = arrarymodelReaderTimeZone[0].ReaderTimeZoneID;
+                modelReaderTimeAccess.Tue = arrarymodelReaderTimeZone[1].ReaderTimeZoneID;
+                modelReaderTimeAccess.Wed = arrarymodelReaderTimeZone[2].ReaderTimeZoneID;
+                modelReaderTimeAccess.Thu = arrarymodelReaderTimeZone[3].ReaderTimeZoneID;
+                modelReaderTimeAccess.Fri = arrarymodelReaderTimeZone[4].ReaderTimeZoneID;
+                modelReaderTimeAccess.Sat = arrarymodelReaderTimeZone[5].ReaderTimeZoneID;
+                modelReaderTimeAccess.Sun = arrarymodelReaderTimeZone[6].ReaderTimeZoneID;
+                bllReaderTimeAccess.Add(modelReaderTimeAccess);
+                #endregion
+
+                #region 添加读卡器
+                modelReaderInfo.ReaderID = readerID;
+                modelReaderInfo.ReaderPointID = readerPointID;
+                modelReaderInfo.ReadTimeAccessID = modelReaderTimeAccess.ReaderTimeAccessID;
+                getReaderInfo(ref modelReaderInfo);
+                bllReaderInfo.Add(modelReaderInfo);
+                #endregion
+            }
+            else
+            {
+                modelReaderInfo = bllReaderInfo.GetModel(readerID);
+                if (modelReaderInfo == null)
+                    return;
+                #region 修改读卡器工作时区
+                modelReaderTimeAccess.ReaderTimeAccessID = modelReaderInfo.ReadTimeAccessID.Value;
+
+                arrarymodelReaderTimeZone[0].ReaderTimeZoneID = modelReaderTimeAccess.Mon.Value;
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[0], ref timeModeAccessTime1);
+                bllReaderTimeZone.Update(arrarymodelReaderTimeZone[0]);
+
+                arrarymodelReaderTimeZone[1].ReaderTimeZoneID = modelReaderTimeAccess.Tue.Value;
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[1], ref timeModeAccessTime2);
+                bllReaderTimeZone.Update(arrarymodelReaderTimeZone[1]);
+
+                arrarymodelReaderTimeZone[2].ReaderTimeZoneID = modelReaderTimeAccess.Wed.Value;
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[2], ref timeModeAccessTime3);
+                bllReaderTimeZone.Update(arrarymodelReaderTimeZone[2]);
+
+                arrarymodelReaderTimeZone[3].ReaderTimeZoneID = modelReaderTimeAccess.Thu.Value;
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[3], ref timeModeAccessTime4);
+                bllReaderTimeZone.Update(arrarymodelReaderTimeZone[3]);
+
+                arrarymodelReaderTimeZone[4].ReaderTimeZoneID = modelReaderTimeAccess.Fri.Value;
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[4], ref timeModeAccessTime5);
+                bllReaderTimeZone.Update(arrarymodelReaderTimeZone[4]);
+
+                arrarymodelReaderTimeZone[5].ReaderTimeZoneID = modelReaderTimeAccess.Sat.Value;
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[5], ref timeModeAccessTime6);
+                bllReaderTimeZone.Update(arrarymodelReaderTimeZone[5]);
+
+                arrarymodelReaderTimeZone[6].ReaderTimeZoneID = modelReaderTimeAccess.Sun.Value;
+                getModelReaderTimeZone(ref arrarymodelReaderTimeZone[6], ref timeModeAccessTime7);
+                bllReaderTimeZone.Update(arrarymodelReaderTimeZone[6]);
+                #endregion
+
+                #region 修改读卡器信息
+                getReaderInfo(ref modelReaderInfo);
+                bllReaderInfo.Update(modelReaderInfo);
+                #endregion
+            }
             this.Close();
         }
 

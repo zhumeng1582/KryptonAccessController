@@ -122,6 +122,7 @@
             this.kryptonButtonReaderAdd2.Size = new System.Drawing.Size(45, 25);
             this.kryptonButtonReaderAdd2.TabIndex = 128;
             this.kryptonButtonReaderAdd2.Values.Text = "添加";
+            this.kryptonButtonReaderAdd2.Visible = false;
             // 
             // kryptonButtonReaderAdd1
             // 
@@ -130,6 +131,7 @@
             this.kryptonButtonReaderAdd1.Size = new System.Drawing.Size(46, 25);
             this.kryptonButtonReaderAdd1.TabIndex = 127;
             this.kryptonButtonReaderAdd1.Values.Text = "添加";
+            this.kryptonButtonReaderAdd1.Visible = false;
             // 
             // kryptonLabelInputStateType
             // 

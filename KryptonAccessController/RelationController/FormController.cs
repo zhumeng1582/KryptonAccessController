@@ -16,29 +16,48 @@ namespace KryptonAccessController.RelationController
     {
         private AccessDataBase.Model.ControllerInfo modelControllerInfo = new AccessDataBase.Model.ControllerInfo();
         private AccessDataBase.BLL.ControllerInfo bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
-        //private AccessDataBase.Model.DoorUnitInfo modeDoorUnitInfo = new AccessDataBase.Model.DoorUnitInfo();
+        
         private AccessDataBase.BLL.DoorUnitInfo bllDoorUnitInfo = new AccessDataBase.BLL.DoorUnitInfo();
         private AccessDataBase.Model.DoorUnitInfo[] arrayDoorUnitInfo = new AccessDataBase.Model.DoorUnitInfo[4];
 
         private AccessDataBase.BLL.ReaderInfo bllReaderInfo = new AccessDataBase.BLL.ReaderInfo();
-        private AccessDataBase.Model.ReaderInfo[] arraryReaderInfo = new AccessDataBase.Model.ReaderInfo[8];
-        
+        private AccessDataBase.Model.ReaderInfo modelReaderInfo = new AccessDataBase.Model.ReaderInfo();
+        //private AccessDataBase.Model.ReaderInfo[] arraryReaderInfo = new AccessDataBase.Model.ReaderInfo[8];
+
+        private AccessDataBase.BLL.ReaderTimeZone bllReaderTimeZone = new AccessDataBase.BLL.ReaderTimeZone();
+        private AccessDataBase.Model.ReaderTimeZone modelReaderTimeZone = new AccessDataBase.Model.ReaderTimeZone();
+
+        private AccessDataBase.BLL.ReaderTimeAccess bllReaderTimeAccess = new AccessDataBase.BLL.ReaderTimeAccess();
+        private AccessDataBase.Model.ReaderTimeAccess modelReaderTimeAccess = new AccessDataBase.Model.ReaderTimeAccess();
+
         private OpenMode openMode;
         public FormController(AccessDataBase.Model.ControllerInfo ModelControllerInfo, OpenMode openMode)
         {
             InitializeComponent();
+
+            doorUnit1.KryptonButtonReaderAdd1.Click += KryptonButtonReaderAddClick1;
+            doorUnit1.KryptonButtonReaderAdd2.Click += KryptonButtonReaderAddClick1;
             doorUnit1.KryptonButtonReaderUpdate1.Click += KryptonButtonReaderUpdateClick1;
             doorUnit1.KryptonButtonReaderUpdate2.Click += KryptonButtonReaderUpdateClick1;
             doorUnit1.KryptonCheckBoxReader1.CheckedChanged += KryptonCheckBoxReaderCheckedChanged1;
             doorUnit1.KryptonCheckBoxReader2.CheckedChanged += KryptonCheckBoxReaderCheckedChanged1;
+
+            doorUnit2.KryptonButtonReaderAdd1.Click += KryptonButtonReaderAddClick1;
+            doorUnit2.KryptonButtonReaderAdd2.Click += KryptonButtonReaderAddClick1;
             doorUnit2.KryptonButtonReaderUpdate1.Click += KryptonButtonReaderUpdateClick2;
             doorUnit2.KryptonButtonReaderUpdate2.Click += KryptonButtonReaderUpdateClick2;
             doorUnit2.KryptonCheckBoxReader1.CheckedChanged += KryptonCheckBoxReaderCheckedChanged2;
             doorUnit2.KryptonCheckBoxReader2.CheckedChanged += KryptonCheckBoxReaderCheckedChanged2;
+
+            doorUnit3.KryptonButtonReaderAdd1.Click += KryptonButtonReaderAddClick1;
+            doorUnit3.KryptonButtonReaderAdd2.Click += KryptonButtonReaderAddClick1;
             doorUnit3.KryptonButtonReaderUpdate1.Click += KryptonButtonReaderUpdateClick3;
             doorUnit3.KryptonButtonReaderUpdate2.Click += KryptonButtonReaderUpdateClick3;
             doorUnit3.KryptonCheckBoxReader1.CheckedChanged += KryptonCheckBoxReaderCheckedChanged3;
             doorUnit3.KryptonCheckBoxReader2.CheckedChanged += KryptonCheckBoxReaderCheckedChanged3;
+
+            doorUnit4.KryptonButtonReaderAdd1.Click += KryptonButtonReaderAddClick4;
+            doorUnit4.KryptonButtonReaderAdd2.Click += KryptonButtonReaderAddClick4;
             doorUnit4.KryptonButtonReaderUpdate1.Click += KryptonButtonReaderUpdateClick4;
             doorUnit4.KryptonButtonReaderUpdate2.Click += KryptonButtonReaderUpdateClick4;
             doorUnit4.KryptonCheckBoxReader1.CheckedChanged += KryptonCheckBoxReaderCheckedChanged4;
@@ -52,6 +71,9 @@ namespace KryptonAccessController.RelationController
 
             this.modelControllerInfo = ModelControllerInfo;
             this.openMode = openMode;
+            for (int i = 0; i < 4;i++ )
+                arrayDoorUnitInfo[i] = new AccessDataBase.Model.DoorUnitInfo();
+
             if (openMode == OpenMode.Add)
             {
                 showAddPara();
@@ -104,8 +126,8 @@ namespace KryptonAccessController.RelationController
             doorUnit1.KryptonTextBoxDoorContact.Text = "02";
             doorUnit1.KryptonTextBoxDoorPosition.Text = "03";
             doorUnit1.KryptonTextBoxBreakGlass.Text = "04";
-            doorUnit1.KryptonTextBoxReader1.Text = "01";
-            doorUnit1.KryptonTextBoxReader2.Text = "01";
+            doorUnit1.KryptonTextBoxReader1.Text = bllReaderInfo.GetMaxId().ToString();
+            doorUnit1.KryptonTextBoxReader2.Text = (bllReaderInfo.GetMaxId() + 1).ToString();
             #endregion 门单元1
 
             #region 门单元2
@@ -116,8 +138,8 @@ namespace KryptonAccessController.RelationController
             doorUnit2.KryptonTextBoxDoorContact.Text = "06";
             doorUnit2.KryptonTextBoxDoorPosition.Text = "07";
             doorUnit2.KryptonTextBoxBreakGlass.Text = "08";
-            doorUnit2.KryptonTextBoxReader1.Text = "02";
-            doorUnit2.KryptonTextBoxReader2.Text = "02";
+            doorUnit2.KryptonTextBoxReader1.Text = (bllReaderInfo.GetMaxId() + 2).ToString();
+            doorUnit2.KryptonTextBoxReader2.Text = (bllReaderInfo.GetMaxId() + 3).ToString();
             #endregion 门单元2
 
             #region 门单元3
@@ -128,8 +150,8 @@ namespace KryptonAccessController.RelationController
             doorUnit3.KryptonTextBoxDoorContact.Text = "12";
             doorUnit3.KryptonTextBoxDoorPosition.Text = "13";
             doorUnit3.KryptonTextBoxBreakGlass.Text = "14";
-            doorUnit3.KryptonTextBoxReader1.Text = "03";
-            doorUnit3.KryptonTextBoxReader2.Text = "03";
+            doorUnit3.KryptonTextBoxReader1.Text = (bllReaderInfo.GetMaxId() + 4).ToString();
+            doorUnit3.KryptonTextBoxReader2.Text = (bllReaderInfo.GetMaxId() + 5).ToString();
             #endregion 门单元3
 
             #region 门单元4
@@ -140,8 +162,8 @@ namespace KryptonAccessController.RelationController
             doorUnit4.KryptonTextBoxDoorContact.Text = "16";
             doorUnit4.KryptonTextBoxDoorPosition.Text = "17";
             doorUnit4.KryptonTextBoxBreakGlass.Text = "18";
-            doorUnit4.KryptonTextBoxReader1.Text = "04";
-            doorUnit4.KryptonTextBoxReader2.Text = "04";
+            doorUnit4.KryptonTextBoxReader1.Text = (bllReaderInfo.GetMaxId() + 6).ToString();
+            doorUnit4.KryptonTextBoxReader2.Text = (bllReaderInfo.GetMaxId() + 7).ToString();
             #endregion 门单元4
 
             #region 集成IO
@@ -347,19 +369,24 @@ namespace KryptonAccessController.RelationController
         /// <returns>门单元信息</returns>
         private void getModelDoorUnitInfo(ref AccessDataBase.Model.DoorUnitInfo modelDoorUnitInfo, MyComponents.DoorUnit doorUnit)
         {
-            //modelDoorUnitInfo.DoorUnitID;
+            #region 基本信息
+            modelDoorUnitInfo.DoorUnitID = bllDoorUnitInfo.GetMaxId();
             modelDoorUnitInfo.OutPutLockID = int.Parse(doorUnit.KryptonTextBoxOutPoint.Text.ToString());
             //modelDoorUnitInfo.OutPutTimeLeng;
             //modelDoorUnitInfo.OpenDoorOverTimeLen;
             //modelDoorUnitInfo.AccessCapacityEnable;
             //modelDoorUnitInfo.AccessCapacityMax;
             //modelDoorUnitInfo.AccessCapacityMin;
+            #endregion
 
+            #region 读卡器信息
             modelDoorUnitInfo.ReadID1 = int.Parse(doorUnit.KryptonTextBoxReader1.Text.ToString());
             modelDoorUnitInfo.ReadIDEnable1 = doorUnit.KryptonCheckBoxReader1.Checked;
             modelDoorUnitInfo.ReadID2 = int.Parse(doorUnit.KryptonTextBoxReader2.Text.ToString());
             modelDoorUnitInfo.ReadIDEnable2 = doorUnit.KryptonCheckBoxReader2.Checked;
+            #endregion
 
+            #region 输入点信息
             modelDoorUnitInfo.InputStateType = doorUnit.KryptonComboBoxInputStateType.SelectedIndex;
             
             modelDoorUnitInfo.ExitButtonID = int.Parse(doorUnit.KryptonTextBoxExitButton.Text.ToString());
@@ -376,7 +403,10 @@ namespace KryptonAccessController.RelationController
 
             modelDoorUnitInfo.BreakGlassID = int.Parse(doorUnit.KryptonTextBoxBreakGlass.Text.ToString());
             //modelDoorUnitInfo.BreakGlassMode;
-            //modelDoorUnitInfo.DoorContactEnable;
+            //modelDoorUnitInfo.BreakGlassEnable;
+            #endregion
+
+            #region 电子地图
             //modelDoorUnitInfo.ElectronicMapID;
             //modelDoorUnitInfo.PositionX;
             //modelDoorUnitInfo.PositionY;
@@ -384,156 +414,350 @@ namespace KryptonAccessController.RelationController
             //modelDoorUnitInfo.StateImageClose;
             //modelDoorUnitInfo.StateImageAlarmOpen;
             //modelDoorUnitInfo.StateImageAlarmClose;
+            #endregion
         }
-        /// <summary>
-        /// 从视图控件中获取控制器信息
-        /// </summary>
-        /// <param name="modelControllerInfo"></param>
-        private void getModelControllerInfo(ref AccessDataBase.Model.ControllerInfo modelControllerInfo,FormController formController)
+        
+        private int addDefaultReaderTimeAccess()
         {
+            
+            modelReaderTimeAccess.ReaderTimeAccessID = bllReaderTimeAccess.GetMaxId();
+            modelReaderTimeAccess.ReaderTimeAccessName = "";
+
+            modelReaderTimeZone.ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+            bllReaderTimeZone.Add(modelReaderTimeZone);
+            modelReaderTimeAccess.Mon = modelReaderTimeZone.ReaderTimeZoneID;
+
+            modelReaderTimeZone.ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+            bllReaderTimeZone.Add(modelReaderTimeZone);
+            modelReaderTimeAccess.Tue = modelReaderTimeZone.ReaderTimeZoneID;
+
+            modelReaderTimeZone.ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+            bllReaderTimeZone.Add(modelReaderTimeZone);
+            modelReaderTimeAccess.Wed = modelReaderTimeZone.ReaderTimeZoneID;
+
+            modelReaderTimeZone.ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+            bllReaderTimeZone.Add(modelReaderTimeZone);
+            modelReaderTimeAccess.Thu = modelReaderTimeZone.ReaderTimeZoneID;
+
+            modelReaderTimeZone.ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+            bllReaderTimeZone.Add(modelReaderTimeZone);
+            modelReaderTimeAccess.Fri = modelReaderTimeZone.ReaderTimeZoneID;
+
+            modelReaderTimeZone.ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+            bllReaderTimeZone.Add(modelReaderTimeZone);
+            modelReaderTimeAccess.Sat = modelReaderTimeZone.ReaderTimeZoneID;
+
+            modelReaderTimeZone.ReaderTimeZoneID = bllReaderTimeZone.GetMaxId();
+            bllReaderTimeZone.Add(modelReaderTimeZone);
+            modelReaderTimeAccess.Sun = modelReaderTimeZone.ReaderTimeZoneID;
+
+            bllReaderTimeAccess.Add(modelReaderTimeAccess);
+            return modelReaderTimeAccess.ReaderTimeAccessID;
+        }
+
+        private void addControllerInfo() 
+        {
+            
             #region 控制器信息
-            modelControllerInfo.ControllerID = int.Parse(formController.kryptonTextBoxControllerID.Text.Trim());
-            modelControllerInfo.ControllerName = formController.kryptonTextBoxControllerName.Text.Trim();
-            modelControllerInfo.ControllerType = formController.kryptonComboBoxControllerType.SelectedIndex + 1;
-            modelControllerInfo.ControllerLocation = formController.kryptonTextBoxControllerLoaction.Text.Trim();
-            modelControllerInfo.ControllerVersion = formController.kryptonTextBoxControllerVersion.Text.ToString();
+            modelControllerInfo.ControllerID = int.Parse(kryptonTextBoxControllerID.Text.Trim());
+            modelControllerInfo.ControllerName = kryptonTextBoxControllerName.Text.Trim();
+            modelControllerInfo.ControllerType = kryptonComboBoxControllerType.SelectedIndex + 1;
+            modelControllerInfo.ControllerLocation = kryptonTextBoxControllerLoaction.Text.Trim();
+            modelControllerInfo.ControllerVersion = kryptonTextBoxControllerVersion.Text.ToString();
 
             ///TCP通信参数
-            modelControllerInfo.ControllerIP = formController.textBoxNewDeviceIP.Text.Trim();
-            modelControllerInfo.ControllerSubnetMask = formController.textBoxMask.Text.Trim();
-            modelControllerInfo.ControllerGateway = formController.textBoxGateway.Text.Trim();
-            modelControllerInfo.ControllerMAC = formController.textBoxMAC.Text;
-            modelControllerInfo.ControllerDNS = formController.textBoxDNS.Text;
-            modelControllerInfo.ControllerBUDNS = formController.kryptonTextBoxBackUpDNS.Text;
+            modelControllerInfo.ControllerIP = textBoxNewDeviceIP.Text.Trim();
+            modelControllerInfo.ControllerSubnetMask = textBoxMask.Text.Trim();
+            modelControllerInfo.ControllerGateway = textBoxGateway.Text.Trim();
+            modelControllerInfo.ControllerMAC = textBoxMAC.Text;
+            modelControllerInfo.ControllerDNS = textBoxDNS.Text;
+            modelControllerInfo.ControllerBUDNS = kryptonTextBoxBackUpDNS.Text;
 
             ///RS485通信参数
 
             #endregion 控制器信息
 
             #region 辅助单元
-            modelControllerInfo.AuxOutPutPointID = int.Parse(formController.kryptonTextBoxAuxOutPutPoint.Text.ToString());
-            modelControllerInfo.InputStateType = formController.kryptonComboBoxInputStateType0.SelectedIndex + 1;
+            modelControllerInfo.AuxOutPutPointID = int.Parse(kryptonTextBoxAuxOutPutPoint.Text.ToString());
+            modelControllerInfo.InputStateType = kryptonComboBoxInputStateType0.SelectedIndex + 1;
 
             modelControllerInfo.FireSensingEnable = true;
-            modelControllerInfo.FireSensingID = int.Parse(formController.kryptonTextBoxFireSensing.Text.ToString());
+            modelControllerInfo.FireSensingID = int.Parse(kryptonTextBoxFireSensing.Text.ToString());
 
             modelControllerInfo.TamperSensingEnable = true;
-            modelControllerInfo.TamperSensingID = int.Parse(formController.kryptonTextBoxTamperSensing.Text.ToString());
+            modelControllerInfo.TamperSensingID = int.Parse(kryptonTextBoxTamperSensing.Text.ToString());
 
             modelControllerInfo.LowVoltageEnable = true;
-            modelControllerInfo.LowVoltageID = int.Parse(formController.kryptonTextBoxLowVoltage.Text.ToString());
+            modelControllerInfo.LowVoltageID = int.Parse(kryptonTextBoxLowVoltage.Text.ToString());
 
             modelControllerInfo.PowerOutageEnable = true;
-            modelControllerInfo.PowerOutageID = int.Parse(formController.kryptonTextBoxPowerOutage.Text.ToString());
+            modelControllerInfo.PowerOutageID = int.Parse(kryptonTextBoxPowerOutage.Text.ToString());
             #endregion
-        }
 
+            int readerID;
 
-
-        private ReturnValue addDoorUnitInfo(ref AccessDataBase.Model.DoorUnitInfo modelDoorUnitInfo)
-        {
-            if (modelDoorUnitInfo.ReadIDEnable1 & modelDoorUnitInfo.ReadID1.HasValue)
-            {
-                if (!bllReaderInfo.Exists(modelDoorUnitInfo.ReadID1.Value))
-                {
-                    MyMessageBox.MessageBoxOK("ID号为：" + modelDoorUnitInfo.ReadID1.Value + "的读卡器不存在，请先增加一个读卡器信息");
-                    return ReturnValue.Exist;
-                }
-                List<AccessDataBase.Model.DoorUnitInfo> listModelDoorUnitInfo = bllDoorUnitInfo.GetModelList("ReadID1 = " + modelDoorUnitInfo.ReadID1.Value + "or ReadID2 = " + modelDoorUnitInfo.ReadID1.Value);
-                if (listModelDoorUnitInfo.Count > 0)
-                {
-                    MyMessageBox.MessageBoxOK("ID号为：" + modelDoorUnitInfo.ReadID1.Value + "的读卡器已经被使用，请重新选择一个读卡器");
-                    return ReturnValue.NotAvailable;
-                }
-            }
-            if (modelDoorUnitInfo.ReadIDEnable2 & modelDoorUnitInfo.ReadID2.HasValue)
-            {
-                if (!bllReaderInfo.Exists(modelDoorUnitInfo.ReadID2.Value))
-                {
-                    MyMessageBox.MessageBoxOK("ID号为：" + modelDoorUnitInfo.ReadID2.Value + "的读卡器不存在，请先增加一个读卡器信息");
-                    return ReturnValue.Exist;
-                } 
-                List<AccessDataBase.Model.DoorUnitInfo> listModelDoorUnitInfo = bllDoorUnitInfo.GetModelList("ReadID1 = " + modelDoorUnitInfo.ReadID2.Value + "or ReadID2 = " + modelDoorUnitInfo.ReadID2.Value);
-                if (listModelDoorUnitInfo.Count > 0)
-                {
-                    MyMessageBox.MessageBoxOK("ID号为：" + modelDoorUnitInfo.ReadID2.Value + "的读卡器已经被使用，请重新选择一个读卡器");
-                    return ReturnValue.NotAvailable;
-                }
-            }
-            bllDoorUnitInfo.Add(modelDoorUnitInfo);
-            return ReturnValue.Success;
-
-        }
-        private void addAllDoorUnitInfo(ref AccessDataBase.Model.DoorUnitInfo[] modelDoorUnitInfo)
-        {
-            if (modelControllerInfo.DoorUnitEnable1)
-            {
-                arrayDoorUnitInfo[0].DoorUnitID = bllDoorUnitInfo.GetMaxId();
-                getModelDoorUnitInfo(ref arrayDoorUnitInfo[0], this.doorUnit1);
-                addDoorUnitInfo(ref arrayDoorUnitInfo[0]);
-            }
-            if (modelControllerInfo.DoorUnitEnable2)
-            {
-                arrayDoorUnitInfo[1].DoorUnitID = bllDoorUnitInfo.GetMaxId();
-                getModelDoorUnitInfo(ref arrayDoorUnitInfo[1], this.doorUnit2);
-                addDoorUnitInfo(ref arrayDoorUnitInfo[1]);
-            }
-            if (modelControllerInfo.DoorUnitEnable3)
-            {
-                arrayDoorUnitInfo[2].DoorUnitID = bllDoorUnitInfo.GetMaxId();
-                getModelDoorUnitInfo(ref arrayDoorUnitInfo[2], this.doorUnit3);
-                addDoorUnitInfo(ref arrayDoorUnitInfo[2]);
-            }
-            if (modelControllerInfo.DoorUnitEnable4)
-            {
-                arrayDoorUnitInfo[3].DoorUnitID = bllDoorUnitInfo.GetMaxId();
-                getModelDoorUnitInfo(ref arrayDoorUnitInfo[3], this.doorUnit4);
-                addDoorUnitInfo(ref arrayDoorUnitInfo[3]);
-            }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="modelControllerInfo"></param>
-        private void addControllerInfo(ref AccessDataBase.Model.ControllerInfo modelControllerInfo) 
-        {
-            if (bllControllerInfo.Exists(modelControllerInfo.ControllerID))
-            {
-                MyMessageBox.MessageBoxOK("控制器已经存在");
-                return;
-            }
-            getModelControllerInfo(ref modelControllerInfo,this);
-
-
+            #region 门单元1
             modelControllerInfo.DoorUnitEnable1 = this.kryptonCheckBoxDoorUnitEnable1.Checked;
-            modelControllerInfo.DoorUnitEnable2 = this.kryptonCheckBoxDoorUnitEnable2.Checked;
-            modelControllerInfo.DoorUnitEnable3 = this.kryptonCheckBoxDoorUnitEnable3.Checked;
-            modelControllerInfo.DoorUnitEnable4 = this.kryptonCheckBoxDoorUnitEnable4.Checked;
+            modelControllerInfo.DoorUnitID1 = arrayDoorUnitInfo[0].DoorUnitID = bllDoorUnitInfo.GetMaxId();
+            getModelDoorUnitInfo(ref arrayDoorUnitInfo[0], this.doorUnit1);
 
-            addAllDoorUnitInfo(ref arrayDoorUnitInfo);
-
+            #region 读卡器1
+            readerID = arrayDoorUnitInfo[0].ReadID1.Value;
+            if (!bllReaderInfo.Exists(readerID))
+            {
+                modelReaderInfo.ReaderID = readerID;
+                modelReaderInfo.ReaderPointID = 1;
+                modelReaderInfo.ReadTimeAccessID = addDefaultReaderTimeAccess();
+                bllReaderInfo.Add(modelReaderInfo);
+            }
             
-            modelControllerInfo.DoorUnitID1 = arrayDoorUnitInfo[0].DoorUnitID;
-            modelControllerInfo.DoorUnitID2 = arrayDoorUnitInfo[1].DoorUnitID;
-            modelControllerInfo.DoorUnitID3 = arrayDoorUnitInfo[2].DoorUnitID;
-            modelControllerInfo.DoorUnitID4 = arrayDoorUnitInfo[3].DoorUnitID;
+            #endregion
+
+            #region 读卡器2
+            readerID = arrayDoorUnitInfo[0].ReadID2.Value;
+            if (!bllReaderInfo.Exists(readerID))
+            {
+                
+                modelReaderInfo.ReaderID = readerID;
+                modelReaderInfo.ReaderPointID = 1;
+                modelReaderInfo.ReadTimeAccessID = addDefaultReaderTimeAccess();
+                bllReaderInfo.Add(modelReaderInfo);
+            }
+            
+            #endregion
+
+            bllDoorUnitInfo.Add(arrayDoorUnitInfo[0]);
+            #endregion
+
+            #region 门单元2
+            modelControllerInfo.DoorUnitEnable2 = this.kryptonCheckBoxDoorUnitEnable2.Checked;
+            modelControllerInfo.DoorUnitID2 = arrayDoorUnitInfo[1].DoorUnitID = bllDoorUnitInfo.GetMaxId();
+            getModelDoorUnitInfo(ref arrayDoorUnitInfo[1], this.doorUnit2);
+
+            #region 读卡器1
+            readerID = arrayDoorUnitInfo[1].ReadID1.Value;
+            if (!bllReaderInfo.Exists(readerID))
+            {
+                modelReaderInfo.ReaderID = readerID;
+                modelReaderInfo.ReaderPointID = 2;
+                modelReaderInfo.ReadTimeAccessID = addDefaultReaderTimeAccess();
+                bllReaderInfo.Add(modelReaderInfo);
+            }
+            #endregion
+
+            #region 读卡器2
+            readerID = arrayDoorUnitInfo[1].ReadID2.Value;
+            if (!bllReaderInfo.Exists(readerID))
+            {
+                modelReaderInfo.ReaderPointID = 2;
+                modelReaderInfo.ReaderID = readerID;
+                modelReaderInfo.ReadTimeAccessID = addDefaultReaderTimeAccess();
+                bllReaderInfo.Add(modelReaderInfo);
+            }
+            #endregion
+
+            bllDoorUnitInfo.Add(arrayDoorUnitInfo[1]);
+            #endregion
+
+            #region 门单元3
+            modelControllerInfo.DoorUnitEnable3 = this.kryptonCheckBoxDoorUnitEnable3.Checked;
+            modelControllerInfo.DoorUnitID3 = arrayDoorUnitInfo[2].DoorUnitID = bllDoorUnitInfo.GetMaxId();
+            getModelDoorUnitInfo(ref arrayDoorUnitInfo[2], this.doorUnit3);
+
+            #region 读卡器1
+            readerID = arrayDoorUnitInfo[2].ReadID1.Value;
+            if (!bllReaderInfo.Exists(readerID))
+            {
+                modelReaderInfo.ReaderID = readerID;
+                modelReaderInfo.ReaderPointID = 3;
+                modelReaderInfo.ReadTimeAccessID = addDefaultReaderTimeAccess();
+                bllReaderInfo.Add(modelReaderInfo);
+            }
+            
+            #endregion
+
+            #region 读卡器2
+            readerID = arrayDoorUnitInfo[2].ReadID2.Value;
+            if (!bllReaderInfo.Exists(readerID))
+            {
+                modelReaderInfo.ReaderID = readerID;
+                modelReaderInfo.ReaderPointID = 3;
+                modelReaderInfo.ReadTimeAccessID = addDefaultReaderTimeAccess();
+                bllReaderInfo.Add(modelReaderInfo);
+            }
+            
+            #endregion
+
+            bllDoorUnitInfo.Add(arrayDoorUnitInfo[2]);
+            #endregion
+
+            #region 门单元4
+            modelControllerInfo.DoorUnitEnable4 = this.kryptonCheckBoxDoorUnitEnable4.Checked;
+            modelControllerInfo.DoorUnitID4 = arrayDoorUnitInfo[3].DoorUnitID = bllDoorUnitInfo.GetMaxId();
+            getModelDoorUnitInfo(ref arrayDoorUnitInfo[3], this.doorUnit4);
+
+            #region 读卡器1
+            readerID = arrayDoorUnitInfo[3].ReadID1.Value;
+            if (!bllReaderInfo.Exists(readerID))
+            {
+                modelReaderInfo.ReaderID = readerID;
+                modelReaderInfo.ReaderPointID = 4;
+                modelReaderInfo.ReadTimeAccessID = addDefaultReaderTimeAccess();
+                bllReaderInfo.Add(modelReaderInfo);
+            }
+           
+            #endregion
+
+            #region 读卡器2
+            readerID = arrayDoorUnitInfo[3].ReadID2.Value;
+            if (!bllReaderInfo.Exists(readerID))
+            {
+                modelReaderInfo.ReaderID = readerID;
+                modelReaderInfo.ReaderPointID = 4;
+                modelReaderInfo.ReadTimeAccessID = addDefaultReaderTimeAccess();
+                bllReaderInfo.Add(modelReaderInfo);
+            }
+            
+            #endregion
+
+            bllDoorUnitInfo.Add(arrayDoorUnitInfo[3]);
+            #endregion
+
+            #region 集成IO
+            #endregion
+
+            #region 扩展IO1
+            #endregion
+
+            #region 扩展IO2
+            #endregion
+
+            #region 扩展IO3
+            #endregion
+
+            #region 扩展IO4
+            #endregion
+
             bllControllerInfo.Add(modelControllerInfo);
+
         }
-        
+        private ReturnValue updateControllerInfo()
+        {
+            int controllerID;
+
+            bool ret =  int.TryParse(kryptonTextBoxControllerID.Text.Trim(), out controllerID);
+            if (!ret)
+            {
+                MyMessageBox.MessageBoxOK("控制ID必须为有效数字");
+                return ReturnValue.Fail;
+            }
+            modelControllerInfo = bllControllerInfo.GetModel(controllerID);
+            if (modelControllerInfo == null)
+            {
+                return ReturnValue.NotExist;
+            }
+
+            #region 控制器基本信息
+            modelControllerInfo.ControllerID = int.Parse(kryptonTextBoxControllerID.Text.Trim());
+            modelControllerInfo.ControllerName = kryptonTextBoxControllerName.Text.Trim();
+            modelControllerInfo.ControllerType = kryptonComboBoxControllerType.SelectedIndex + 1;
+            modelControllerInfo.ControllerLocation = kryptonTextBoxControllerLoaction.Text.Trim();
+            modelControllerInfo.ControllerVersion = kryptonTextBoxControllerVersion.Text.ToString();
+            #endregion 控制器信息
+
+            #region 通讯参数
+            if ((kryptonCheckBoxCommunicateTypeTCP.Checked) && (kryptonCheckBoxCommunicateType485.Checked))
+                modelControllerInfo.CommunicateType = 0;
+            else if (kryptonCheckBoxCommunicateType485.Checked)
+                modelControllerInfo.CommunicateType = 2;
+            else
+                modelControllerInfo.CommunicateType = 1;
+
+            //TCP 通信参数
+            modelControllerInfo.ControllerIP = textBoxNewDeviceIP.Text.Trim();
+            modelControllerInfo.ControllerSubnetMask = textBoxMask.Text.Trim();
+            modelControllerInfo.ControllerGateway = textBoxGateway.Text.Trim();
+            modelControllerInfo.ControllerMAC = textBoxMAC.Text;
+            modelControllerInfo.ControllerDNS = textBoxDNS.Text;
+            modelControllerInfo.ControllerBUDNS = kryptonTextBoxBackUpDNS.Text;
+
+            //RS485通信参数
+            #endregion
+
+            #region 辅助单元
+            modelControllerInfo.AuxOutPutPointID = int.Parse(kryptonTextBoxAuxOutPutPoint.Text.ToString());
+            modelControllerInfo.InputStateType = kryptonComboBoxInputStateType0.SelectedIndex + 1;
+
+
+            modelControllerInfo.FireSensingID = int.Parse(kryptonTextBoxFireSensing.Text.ToString());
+            modelControllerInfo.FireSensingEnable = true;
+            modelControllerInfo.FireSensingMode = 1;
+
+            modelControllerInfo.TamperSensingID = int.Parse(kryptonTextBoxTamperSensing.Text.ToString());
+            modelControllerInfo.TamperSensingEnable = true;
+            modelControllerInfo.TamperSensingMode = 1;
+
+            modelControllerInfo.LowVoltageID = int.Parse(kryptonTextBoxLowVoltage.Text.ToString());
+            modelControllerInfo.LowVoltageEnable = true;
+            modelControllerInfo.LowVoltageMode = 1;
+
+            modelControllerInfo.PowerOutageID = int.Parse(kryptonTextBoxPowerOutage.Text.ToString());
+            modelControllerInfo.PowerOutageEnable = true;
+            modelControllerInfo.PowerOutageMode = 1;
+            #endregion
+
+            #region 门单元1
+            modelControllerInfo.DoorUnitEnable1 = kryptonCheckBoxDoorUnitEnable1.Checked;
+            #endregion
+
+            #region 门单元2
+            modelControllerInfo.DoorUnitEnable2 = kryptonCheckBoxDoorUnitEnable2.Checked;
+
+            #endregion
+
+            #region 门单元3
+            modelControllerInfo.DoorUnitEnable3 = kryptonCheckBoxDoorUnitEnable3.Checked;
+            #endregion
+
+            #region 门单元4
+            modelControllerInfo.DoorUnitEnable4 = kryptonCheckBoxDoorUnitEnable4.Checked;
+            #endregion
+
+            #region 集成IO
+
+            #endregion
+
+            #region 扩展IO1
+
+            #endregion
+
+            #region 扩展IO2
+
+            #endregion
+
+            #region 扩展IO3
+
+            #endregion
+
+            #region 扩展IO4
+
+            #endregion
+
+            bllControllerInfo.Update(modelControllerInfo);
+
+            return ReturnValue.Success;
+        }
         private void kryptonButtonControllerOK_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                arrayDoorUnitInfo[i] = new AccessDataBase.Model.DoorUnitInfo(); 
-            }
+            
             if (openMode == OpenMode.Update)
             {
-                if (bllControllerInfo.Update(modelControllerInfo))
+                updateControllerInfo();
                     this.Close();
             }
             else if (openMode == OpenMode.Add)
             {
-                addControllerInfo(ref modelControllerInfo);
+                addControllerInfo();
                 this.Close();
             }
 
@@ -572,6 +796,15 @@ namespace KryptonAccessController.RelationController
                 default: break;
             }
         }
+        private void KryptonButtonReaderAddClick1(object sender, EventArgs e)
+        {
+            switch (((KryptonButton)sender).Name)
+            {
+                case "kryptonButtonReaderAdd1": openReadInfoDialog(int.Parse(doorUnit1.KryptonTextBoxReader1.Text.Trim()), OpenMode.Add); break;
+                case "kryptonButtonReaderAdd2": openReadInfoDialog(int.Parse(doorUnit1.KryptonTextBoxReader2.Text.Trim()), OpenMode.Add); break;
+                default: break;
+            }
+        }
         private void KryptonButtonReaderUpdateClick2(object sender, EventArgs e)
         {
             switch (((KryptonButton)sender).Name)
@@ -581,6 +814,16 @@ namespace KryptonAccessController.RelationController
                 default: break;
             }
         }
+        private void KryptonButtonReaderAddClick2(object sender, EventArgs e)
+        {
+            switch (((KryptonButton)sender).Name)
+            {
+                case "kryptonButtonReaderAdd1": openReadInfoDialog(int.Parse(doorUnit1.KryptonTextBoxReader1.Text.Trim()), OpenMode.Add); break;
+                case "kryptonButtonReaderAdd2": openReadInfoDialog(int.Parse(doorUnit1.KryptonTextBoxReader2.Text.Trim()), OpenMode.Add); break;
+                default: break;
+            }
+        }
+
         private void KryptonButtonReaderUpdateClick3(object sender, EventArgs e)
         {
             switch (((KryptonButton)sender).Name)
@@ -591,6 +834,15 @@ namespace KryptonAccessController.RelationController
 
             }
         }
+        private void KryptonButtonReaderAddClick3(object sender, EventArgs e)
+        {
+            switch (((KryptonButton)sender).Name)
+            {
+                case "kryptonButtonReaderAdd1": openReadInfoDialog(int.Parse(doorUnit1.KryptonTextBoxReader1.Text.Trim()), OpenMode.Add); break;
+                case "kryptonButtonReaderAdd2": openReadInfoDialog(int.Parse(doorUnit1.KryptonTextBoxReader2.Text.Trim()), OpenMode.Add); break;
+                default: break;
+            }
+        }
         private void KryptonButtonReaderUpdateClick4(object sender, EventArgs e)
         {
             switch (((KryptonButton)sender).Name)
@@ -599,6 +851,15 @@ namespace KryptonAccessController.RelationController
                 case "kryptonButtonReaderUpdate2": openReadInfoDialog(int.Parse(doorUnit4.KryptonTextBoxReader2.Text.Trim()), OpenMode.Update); break;
                 default: break;
 
+            }
+        }
+        private void KryptonButtonReaderAddClick4(object sender, EventArgs e)
+        {
+            switch (((KryptonButton)sender).Name)
+            {
+                case "kryptonButtonReaderAdd1": openReadInfoDialog(int.Parse(doorUnit1.KryptonTextBoxReader1.Text.Trim()), OpenMode.Add); break;
+                case "kryptonButtonReaderAdd2": openReadInfoDialog(int.Parse(doorUnit1.KryptonTextBoxReader2.Text.Trim()), OpenMode.Add); break;
+                default: break;
             }
         }
         private void kryptonComboBoxControllerType_SelectedIndexChanged(object sender, EventArgs e)

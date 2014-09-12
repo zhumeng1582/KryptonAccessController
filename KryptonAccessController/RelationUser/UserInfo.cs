@@ -153,7 +153,7 @@ namespace KryptonAccessController.RelationUser
                 {
                     string userID = dataGridViewWithCheckBox1["UserID", i.Index].Value.ToString().Trim();
 
-                    AccessDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(userID));
+                    AccessDataBase.Model.ControllerInfo modelControllerInfo = bllControllerInfo.GetModel(int.Parse(userID));
                     /*
                      
                      µ÷ÓÃAPIº¯Êý

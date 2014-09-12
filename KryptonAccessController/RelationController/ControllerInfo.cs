@@ -14,7 +14,13 @@ namespace KryptonAccessController.RelationController
     public partial class ControllerInfo : ComponentFactory.Krypton.Toolkit.KryptonForm
     {
         AccessDataBase.BLL.ControllerInfo bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
-        AccessDataBase.Model.ControllerInfo modeControllerInfo = new AccessDataBase.Model.ControllerInfo();
+        AccessDataBase.Model.ControllerInfo modelControllerInfo = new AccessDataBase.Model.ControllerInfo();
+
+        AccessDataBase.BLL.ExpansionBoardInfo bllExpansionBoardInfo = new AccessDataBase.BLL.ExpansionBoardInfo();
+        AccessDataBase.Model.ExpansionBoardInfo modelExpansionBoardInfo = new AccessDataBase.Model.ExpansionBoardInfo();
+
+        AccessDataBase.BLL.ExpansionBoardPointInfo bllExpansionBoardPointInof = new AccessDataBase.BLL.ExpansionBoardPointInfo();
+        AccessDataBase.Model.ExpansionBoardPointInfo modelExpansionBoardPointInfo = new AccessDataBase.Model.ExpansionBoardPointInfo();
 
         AccessDataBase.Model.DoorUnitInfo modelDoorUnitInfo = new AccessDataBase.Model.DoorUnitInfo();
         AccessDataBase.Model.DoorUnitInfo[] arraryModelDoorUnitInfo = new AccessDataBase.Model.DoorUnitInfo[4];
@@ -62,7 +68,7 @@ namespace KryptonAccessController.RelationController
         public void refreshDataGridView() 
         {
             kryptonDataGridView1.DataSource = bllControllerInfo.GetAllList().Tables[0];
-            //DataTableCollection
+            //this.refreshDataGridView();
         }
         public void initToolStripMenu()
         {
@@ -76,14 +82,12 @@ namespace KryptonAccessController.RelationController
         }
         private void toolStripButtonAddControllerInfoInfo_Click(object sender, EventArgs e)
         {
-            AccessDataBase.Model.ControllerInfo modeControllerInfo = new AccessDataBase.Model.ControllerInfo();
+            modelControllerInfo.ControllerID = bllControllerInfo.GetMaxId();
 
-            AccessDataBase.BLL.ControllerInfo bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
-            modeControllerInfo.ControllerID = bllControllerInfo.GetMaxId();
-
-            FormController formController = new FormController(modeControllerInfo, OpenMode.Add);
+            FormController formController = new FormController(modelControllerInfo, OpenMode.Add);
             formController.ShowDialog();
-            this.refreshDataGridView();
+
+            refreshDataGridView();
         }
         /*
         public  void updateGridViewWithCheckBoxRow(object sender, DataGridViewCellEventArgs e)
@@ -95,8 +99,8 @@ namespace KryptonAccessController.RelationController
 
             string controllerID = kryptonDataGridView1["ControllerID", selectIndex].Value.ToString().Trim();
 
-            AccessDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
-            FormController formController = new FormController(modeControllerInfo, OpenMode.Update);
+            AccessDataBase.Model.ControllerInfo modelControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+            FormController formController = new FormController(modelControllerInfo, OpenMode.Update);
             formController.ShowDialog();
 
             this.refreshDataGridView();
@@ -111,141 +115,508 @@ namespace KryptonAccessController.RelationController
 
             string controllerID = kryptonDataGridView1["ControllerID", selectIndex].Value.ToString().Trim();
 
-            AccessDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
-            FormController formController = new FormController(modeControllerInfo,OpenMode.Update);
+            AccessDataBase.Model.ControllerInfo modelControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+            FormController formController = new FormController(modelControllerInfo,OpenMode.Update);
             formController.ShowDialog();
 
-            this.refreshDataGridView();
+            refreshDataGridView();
         }
-        private ReturnValue deleteReaderZone(int? readerTimeZoneID)
+        
+        #region 删除控制器信息
+        private ReturnValue deleteControllerInfo(int controllerID)
         {
-            if (!readerTimeZoneID.HasValue)
-                return ReturnValue.NotExist;
-            if (!bllReaderTimeZone.Exists(readerTimeZoneID.Value))
-                return ReturnValue.NotExist;
-           
-            if (bllReaderTimeZone.Delete(readerTimeZoneID.Value))
-                return ReturnValue.Success;
-            else
-                return ReturnValue.Unkonwn;
-
-        }
-        private ReturnValue deleteReaderTimeAccess(int? readerTimeAccessID)
-        {
-            if (!readerTimeAccessID.HasValue)
-                return ReturnValue.NotExist;
-            if (!bllReaderTimeAccess.Exists(readerTimeAccessID.Value))
-                return ReturnValue.NotExist;
-
-            modelReaderTimeAccess = new AccessDataBase.Model.ReaderTimeAccess();
-            modelReaderTimeAccess = bllReaderTimeAccess.GetModel(readerTimeAccessID.Value);
-
-            deleteReaderZone(modelReaderTimeAccess.Mon);
-            deleteReaderZone(modelReaderTimeAccess.Thu);
-            deleteReaderZone(modelReaderTimeAccess.Tue);
-            deleteReaderZone(modelReaderTimeAccess.Wed);
-            deleteReaderZone(modelReaderTimeAccess.Fri);
-            deleteReaderZone(modelReaderTimeAccess.Sat);
-            deleteReaderZone(modelReaderTimeAccess.Sun);
-
-            if (bllReaderTimeAccess.Delete(modelReaderTimeAccess.ReaderTimeAccessID))
-                return ReturnValue.Success;
-            else
-                return ReturnValue.Unkonwn;
-        }
-        private ReturnValue deleteReaderHoliday(int? readerID)
-        {
-            if (!readerID.HasValue)
-                return ReturnValue.NotExist;
-            if (!bllReaderInfo.Exists(readerID.Value))
-                    return ReturnValue.NotExist;
-
-            listModelReaderHoliday = bllReaderHoliday.GetModelList("ReaderID = " + readerID.Value);
-            foreach (AccessDataBase.Model.ReaderHoliday modelReaderHoliday in listModelReaderHoliday)
+            bool ret = bllControllerInfo.Exists(controllerID);
+            if (ret == false)
             {
-                bllReaderHoliday.Delete(modelReaderHoliday.ReaderHolidayID);
+                MyMessageBox.MessageBoxOK("ID为：" + controllerID + "的控制器不存在");
+                return ReturnValue.NotExist;
+            }
+
+            ret = bllControllerInfo.Delete(controllerID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("删除控制器信息失败，控制器ID为：" + controllerID);
+                return ReturnValue.Fail;
             }
             return ReturnValue.Success;
         }
-        private ReturnValue deleteReader(int? readerID)
+        #endregion
+
+        #region 删除扩展板端口信息
+        private ReturnValue deleteExpansionBoardPointInfo(int expansionBoardInfoID)
         {
-            if (!readerID.HasValue)
-                return ReturnValue.NotExist;
-            if (!bllReaderInfo.Exists(readerID.Value))
-                return ReturnValue.NotExist;
-
-            modelReaderInfo = new AccessDataBase.Model.ReaderInfo();
-            modelReaderInfo = bllReaderInfo.GetModel(readerID.Value);
-
-            deleteReaderTimeAccess(modelReaderInfo.ReadTimeAccessID);
-            deleteReaderHoliday(modelReaderInfo.ReaderID);
-
-            if (bllReaderInfo.Delete(modelReaderInfo.ReaderID))
-                return ReturnValue.Success;
-            else
-                return ReturnValue.Unkonwn;
-        }
-        private ReturnValue deleteDooorUnit(int? DoorUnitID)
-        {
-            if (!DoorUnitID.HasValue)
-                return ReturnValue.NotExist;
-            if (!bllDoorUnitInfo.Exists(DoorUnitID.Value))
-                return ReturnValue.NotExist;
-
-            modelDoorUnitInfo = new AccessDataBase.Model.DoorUnitInfo();
-            modelDoorUnitInfo = bllDoorUnitInfo.GetModel(DoorUnitID.Value);
-
-            if (bllDoorUnitInfo.Delete(modelDoorUnitInfo.DoorUnitID))
+            bool ret = bllExpansionBoardInfo.Exists(expansionBoardInfoID);
+            if (ret == false)
             {
-                deleteReader(modelDoorUnitInfo.ReadID1);
-                deleteReader(modelDoorUnitInfo.ReadID2);
-                return ReturnValue.Success;
+                MyMessageBox.MessageBoxOK("ID为：" + expansionBoardInfoID + "的扩展板不存在");
+                return ReturnValue.NotExist;
             }
-            else
-                return ReturnValue.Unkonwn;
 
-            
+            ret = bllExpansionBoardPointInof.DeleteList("select ExpansionBoardPointID from ExpansionBoardPointInfo where ExpansionBoardID=" + expansionBoardInfoID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("删除扩展板端口信息失败，扩展板ID为：" + expansionBoardInfoID);
+                return ReturnValue.Fail;
+            }
+            return ReturnValue.Success;
         }
+        #endregion
 
-        private ReturnValue deleteControllerInfo(int controllerID)
+        #region 删除扩展板信息
+        private ReturnValue deleteExpansionBoardInfo(int expansionBoardInfoID)
         {
 
-            if (!bllControllerInfo.Exists(controllerID))
+            bool ret = bllExpansionBoardInfo.Exists(expansionBoardInfoID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("ID为：" + expansionBoardInfoID + "的扩展板不存在");
                 return ReturnValue.NotExist;
-
-            modeControllerInfo = new AccessDataBase.Model.ControllerInfo();
-            modeControllerInfo.ControllerID = controllerID;
-            modeControllerInfo = bllControllerInfo.GetModel(modeControllerInfo.ControllerID);
- 
-            deleteDooorUnit(modeControllerInfo.DoorUnitID1);   
-            deleteDooorUnit(modeControllerInfo.DoorUnitID2);  
-            deleteDooorUnit(modeControllerInfo.DoorUnitID3); 
-            deleteDooorUnit(modeControllerInfo.DoorUnitID4);
-           
-            if (bllControllerInfo.Delete(modeControllerInfo.ControllerID))
-                return ReturnValue.Success;
-            else
-                return ReturnValue.Unkonwn;
-
+            }
             
+            ret = bllExpansionBoardInfo.Delete(expansionBoardInfoID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("删除扩展板信息失败，扩展板ID为：" + expansionBoardInfoID);
+                return ReturnValue.Fail;
+            }
+            return ReturnValue.Success;
         }
+        #endregion
+
+        #region 删除门单元
+        private ReturnValue deleteDooorUnit(int doorUnitID)
+        {
+            bool ret = bllDoorUnitInfo.Exists(doorUnitID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("ID为：" + doorUnitID + "的门单元不存在");
+                return ReturnValue.NotExist;
+            }
+
+            ret = bllDoorUnitInfo.Delete(doorUnitID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("删除门单元信息失败，门单元ID为：" + doorUnitID);
+                return ReturnValue.Fail;
+            }
+            return ReturnValue.Success;
+        }
+        #endregion
+
+        #region 删除读卡器节假日工作模式信息
+        private ReturnValue deleteReaderHoliday(int readerID)
+        {
+
+            bool ret = bllReaderHoliday.Exists(readerID);
+            if (ret == false)
+            {
+                return ReturnValue.NotExist;
+            }
+
+            ret = bllReaderHoliday.DeleteList("select ReaderHolidayID from ReaderHoliday where ReaderID =" + readerID);
+
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("删除读卡器节假日信息失败，读卡器ID为：" + readerID);
+                return ReturnValue.Fail;
+            }
+            return ReturnValue.Success;
+        }
+        #endregion
+
+        #region 删除读卡器信息
+        private ReturnValue deleteReaderInfo(int readerInfoID)
+        {
+            bool ret = bllReaderInfo.Exists(readerInfoID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("ID为：" + readerInfoID + "的读卡器不存在");
+                return ReturnValue.NotExist;
+            }
+
+            ret = bllReaderInfo.Delete(readerInfoID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("删除读卡器信息失败，读卡器ID为：" + readerInfoID);
+                return ReturnValue.Fail;
+            }
+            return ReturnValue.Success;
+        }
+        #endregion
+
+        #region 删除读卡器周工作模式信息
+        private ReturnValue deleteReaderTimeAccess(int readerTimeAccessID)
+        {
+            bool ret = bllReaderTimeAccess.Exists(readerTimeAccessID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("ID为：" + readerTimeAccessID + " 的读卡器周工作模式不存在");
+                return ReturnValue.NotExist;
+            }
+            
+            ret = bllReaderTimeAccess.Delete(readerTimeAccessID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("删除读卡器周工作模式信息失败，读卡器周工作模式ID为：" + readerTimeAccessID);
+                return ReturnValue.Fail;
+            }
+            return ReturnValue.Success;
+        }
+        #endregion
+
+        #region 删除读卡器工作时区表
+        private ReturnValue deleteReaderTimeZone(int readerTimeZoneID)
+        {
+            bool ret = bllReaderTimeZone.Exists(readerTimeZoneID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("ID为：" + readerTimeZoneID + "的读卡器工作时区不存在");
+                return ReturnValue.NotExist;
+            }
+            
+            ret = bllReaderTimeZone.Delete(readerTimeZoneID);
+            if (ret == false)
+            {
+                MyMessageBox.MessageBoxOK("删除读卡器时区信息失败，时区信息ID为：" + readerTimeZoneID);
+                return ReturnValue.Fail;
+            }
+            return ReturnValue.Success;
+        }
+        #endregion
+        
         private void toolStripButtonDeleteControllerInfo_Click(object sender, EventArgs e)
         {
             if (kryptonDataGridView1.CurrentRow == null)
                 return;
             if (MyMessageBox.MessageBoxOkCancel("控制器信息删除后不能恢复,是否删除?") == System.Windows.Forms.DialogResult.Cancel)
                 return;
-            bllControllerInfo = new AccessDataBase.BLL.ControllerInfo();
 
             int selectIndex = kryptonDataGridView1.CurrentRow.Index;
             string controllerIDStr = kryptonDataGridView1["ControllerID", selectIndex].Value.ToString().Trim();
             int controllerIDInt;
-            modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerIDStr));
+            
+            if (int.TryParse(controllerIDStr, out controllerIDInt))
+            {
 
-            if(int.TryParse(controllerIDStr,out controllerIDInt))
+                #region 删除控制器信息
+                modelControllerInfo = bllControllerInfo.GetModel(controllerIDInt);
+                if (modelControllerInfo == null)
+                    return;
                 deleteControllerInfo(controllerIDInt);
+                #endregion
 
-            this.refreshDataGridView();
+                #region 删除扩展板
+
+                #region 删除扩展板1
+                if (modelControllerInfo.ExpansionBoardID1.HasValue & modelControllerInfo.ExpansionBoardID1 != 0)
+                {
+                    deleteExpansionBoardPointInfo(modelControllerInfo.ExpansionBoardID1.Value);
+                    deleteExpansionBoardInfo(modelControllerInfo.ExpansionBoardID1.Value);
+                }
+                #endregion
+
+                #region 删除扩展板2
+                if (modelControllerInfo.ExpansionBoardID2.HasValue & modelControllerInfo.ExpansionBoardID2 != 0)
+                {
+                    deleteExpansionBoardPointInfo(modelControllerInfo.ExpansionBoardID2.Value);
+                    deleteExpansionBoardInfo(modelControllerInfo.ExpansionBoardID2.Value);
+                }
+                #endregion
+
+                #region 删除扩展板3
+                if (modelControllerInfo.ExpansionBoardID3.HasValue & modelControllerInfo.ExpansionBoardID3 != 0)
+                {
+                    deleteExpansionBoardPointInfo(modelControllerInfo.ExpansionBoardID3.Value);
+                    deleteExpansionBoardInfo(modelControllerInfo.ExpansionBoardID3.Value);
+                }
+                #endregion
+
+                #region 删除扩展4
+                if (modelControllerInfo.ExpansionBoardID4.HasValue & modelControllerInfo.ExpansionBoardID4 != 0)
+                {
+                    deleteExpansionBoardPointInfo(modelControllerInfo.ExpansionBoardID4.Value);
+                    deleteExpansionBoardInfo(modelControllerInfo.ExpansionBoardID4.Value);
+                }
+                #endregion
+
+                #endregion
+
+                #region 删除门单元1
+                //删除门单元
+                if (modelControllerInfo.DoorUnitID1.HasValue & modelControllerInfo.DoorUnitID1.Value != 0)
+                {
+                    modelDoorUnitInfo = bllDoorUnitInfo.GetModel(modelControllerInfo.DoorUnitID1.Value);
+                    if (modelDoorUnitInfo == null)
+                        return;
+                    deleteDooorUnit(modelDoorUnitInfo.DoorUnitID);
+
+                    //删除读卡器信息
+                    if (modelDoorUnitInfo.ReadID1.HasValue & modelDoorUnitInfo.ReadID1.Value != 0)
+                    {
+                        modelReaderInfo = bllReaderInfo.GetModel(modelDoorUnitInfo.ReadID1.Value);
+                        if (modelReaderInfo == null)
+                            return;
+
+                        deleteReaderHoliday(modelReaderInfo.ReaderID);
+                        deleteReaderInfo(modelReaderInfo.ReaderID);
+
+                        //删除读卡器周工作模式
+                        if (modelReaderInfo.ReadTimeAccessID.HasValue & modelReaderInfo.ReadTimeAccessID.Value != 0)
+                        {
+                            modelReaderTimeAccess = bllReaderTimeAccess.GetModel(modelReaderInfo.ReadTimeAccessID.Value);
+
+                            if (modelReaderTimeAccess == null)
+                                return;
+
+                            deleteReaderTimeAccess(modelReaderTimeAccess.ReaderTimeAccessID);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Mon.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Tue.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Wed.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Thu.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Fri.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sat.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sun.Value);
+
+                        }
+
+                    }
+                    if (modelDoorUnitInfo.ReadID2.HasValue & modelDoorUnitInfo.ReadID2.Value != 0)
+                    {
+                        modelReaderInfo = bllReaderInfo.GetModel(modelDoorUnitInfo.ReadID2.Value);
+                        if (modelReaderInfo == null)
+                            return;
+
+                        deleteReaderHoliday(modelReaderInfo.ReaderID);
+                        deleteReaderInfo(modelReaderInfo.ReaderID);
+                        //删除读卡器周工作模式
+                        if (modelReaderInfo.ReadTimeAccessID.HasValue & modelReaderInfo.ReadTimeAccessID.Value != 0)
+                        {
+                            modelReaderTimeAccess = bllReaderTimeAccess.GetModel(modelReaderInfo.ReadTimeAccessID.Value);
+                            if (modelReaderTimeAccess == null)
+                                return;
+
+                            deleteReaderTimeAccess(modelReaderTimeAccess.ReaderTimeAccessID);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Mon.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Tue.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Wed.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Thu.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Fri.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sat.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sun.Value);
+
+                        }
+                    }
+                }
+
+                #endregion
+
+                #region 删除门单元2
+                //删除门单元
+                if (modelControllerInfo.DoorUnitID2.HasValue & modelControllerInfo.DoorUnitID2.Value != 0)
+                {
+                    modelDoorUnitInfo = bllDoorUnitInfo.GetModel(modelControllerInfo.DoorUnitID2.Value);
+                    if (modelDoorUnitInfo == null)
+                        return;
+                    deleteDooorUnit(modelDoorUnitInfo.DoorUnitID);
+
+                    //删除读卡器信息
+                    if (modelDoorUnitInfo.ReadID1.HasValue & modelDoorUnitInfo.ReadID1.Value != 0)
+                    {
+                        modelReaderInfo = bllReaderInfo.GetModel(modelDoorUnitInfo.ReadID1.Value);
+                        if (modelReaderInfo == null)
+                            return;
+
+                        deleteReaderHoliday(modelReaderInfo.ReaderID);
+                        deleteReaderInfo(modelReaderInfo.ReaderID);
+
+                        //删除读卡器周工作模式
+                        if (modelReaderInfo.ReadTimeAccessID.HasValue & modelReaderInfo.ReadTimeAccessID.Value != 0)
+                        {
+                            modelReaderTimeAccess = bllReaderTimeAccess.GetModel(modelReaderInfo.ReadTimeAccessID.Value);
+
+                            if (modelReaderTimeAccess == null)
+                                return;
+
+                            deleteReaderTimeAccess(modelReaderTimeAccess.ReaderTimeAccessID);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Mon.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Tue.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Wed.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Thu.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Fri.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sat.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sun.Value);
+
+                        }
+
+                    }
+                    if (modelDoorUnitInfo.ReadID2.HasValue & modelDoorUnitInfo.ReadID2.Value != 0)
+                    {
+                        modelReaderInfo = bllReaderInfo.GetModel(modelDoorUnitInfo.ReadID2.Value);
+                        if (modelReaderInfo == null)
+                            return;
+
+                        deleteReaderHoliday(modelReaderInfo.ReaderID);
+                        deleteReaderInfo(modelReaderInfo.ReaderID);
+                        //删除读卡器周工作模式
+                        if (modelReaderInfo.ReadTimeAccessID.HasValue & modelReaderInfo.ReadTimeAccessID.Value != 0)
+                        {
+                            modelReaderTimeAccess = bllReaderTimeAccess.GetModel(modelReaderInfo.ReadTimeAccessID.Value);
+                            if (modelReaderTimeAccess == null)
+                                return;
+
+                            deleteReaderTimeAccess(modelReaderTimeAccess.ReaderTimeAccessID);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Mon.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Tue.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Wed.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Thu.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Fri.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sat.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sun.Value);
+
+                        }
+                    }
+                }
+                #endregion
+
+                #region 删除门单元3
+                //删除门单元
+                if (modelControllerInfo.DoorUnitID3.HasValue & modelControllerInfo.DoorUnitID3.Value != 0)
+                {
+                    modelDoorUnitInfo = bllDoorUnitInfo.GetModel(modelControllerInfo.DoorUnitID3.Value);
+                    if (modelDoorUnitInfo == null)
+                        return;
+                    deleteDooorUnit(modelDoorUnitInfo.DoorUnitID);
+
+                    //删除读卡器信息
+                    if (modelDoorUnitInfo.ReadID1.HasValue & modelDoorUnitInfo.ReadID1.Value != 0)
+                    {
+                        modelReaderInfo = bllReaderInfo.GetModel(modelDoorUnitInfo.ReadID1.Value);
+                        if (modelReaderInfo == null)
+                            return;
+
+                        deleteReaderHoliday(modelReaderInfo.ReaderID);
+                        deleteReaderInfo(modelReaderInfo.ReaderID);
+
+                        //删除读卡器周工作模式
+                        if (modelReaderInfo.ReadTimeAccessID.HasValue & modelReaderInfo.ReadTimeAccessID.Value != 0)
+                        {
+                            modelReaderTimeAccess = bllReaderTimeAccess.GetModel(modelReaderInfo.ReadTimeAccessID.Value);
+
+                            if (modelReaderTimeAccess == null)
+                                return;
+
+                            deleteReaderTimeAccess(modelReaderTimeAccess.ReaderTimeAccessID);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Mon.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Tue.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Wed.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Thu.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Fri.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sat.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sun.Value);
+
+                        }
+
+                    }
+                    if (modelDoorUnitInfo.ReadID2.HasValue & modelDoorUnitInfo.ReadID2.Value != 0)
+                    {
+                        modelReaderInfo = bllReaderInfo.GetModel(modelDoorUnitInfo.ReadID2.Value);
+                        if (modelReaderInfo == null)
+                            return;
+
+                        deleteReaderHoliday(modelReaderInfo.ReaderID);
+                        deleteReaderInfo(modelReaderInfo.ReaderID);
+                        //删除读卡器周工作模式
+                        if (modelReaderInfo.ReadTimeAccessID.HasValue & modelReaderInfo.ReadTimeAccessID.Value != 0)
+                        {
+                            modelReaderTimeAccess = bllReaderTimeAccess.GetModel(modelReaderInfo.ReadTimeAccessID.Value);
+                            if (modelReaderTimeAccess == null)
+                                return;
+
+                            deleteReaderTimeAccess(modelReaderTimeAccess.ReaderTimeAccessID);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Mon.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Tue.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Wed.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Thu.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Fri.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sat.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sun.Value);
+
+                        }
+                    }
+                }
+                #endregion
+
+                #region 删除门单元4
+                //删除门单元
+                if (modelControllerInfo.DoorUnitID4.HasValue & modelControllerInfo.DoorUnitID4.Value != 0)
+                {
+                    modelDoorUnitInfo = bllDoorUnitInfo.GetModel(modelControllerInfo.DoorUnitID4.Value);
+                    if (modelDoorUnitInfo == null)
+                        return;
+                    deleteDooorUnit(modelDoorUnitInfo.DoorUnitID);
+
+                    //删除读卡器信息
+                    if (modelDoorUnitInfo.ReadID1.HasValue & modelDoorUnitInfo.ReadID1.Value != 0)
+                    {
+                        modelReaderInfo = bllReaderInfo.GetModel(modelDoorUnitInfo.ReadID1.Value);
+                        if (modelReaderInfo == null)
+                            return;
+
+                        deleteReaderHoliday(modelReaderInfo.ReaderID);
+                        deleteReaderInfo(modelReaderInfo.ReaderID);
+
+                        //删除读卡器周工作模式
+                        if (modelReaderInfo.ReadTimeAccessID.HasValue & modelReaderInfo.ReadTimeAccessID.Value != 0)
+                        {
+                            modelReaderTimeAccess = bllReaderTimeAccess.GetModel(modelReaderInfo.ReadTimeAccessID.Value);
+
+                            if (modelReaderTimeAccess == null)
+                                return;
+
+                            deleteReaderTimeAccess(modelReaderTimeAccess.ReaderTimeAccessID);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Mon.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Tue.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Wed.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Thu.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Fri.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sat.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sun.Value);
+
+                        }
+
+                    }
+                    if (modelDoorUnitInfo.ReadID2.HasValue & modelDoorUnitInfo.ReadID2.Value != 0)
+                    {
+                        modelReaderInfo = bllReaderInfo.GetModel(modelDoorUnitInfo.ReadID2.Value);
+                        if (modelReaderInfo == null)
+                            return;
+
+                        deleteReaderHoliday(modelReaderInfo.ReaderID);
+                        deleteReaderInfo(modelReaderInfo.ReaderID);
+                        //删除读卡器周工作模式
+                        if (modelReaderInfo.ReadTimeAccessID.HasValue & modelReaderInfo.ReadTimeAccessID.Value != 0)
+                        {
+                            modelReaderTimeAccess = bllReaderTimeAccess.GetModel(modelReaderInfo.ReadTimeAccessID.Value);
+                            if (modelReaderTimeAccess == null)
+                                return;
+
+                            deleteReaderTimeAccess(modelReaderTimeAccess.ReaderTimeAccessID);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Mon.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Tue.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Wed.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Thu.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Fri.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sat.Value);
+                            deleteReaderTimeZone(modelReaderTimeAccess.Sun.Value);
+
+                        }
+                    }
+                }
+                #endregion
+
+                
+            }
+            refreshDataGridView();
         }
         private void toolStripButtonDownLoadControllerInfo_Click(object sender, EventArgs e)
         {
@@ -255,7 +626,43 @@ namespace KryptonAccessController.RelationController
             int selectIndex = kryptonDataGridView1.CurrentRow.Index;
             string controllerID = kryptonDataGridView1["ControllerID", selectIndex].Value.ToString().Trim();
 
-            AccessDataBase.Model.ControllerInfo modeControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+            AccessDataBase.Model.ControllerInfo modelControllerInfo = bllControllerInfo.GetModel(int.Parse(controllerID));
+
+            int doorUnitCounts =    (modelControllerInfo.DoorUnitEnable1 == true ? 1 : 0) +
+                                    (modelControllerInfo.DoorUnitEnable2 == true ? 1 : 0) +
+                                    (modelControllerInfo.DoorUnitEnable3 == true ? 1 : 0) +
+                                    (modelControllerInfo.DoorUnitEnable4 == true ? 1 : 0);
+            int expansionBoardCounts =
+                (modelControllerInfo.ExpansionBoardEnable1 == true ? 1 : 0) +
+                (modelControllerInfo.ExpansionBoardEnable2 == true ? 1 : 0) +
+                (modelControllerInfo.ExpansionBoardEnable3 == true ? 1 : 0) +
+                (modelControllerInfo.ExpansionBoardEnable4 == true ? 1 : 0);
+           
+            string data = 
+                "ControllerID=" + modelControllerInfo.ControllerID+","+
+                "ControllerType="+modelControllerInfo.ControllerType+","+
+                "ControllerName='"+modelControllerInfo.ControllerName+"',"+
+                "ControllerLocation='"+modelControllerInfo.ControllerLocation+"',"+
+                "EncryptionType="+modelControllerInfo.CommunicateType+","+
+                "ControllerVersion='"+modelControllerInfo.ControllerVersion+"',"+
+                "ControllerMAC='"+modelControllerInfo.ControllerMAC+"',"+
+                "ControllerIP='"+modelControllerInfo.ControllerIP+"',"+
+                "ControllerSubnetMask='"+modelControllerInfo.ControllerSubnetMask+"',"+
+                "ControllerGateway='"+modelControllerInfo.ControllerGateway+"',"+
+                "ControllerPort="+modelControllerInfo.ControllerPort+","+
+                "ControllerDNS='"+modelControllerInfo.ControllerDNS+"',"+
+                "ControllerBUDNS='"+modelControllerInfo.ControllerBUDNS+"',"+
+                "ControllerAddr485="+modelControllerInfo.ControllerAddr485+","+
+                "ControllerBaudrate="+modelControllerInfo.ControllerBaudrate+","+
+                "ControllerDataBits="+modelControllerInfo.ControllerDataBits+","+
+                //"ControllerStopBits="+modelControllerInfo.ControllerStopBits+","+
+                "ControllerStopBits=" + 1 + "," +
+                "ControllerParityCheck='"+modelControllerInfo.ControllerParityCheck+"',"+
+                "ControllerFlowControl='"+modelControllerInfo.ControllerFlowControl+"',"+
+                "ControllerSAM="+modelControllerInfo.ControllerSAM+","+
+                "ControllerSAMType="+modelControllerInfo.ControllerSAMType+","+
+                "DoorUnitCounts=" + doorUnitCounts+ "," +
+                "ExpansionBoardCounts=" + expansionBoardCounts;
             /*
              * 调用API函数
              */
@@ -263,6 +670,11 @@ namespace KryptonAccessController.RelationController
         }
 
         private void kryptonDataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+        }
+
+        private void ControllerInfo_Load(object sender, EventArgs e)
         {
 
         }

@@ -6,7 +6,7 @@ using KryptonAccessController.OperationFile;
 using KryptonAccessController.RelationManage;
 namespace KryptonAccessController
 {
-    public enum ReturnValue {NotAvailable = -4,Exist = -3,Unkonwn=-2,NotExist = -1,Success = 0 };
+    public enum ReturnValue {Fail = -5,NotAvailable = -4,Exist = -3,Unkonwn=-2,NotExist = -1,Success = 0 };
     public enum Language { Error = 0, Chinese = 1, English = 2 };
     public enum OpenMode { Add, Update, View,ChangeCard,Login,Unclock };
     public enum ModeValue { edit = 0, save = 1 };
@@ -42,8 +42,8 @@ namespace KryptonAccessController
             //.InstalledUICulture.Name
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormDataBase());
-            Application.Run(new Tool.KryptonFormDeviceManage());
+            Application.Run(new FormDataBase());
+            //Application.Run(new Tool.KryptonFormDeviceManage());
         }
     }
 }

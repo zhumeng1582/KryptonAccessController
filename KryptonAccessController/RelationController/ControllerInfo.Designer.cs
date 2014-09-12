@@ -94,6 +94,7 @@ namespace KryptonAccessController.RelationController
             this.Controls.Add(this.kryptonPanel);
             this.Name = "ControllerInfo";
             this.Text = "ControllerInfo";
+            this.Load += new System.EventHandler(this.ControllerInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
             this.kryptonPanel.ResumeLayout(false);
             this.kryptonPanel.PerformLayout();

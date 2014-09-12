@@ -771,7 +771,7 @@ namespace KryptonAccessController.Tool
 
         private void kryptonButtonJson_Click(object sender, EventArgs e)
         {
-           JsonObject json =  TestJson.jsonDeserialize(kryptonTextBoxTestJson.Text);
+            JsonObject json =  TestJson.jsonDeserialize(kryptonTextBoxTestJson.Text);
             kryptonTextBoxTestJson.Text ="key:"+ json.Key+",value:"+json.Value;
         }
 
