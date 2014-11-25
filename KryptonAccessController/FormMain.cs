@@ -82,11 +82,6 @@ namespace KryptonAccessController
             toolStripMenuItemTimeGroup.Text = English.TimeGroup;
             labelUser.Text = toolStripMenuItemUser.Text = English.User;
             labelCardInfo.Text = toolStripMenuItemCardInfo.Text = English.CardInfo;
-            
-            toolStripMenuItemTimeRelation.Text = English.TimeRelation;
-            toolStripMenuItemTimeZone.Text = English.TimeZone;
-            toolStripMenuItemAccessTime.Text = English.AccessTime;
-            toolStripMenuItemHoliday.Text = English.Holiday;
 
             toolStripMenuItemRecordRelation.Text = English.RecordRelation;
 
@@ -232,6 +227,33 @@ namespace KryptonAccessController
         {
             WidgetThread.WidgetThread.displayFormOnPanel(this.splitContainer1.Panel2.Controls, timeAcessInfo);
         }
+
+        private void labelController_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItemController_Click(sender, e);
+        }
+
+        private void labelDoorUnit_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItemDoorUnit_Click(sender, e);
+        }
+
+        private void labelUser_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItemUser_Click(sender, e);
+        }
+
+        private void labelCardInfo_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItemCardInfo_Click(sender, e);
+        }
+
+        private void labelDepartment_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItemDepartment_Click(sender, e);
+        }
+
+       
 
         
 

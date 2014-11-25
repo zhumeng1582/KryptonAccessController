@@ -129,7 +129,7 @@ namespace KryptonAccessController.RelationManage
             this.comboBoxUserName.Location = new System.Drawing.Point(145, 16);
             this.comboBoxUserName.MaxLength = 8;
             this.comboBoxUserName.Name = "comboBoxUserName";
-            this.comboBoxUserName.Size = new System.Drawing.Size(100, 23);
+            this.comboBoxUserName.Size = new System.Drawing.Size(100, 21);
             this.comboBoxUserName.TabIndex = 16;
             this.comboBoxUserName.Text = "Admin";
             this.comboBoxUserName.ValueMember = "0";
@@ -139,7 +139,7 @@ namespace KryptonAccessController.RelationManage
             this.labelFailInfo.ForeColor = System.Drawing.Color.Red;
             this.labelFailInfo.Location = new System.Drawing.Point(68, 105);
             this.labelFailInfo.Name = "labelFailInfo";
-            this.labelFailInfo.Size = new System.Drawing.Size(92, 20);
+            this.labelFailInfo.Size = new System.Drawing.Size(85, 20);
             this.labelFailInfo.TabIndex = 15;
             this.labelFailInfo.Values.Text = "√‹¬Î ‰»Î¥ÌŒÛ";
             // 
@@ -149,7 +149,7 @@ namespace KryptonAccessController.RelationManage
             this.textBoxUserPassword.MaxLength = 6;
             this.textBoxUserPassword.Name = "textBoxUserPassword";
             this.textBoxUserPassword.PasswordChar = '*';
-            this.textBoxUserPassword.Size = new System.Drawing.Size(100, 23);
+            this.textBoxUserPassword.Size = new System.Drawing.Size(100, 20);
             this.textBoxUserPassword.TabIndex = 12;
             this.textBoxUserPassword.Text = "rdm123";
             // 
@@ -157,7 +157,7 @@ namespace KryptonAccessController.RelationManage
             // 
             this.labelUserPassword.Location = new System.Drawing.Point(70, 54);
             this.labelUserPassword.Name = "labelUserPassword";
-            this.labelUserPassword.Size = new System.Drawing.Size(58, 20);
+            this.labelUserPassword.Size = new System.Drawing.Size(55, 20);
             this.labelUserPassword.TabIndex = 11;
             this.labelUserPassword.Values.Text = "√‹  ¬Î£∫";
             // 
@@ -165,7 +165,7 @@ namespace KryptonAccessController.RelationManage
             // 
             this.labelUserName.Location = new System.Drawing.Point(68, 24);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(65, 20);
+            this.labelUserName.Size = new System.Drawing.Size(60, 20);
             this.labelUserName.TabIndex = 10;
             this.labelUserName.Values.Text = "”√ªß√˚£∫";
             // 
@@ -196,6 +196,7 @@ namespace KryptonAccessController.RelationManage
             this.Name = "FormLogin";
             this.Text = "µ«¬º";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
             this.Load += new System.EventHandler(this.Ktypton1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPaneLogin)).EndInit();
             this.kryptonPaneLogin.ResumeLayout(false);

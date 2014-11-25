@@ -64,23 +64,33 @@ namespace KryptonAccessController.RelationRealTimeMoni
             this.columnHeaderDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelElectronicMapName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tabPageDetails = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel1)).BeginInit();
             this.kryptonSplitContainer1.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel2)).BeginInit();
             this.kryptonSplitContainer1.Panel2.SuspendLayout();
             this.kryptonSplitContainer1.SuspendLayout();
             this.contextMenuStripElectronicMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMapList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccessList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBoxFindDevicePoint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBoxFindDevicePoint.Panel)).BeginInit();
             this.groupBoxFindDevicePoint.Panel.SuspendLayout();
             this.groupBoxFindDevicePoint.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerRealWatch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerRealWatch.Panel1)).BeginInit();
             this.kryptonSplitContainerRealWatch.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerRealWatch.Panel2)).BeginInit();
             this.kryptonSplitContainerRealWatch.Panel2.SuspendLayout();
             this.kryptonSplitContainerRealWatch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerMap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerMap.Panel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerMap.Panel2)).BeginInit();
             this.kryptonSplitContainerMap.Panel2.SuspendLayout();
             this.kryptonSplitContainerMap.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -88,6 +98,7 @@ namespace KryptonAccessController.RelationRealTimeMoni
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhotograph)).BeginInit();
             this.tabPageTriggerEvent.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.tabPageDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel
@@ -294,6 +305,7 @@ namespace KryptonAccessController.RelationRealTimeMoni
             this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.tabControl1.Controls.Add(this.tabPageReadCard);
             this.tabControl1.Controls.Add(this.tabPageTriggerEvent);
+            this.tabControl1.Controls.Add(this.tabPageDetails);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -390,7 +402,7 @@ namespace KryptonAccessController.RelationRealTimeMoni
             this.listViewRealWatchTriggerEvent.GridLines = true;
             this.listViewRealWatchTriggerEvent.Location = new System.Drawing.Point(3, 3);
             this.listViewRealWatchTriggerEvent.Name = "listViewRealWatchTriggerEvent";
-            this.listViewRealWatchTriggerEvent.Size = new System.Drawing.Size(602, 123);
+            this.listViewRealWatchTriggerEvent.Size = new System.Drawing.Size(793, 147);
             this.listViewRealWatchTriggerEvent.TabIndex = 3;
             this.listViewRealWatchTriggerEvent.UseCompatibleStateImageBehavior = false;
             this.listViewRealWatchTriggerEvent.View = System.Windows.Forms.View.Details;
@@ -431,6 +443,34 @@ namespace KryptonAccessController.RelationRealTimeMoni
             this.toolStripStatusLabelElectronicMapName.Size = new System.Drawing.Size(131, 17);
             this.toolStripStatusLabelElectronicMapName.Text = "toolStripStatusLabel1";
             // 
+            // tabPageDetails
+            // 
+            this.tabPageDetails.Controls.Add(this.listView1);
+            this.tabPageDetails.Location = new System.Drawing.Point(4, 4);
+            this.tabPageDetails.Name = "tabPageDetails";
+            this.tabPageDetails.Size = new System.Drawing.Size(799, 153);
+            this.tabPageDetails.TabIndex = 2;
+            this.tabPageDetails.Text = "≤‚ ‘–≈œ¢";
+            this.tabPageDetails.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(799, 153);
+            this.listView1.TabIndex = 4;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Width = 145;
+            // 
             // FormRealTimeMoni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -442,22 +482,29 @@ namespace KryptonAccessController.RelationRealTimeMoni
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
             this.kryptonPanel.ResumeLayout(false);
             this.kryptonPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel1)).EndInit();
             this.kryptonSplitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel2)).EndInit();
             this.kryptonSplitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).EndInit();
             this.kryptonSplitContainer1.ResumeLayout(false);
             this.contextMenuStripElectronicMap.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMapList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccessList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBoxFindDevicePoint.Panel)).EndInit();
             this.groupBoxFindDevicePoint.Panel.ResumeLayout(false);
             this.groupBoxFindDevicePoint.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupBoxFindDevicePoint)).EndInit();
             this.groupBoxFindDevicePoint.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerRealWatch.Panel1)).EndInit();
             this.kryptonSplitContainerRealWatch.Panel1.ResumeLayout(false);
             this.kryptonSplitContainerRealWatch.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerRealWatch.Panel2)).EndInit();
             this.kryptonSplitContainerRealWatch.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerRealWatch)).EndInit();
             this.kryptonSplitContainerRealWatch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerMap.Panel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerMap.Panel2)).EndInit();
             this.kryptonSplitContainerMap.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainerMap)).EndInit();
             this.kryptonSplitContainerMap.ResumeLayout(false);
@@ -467,6 +514,7 @@ namespace KryptonAccessController.RelationRealTimeMoni
             this.tabPageTriggerEvent.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.tabPageDetails.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -508,6 +556,9 @@ namespace KryptonAccessController.RelationRealTimeMoni
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAdd;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUpdate;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelete;
+        private System.Windows.Forms.TabPage tabPageDetails;
+        public System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
 

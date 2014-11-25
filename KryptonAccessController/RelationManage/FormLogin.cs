@@ -30,8 +30,10 @@ namespace KryptonAccessController.RelationManage
 
             if (openMode == OpenMode.Unclock)
             {
+
                 buttonCancel.Visible = false;
                 comboBoxUserName.Enabled = false;
+                
                 buttonLogin.Location = new Point ((this.Width - buttonLogin.Width) / 2,buttonLogin.Location.Y);
             }
         }
@@ -156,6 +158,12 @@ namespace KryptonAccessController.RelationManage
                 buttonLogin_Click(sender, e);
             }
 
+        }
+
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MyMessageBox.MessageBoxOK("请输入正确的用户名和密码进行登录");
+            e.Cancel = true;
         }
     }
 }

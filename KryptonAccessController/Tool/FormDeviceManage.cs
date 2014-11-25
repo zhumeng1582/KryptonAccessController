@@ -596,9 +596,8 @@ namespace KryptonAccessController.Tool
         {
             string ipaddress = kryptonComboBoxControllerIp.Text.Trim();
 
-
             string deviceDate = "DeviceDate=" + DateTime.Now.Date.ToShortDateString() + ",";
-            string deviceTime = "DeviceTime=" + DateTime.Now.ToLongTimeString() + ",";
+            string deviceTime = "DeviceTime=" + DateTime.Now.ToLongTimeString();
             string deviceDateTime = deviceDate + deviceTime;
 
             int ret = DllC0402.setDeviceParam(ipaddress, deviceDateTime);
@@ -728,13 +727,10 @@ namespace KryptonAccessController.Tool
 
         private void button_TestSetDeviceData_Click(object sender, EventArgs e)
         {
-            //"ControllerID=241,ControllerType=1,ControllerName='Controller1',ControllerLocation='XXXXX',EncryptionType=0,ControllerVersion='Vxx.xx.xx-x',ControllerMAC='AA:BB:CC:DD:EE:FF',ControllerIP='192.168.1.241',ControllerSubnetMask='255.255.255.0',ControllerGateway='192.168.1.1',ControllerPort=1200,ControllerDNS='8.8.8.8',ControllerBUDNS='114.114.114.114',ControllerAddr485=0,ControllerBaudrate=115200,ControllerDataBits=8,ControllerStopBits=1,ControllerParityCheck='None',ControllerFlowControl='None',ControllerSAM=0,ControllerSAMType=0,DoorUnitCounts=2,ExpansionBoardCounts=0"
             string ipaddress = kryptonComboBoxControllerIp.Text.Trim();
-            int ret = DllC0402.setDeviceData(ipaddress, "ControllerInfo",
-
-               "ControllerID=241,ControllerType=1,ControllerName='Controller1',ControllerLocation='XXXXX',EncryptionType=0,ControllerVersion='Vxx.xx.xx-x',ControllerMAC='AA:BB:CC:DD:EE:FF',ControllerIP='192.168.1.241',ControllerSubnetMask='255.255.255.0',ControllerGateway='192.168.1.1',ControllerPort=1200,ControllerDNS='8.8.8.8',ControllerBUDNS='114.114.114.114',ControllerAddr485=0,ControllerBaudrate=115200,ControllerDataBits=8,ControllerStopBits=1,ControllerParityCheck='None',ControllerFlowControl='None',ControllerSAM=0,ControllerSAMType=0,DoorUnitCounts=2,ExpansionBoardCounts=0", "");
-            //int ret = DllC0402.setDeviceData(ipaddress, "ControllerInfo", "ControllerID=241,ControllerType=1", "");
-
+            //int ret = DllC0402.setJsonDeviceData(ipaddress, "UserInfo", "{UserID:1,UserName:'user1',Photograph:0xFFFFF,UserGroupID1:1,UserGroupID2:1,UserGroupID3:1,UserGroupID4:1,FingerPosition0:1,FingerPrint0:0xFFFFF,FingerPosition1:1,FingerPrint1:0xFFFFFF,SecurityAccessLevel:1,PrimaryCardID:'00000000',SecondCardID:'00000000'}", "");
+            int ret = DllC0402.setJsonDeviceData(ipaddress, "UserInfo", "{ExpansionBoardPointID:1,PointName:input1,PointType:1,PointID:1,PointState:Null,ExpansionBoardID:1}", "");
+            
             if (ret >= 0)
             {
                 MyMessageBox.MessageBoxOK("success");
@@ -766,13 +762,100 @@ namespace KryptonAccessController.Tool
 
         private void kryptonButtonTestJson_Click(object sender, EventArgs e)
         {
-            kryptonTextBoxTestJson.Text = TestJson.jsonSerialize();
+            KryptonAccessController.SQLite.Model.UserRelation.CardInfo modelCardInfo = JSON.parse<KryptonAccessController.SQLite.Model.UserRelation.CardInfo>("{CardId:'000000',CardVersion:'1',CardType:0,CardLevel:'E',CardPassword:000000,CardIssueDate:'2014-09-01',CardValidDate:'2016-09-01',StateFlag:'1'}");
         }
 
         private void kryptonButtonJson_Click(object sender, EventArgs e)
         {
-            JsonObject json =  TestJson.jsonDeserialize(kryptonTextBoxTestJson.Text);
-            kryptonTextBoxTestJson.Text ="key:"+ json.Key+",value:"+json.Value;
+            //JsonObject json = JsonSerialize.jsonDeserialize(kryptonTextBoxTestJson.Text);
+            //kryptonTextBoxTestJson.Text ="key:"+ json.Key+",value:"+json.Value;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string ipaddress = kryptonComboBoxControllerIp.Text.Trim();
+
+            String Temp = "UserID=" + 7;
+            StringBuilder Data = new StringBuilder(Temp);
+
+            //int ret = DllC0402.setDeviceData(ipaddress, "ControllerInfo","ControllerID=241,ControllerType=1,ControllerName='Controller1',ControllerLocation='XXXXX',EncryptionType=0,ControllerVersion='Vxx.xx.xx-x',ControllerMAC='AA:BB:CC:DD:EE:FF',ControllerIP='192.168.1.241',ControllerSubnetMask='255.255.255.0',ControllerGateway='192.168.1.1',ControllerPort=1200,ControllerDNS='8.8.8.8',ControllerBUDNS='114.114.114.114',ControllerAddr485=0,ControllerBaudrate=115200,ControllerDataBits=8,ControllerStopBits=1,ControllerParityCheck='None',ControllerFlowControl='None',ControllerSAM=0,ControllerSAMType=0,DoorUnitCounts=2,ExpansionBoardCounts=0", "");
+            int ret = DllC0402.deleteDeviceData(ipaddress, "UserInfo", Data, "");
+
+            if (ret >= 0)
+            {
+                MyMessageBox.MessageBoxOK("success");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string ipaddress = kryptonComboBoxControllerIp.Text.Trim();
+
+            String Temp = "UserID=" + 7;
+            StringBuilder Data = new StringBuilder(Temp);
+
+            //int ret = DllC0402.setDeviceData(ipaddress, "ControllerInfo","ControllerID=241,ControllerType=1,ControllerName='Controller1',ControllerLocation='XXXXX',EncryptionType=0,ControllerVersion='Vxx.xx.xx-x',ControllerMAC='AA:BB:CC:DD:EE:FF',ControllerIP='192.168.1.241',ControllerSubnetMask='255.255.255.0',ControllerGateway='192.168.1.1',ControllerPort=1200,ControllerDNS='8.8.8.8',ControllerBUDNS='114.114.114.114',ControllerAddr485=0,ControllerBaudrate=115200,ControllerDataBits=8,ControllerStopBits=1,ControllerParityCheck='None',ControllerFlowControl='None',ControllerSAM=0,ControllerSAMType=0,DoorUnitCounts=2,ExpansionBoardCounts=0", "");
+            int ret = DllC0402.updateDeviceData(ipaddress, "UserInfo", "UserID=7", "UserName='user1',Photograph=NULL,UserGroupID1=1,UserGroupID2=1,UserGroupID3=1,UserGroupID4=1,FingerPosition0=1,FingerPrint0=NULL,FingerPosition1=1,FingerPrint1=NULL,SecurityAccessLevel=1,PrimaryCardID='00000000',SecondCardID='00000000'", "");
+
+            if (ret >= 0)
+            {
+                MyMessageBox.MessageBoxOK("success");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string ipaddress = kryptonComboBoxControllerIp.Text.Trim();
+
+            int ret = DllC0402.setRTLogCMD(ipaddress);
+            if (ret != 0)
+                return;
+
+            StringBuilder Buffer = new StringBuilder(1024);
+
+            int handle = DllC0402.connectLOG(ipaddress);
+            if (ret != 0)
+                return;
+            while (true) 
+            {
+
+                int flag = DllC0402.getRTLog(handle, Buffer, 5);
+                if (flag <= 0)
+                    continue;
+                string strCount = Buffer.ToString().Substring(0, 4);
+                int intCount = int.Parse(strCount);
+
+                flag = DllC0402.getRTLog(handle, Buffer, intCount);
+                if (flag <= 0)
+                    continue;
+
+                
+                textBox2.Text = Buffer.ToString();
+            }
+        }
+
+        private void buttonJsonToString_Click(object sender, EventArgs e)
+        {
+            string json = textBoxJson.Text.Trim();
+            textBoxString.Text = DllC0402.jsonToString(json);
+        }
+
+        private void buttonStringToJson_Click(object sender, EventArgs e)
+        {
+            string str = textBoxString.Text.Trim();
+            textBoxJson.Text = DllC0402.stringToJson(str);
+        }
+
+        private void buttonSetData_Click(object sender, EventArgs e)
+        {
+            string ipaddress = kryptonComboBoxControllerIp.Text.Trim();
+            string str = "UserID=1,UserName='user1',Photograph=NULL,UserGroupID1=1,UserGroupID2=1,UserGroupID3=1,UserGroupID4=1,FingerPosition0=1,FingerPrint0=NULL,FingerPosition1=1,FingerPrint1=NULL,SecurityAccessLevel=1,PrimaryCardID='00000000',SecondCardID='00000000'";//textBoxString.Text.Trim();
+            int ret = DllC0402.setDeviceData(ipaddress, "UserInfo", str, null);//.setJsonDeviceData(ipaddress, "UserInfo", "{ExpansionBoardPointID:1,PointName:input1,PointType:1,PointID:1,PointState:Null,ExpansionBoardID:1}", "");
+
+            if (ret >= 0)
+            {
+                MyMessageBox.MessageBoxOK("success");
+            }
         }
 
     }

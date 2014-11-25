@@ -6,16 +6,10 @@ using System.Web.Script.Serialization;
 
 namespace KryptonAccessController.Json
 {
-    public class TestJson
+    public class JsonSerialize
     {
-        public static string  jsonSerialize()
+        public static string jsonSerialize(Object json)
         {
-            
-            JsonObject json = new JsonObject 
-            {
-                Key="1",
-                Value="diyi"
-            };
             JavaScriptSerializer jss = new JavaScriptSerializer();
             return jss.Serialize(json);
 
@@ -27,16 +21,11 @@ namespace KryptonAccessController.Json
             string key = ret.Key;
             string value = ret.Value;*/
         }
-        public static JsonObject jsonDeserialize(string jsonStr)
+        public static Object jsonDeserialize(string jsonStr)
         {
             var serializer = new JavaScriptSerializer();
 
-            var ret = serializer.Deserialize<JsonObject>(jsonStr);
-            JsonObject json = new JsonObject();
-
-            json.Key = ret.Key;
-            json.Value = ret.Value;
-
+            Object json = serializer.Deserialize<Object>(jsonStr);
             return json;
         }
     }

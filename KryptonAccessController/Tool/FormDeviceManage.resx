@@ -120,10 +120,6 @@
   <metadata name="statusStripMessage.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>16, 6</value>
   </metadata>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>ControllerID=241,ControllerType=1,ControllerName='Controller1',ControllerLocation='XXXXX',EncryptionType=0,ControllerVersion='Vxx.xx.xx-x',ControllerMAC='AA:BB:CC:DD:EE:FF',ControllerIP='192.168.1.241',ControllerSubnetMask='255.255.255.0',ControllerGateway='192.168.1.1',ControllerPort=1200,ControllerDNS='8.8.8.8',ControllerBUDNS='114.114.114.114',ControllerAddr485=0,ControllerBaudrate=115200,ControllerDataBits=8,ControllerStopBits=1,ControllerParityCheck='None',ControllerFlowControl='None',ControllerSAM=0,ControllerSAMType=0,DoorUnitCounts=2,ExpansionBoardCounts=0
-</value>
-  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>

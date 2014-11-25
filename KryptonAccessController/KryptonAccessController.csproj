@@ -69,6 +69,7 @@
     <Reference Include="Maticsoft.DBUtility">
       <HintPath>.\Maticsoft.DBUtility.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="system.data.datasetextensions" />
@@ -90,7 +91,7 @@
   <ItemGroup>
     <Compile Include="Json\JSON.cs" />
     <Compile Include="Json\JsonObject.cs" />
-    <Compile Include="Json\TestJson.cs" />
+    <Compile Include="Json\JsonSerialize.cs" />
     <Compile Include="SQLite\BLL\ControllerRelation\AuxiliaryUnit.cs" />
     <Compile Include="SQLite\BLL\ControllerRelation\ControllerInfo.cs" />
     <Compile Include="SQLite\BLL\ControllerRelation\DoorUnitInfo.cs" />

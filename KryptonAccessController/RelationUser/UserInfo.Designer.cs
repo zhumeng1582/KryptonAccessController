@@ -35,6 +35,7 @@ namespace KryptonAccessController.RelationUser
             this.toolStripUserInfo = new System.Windows.Forms.ToolStrip();
             this.dataGridViewLinkColumn1 = new System.Windows.Forms.DataGridViewLinkColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.kryptonTreeViewControllerList = new ComponentFactory.Krypton.Toolkit.KryptonTreeView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWithCheckBox1)).BeginInit();
@@ -47,7 +48,7 @@ namespace KryptonAccessController.RelationUser
             this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel.Name = "kryptonPanel";
-            this.kryptonPanel.Size = new System.Drawing.Size(292, 246);
+            this.kryptonPanel.Size = new System.Drawing.Size(408, 246);
             this.kryptonPanel.TabIndex = 0;
             // 
             // dataGridViewWithCheckBox1
@@ -61,7 +62,7 @@ namespace KryptonAccessController.RelationUser
             this.dataGridViewWithCheckBox1.Name = "dataGridViewWithCheckBox1";
             this.dataGridViewWithCheckBox1.RowTemplate.Height = 23;
             this.dataGridViewWithCheckBox1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewWithCheckBox1.Size = new System.Drawing.Size(292, 221);
+            this.dataGridViewWithCheckBox1.Size = new System.Drawing.Size(408, 221);
             this.dataGridViewWithCheckBox1.TabIndex = 4;
             // 
             // toolStripUserInfo
@@ -69,7 +70,7 @@ namespace KryptonAccessController.RelationUser
             this.toolStripUserInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripUserInfo.Location = new System.Drawing.Point(0, 0);
             this.toolStripUserInfo.Name = "toolStripUserInfo";
-            this.toolStripUserInfo.Size = new System.Drawing.Size(292, 25);
+            this.toolStripUserInfo.Size = new System.Drawing.Size(408, 25);
             this.toolStripUserInfo.TabIndex = 3;
             this.toolStripUserInfo.Text = "toolStrip1";
             // 
@@ -90,12 +91,25 @@ namespace KryptonAccessController.RelationUser
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.Width = 50;
             // 
+            // kryptonTreeViewControllerList
+            // 
+            this.kryptonTreeViewControllerList.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.InputControlStandalone;
+            this.kryptonTreeViewControllerList.BorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.InputControlStandalone;
+            this.kryptonTreeViewControllerList.Dock = System.Windows.Forms.DockStyle.Right;
+            this.kryptonTreeViewControllerList.ItemHeight = 21;
+            this.kryptonTreeViewControllerList.ItemStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ListItem;
+            this.kryptonTreeViewControllerList.Location = new System.Drawing.Point(408, 0);
+            this.kryptonTreeViewControllerList.Name = "kryptonTreeViewControllerList";
+            this.kryptonTreeViewControllerList.Size = new System.Drawing.Size(158, 246);
+            this.kryptonTreeViewControllerList.TabIndex = 1;
+            // 
             // UserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 246);
+            this.ClientSize = new System.Drawing.Size(566, 246);
             this.Controls.Add(this.kryptonPanel);
+            this.Controls.Add(this.kryptonTreeViewControllerList);
             this.Name = "UserInfo";
             this.Text = "用户信息表";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
@@ -114,6 +128,7 @@ namespace KryptonAccessController.RelationUser
         private MyComponents.DataGridViewWithCheckBox dataGridViewWithCheckBox1;
         private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private ComponentFactory.Krypton.Toolkit.KryptonTreeView kryptonTreeViewControllerList;
     }
 }
 

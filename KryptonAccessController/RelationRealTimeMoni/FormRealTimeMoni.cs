@@ -25,6 +25,8 @@ namespace KryptonAccessController.RelationRealTimeMoni
         private ModeValue modeValue = ModeValue.save;
         private RealWatchState realWatchState = RealWatchState.Close;
 
+        Dictionary<int, RealTimeMonitor> realTimeControllerList = new Dictionary<int, RealTimeMonitor>();
+
         private Font Var_Font = new Font("ËÎÌו", 11);
         private double scanle = 1;
 
@@ -118,8 +120,8 @@ namespace KryptonAccessController.RelationRealTimeMoni
 
                 ComponentDoorUnit doorUnit = new ComponentDoorUnit(formPictureMovable.pictureBoxElectronicMap, doorUintInfo.DoorUnitID.ToString(), (Bitmap)buttonImage, Location,1);
                 formPictureMovable.pictureBoxElectronicMap.Controls.Add(doorUnit);
-                doorUnit.editModeStripMenuItem_Click += new RealTimeMonitor().remoteControlToolStripMenuItem_Click;
-                doorUnit.saveModeStripMenuItem_Click += new RealTimeMonitor().delAccessPointToolStripMenuItem_Click;
+                doorUnit.editModeStripMenuItem_Click += new RealTimeMonitor(this, "192.168.1.230").remoteControlToolStripMenuItem_Click;
+                doorUnit.saveModeStripMenuItem_Click += new RealTimeMonitor(this, "192.168.1.230").delAccessPointToolStripMenuItem_Click;
 
                 doorUnit.SaveMode();
             }
@@ -162,17 +164,39 @@ namespace KryptonAccessController.RelationRealTimeMoni
                 ImageOperate.UpdateButtonItemToToolStrip(toolStripControlConsole, 0, "save.bmp", "Save");
             }
         }
+        public void addReadCardRealWatchDataToListView(ListView lv,string buffer)
+        {
+            ListViewItem lvi = new ListViewItem();
+
+            lvi.Text = buffer;
+            lvi.SubItems.Add(buffer);
+            lv.Items.Insert(0, lvi);
+        }
         private void toolStripButtonOpenRealWatch_Click(object sender, EventArgs e)
         {
             if (realWatchState == RealWatchState.Close)
             { 
-               realWatchState = RealWatchState.Open;
-               ImageOperate.UpdateButtonItemToToolStrip(toolStripControlConsole, 1, "MonitorOpen.bmp","Open");
+                realWatchState = RealWatchState.Open;
+                ImageOperate.UpdateButtonItemToToolStrip(toolStripControlConsole, 1, "MonitorOpen.bmp","Open");
+
+                if (!realTimeControllerList.ContainsKey(231))
+                {
+                    realTimeControllerList.Add(231, new RealTimeMonitor(this, "192.168.1.230"));
+                    realTimeControllerList[231].openRealTimeMonitorPort();
+                }
             }
             else if (realWatchState == RealWatchState.Open)
             {
                 realWatchState = RealWatchState.Close;
                 ImageOperate.UpdateButtonItemToToolStrip(toolStripControlConsole, 1, "MonitorPause.bmp", "Pause");
+
+                if (realTimeControllerList.ContainsKey(231))
+                {
+                    realTimeControllerList[231].closeRealTimeMonitorPort();
+                    realTimeControllerList.Remove(231);
+
+                }
+
             }
         }
         private void saveElectricMap()
@@ -306,8 +330,8 @@ namespace KryptonAccessController.RelationRealTimeMoni
 
                 ComponentDoorUnit doorUnit = new ComponentDoorUnit(formPictureMovable.pictureBoxElectronicMap, devpointname, null, loca,scanle);
                 formPictureMovable.pictureBoxElectronicMap.Controls.Add(doorUnit);
-                doorUnit.editModeStripMenuItem_Click += new RealTimeMonitor().remoteControlToolStripMenuItem_Click;
-                doorUnit.saveModeStripMenuItem_Click += new RealTimeMonitor().delAccessPointToolStripMenuItem_Click;
+                doorUnit.editModeStripMenuItem_Click += new RealTimeMonitor(this, "192.168.230").remoteControlToolStripMenuItem_Click;
+                doorUnit.saveModeStripMenuItem_Click += new RealTimeMonitor(this, "192.168.230").delAccessPointToolStripMenuItem_Click;
 
                 doorUnit.EditMode();
 

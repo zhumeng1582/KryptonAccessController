@@ -36,3 +36,4 @@ E:\AccessController\KryptonAccessController\KryptonAccessController\bin\Debug\Co
 E:\AccessController\KryptonAccessController\KryptonAccessController\bin\Debug\Components.pdb
 E:\AccessController\KryptonAccessController\KryptonAccessController\obj\Debug\AccessController.exe
 E:\AccessController\KryptonAccessController\KryptonAccessController\obj\Debug\AccessController.pdb
+E:\AccessController\KryptonAccessController\KryptonAccessController\bin\Debug\Newtonsoft.Json.dll

@@ -149,9 +149,42 @@ namespace KryptonAccessController.Dll
         static extern int SetDeviceData(int handle, string tablename, string data, string options);
         public static int setDeviceData(string ipaddress,string tablename,string data,string options)
         {
+            
             int handle = 0;
             try
             {
+                handle = testOnline(ipaddress);
+                if (handle > 0)
+                    return SetDeviceData(handle, tablename, data, options);
+                else
+                    return NORETURN;
+            }
+            finally
+            {
+                disconnectDevice(handle);
+            }
+        }
+        public static string jsonToString(string data)
+        {
+            int n1, n2;
+            n1 = data.IndexOf("{", 0);                  //开始位置  
+            n2 = data.IndexOf("}", n1);                 //结束位置  
+            data = data.Substring(n1+1, n2-n1-1);
+            return data.Replace(":", "=");
+        }
+        public static string stringToJson(string data)
+        {
+
+            data = data.Replace("=", ":");
+            return "{" + data + "}";
+        }
+
+        public static int setJsonDeviceData(string ipaddress, string tablename, string data, string options)
+        {
+            int handle = 0;
+            try
+            {
+                data = jsonToString(data);
                 handle = testOnline(ipaddress);
                 if (handle > 0)
                     return SetDeviceData(handle, tablename, data, options);
@@ -264,6 +297,25 @@ namespace KryptonAccessController.Dll
                 handle = testOnline(ipaddress);
                 if (handle > 0)
                     return DeleteDeviceData( handle,TableName,  Data,Options);
+                else
+                    return NORETURN;
+            }
+            finally
+            {
+                disconnectDevice(handle);
+            }
+        }
+        //UpdateDeviceData(HANDLE handle, const char *TableName,char *key, char *Data, const char *Options);
+        [DllImport(dllpath, EntryPoint = "UpdateDeviceData")]
+        static extern int UpdateDeviceData(int handle, string tableName, string key, string Data, string Options);
+        public static int updateDeviceData(string ipaddress, string TableName, string Key, string Data, string Options)
+        {
+            int handle = 0;
+            try
+            {
+                handle = testOnline(ipaddress);
+                if (handle > 0)
+                    return UpdateDeviceData(handle, TableName, Key,Data, Options);
                 else
                     return NORETURN;
             }

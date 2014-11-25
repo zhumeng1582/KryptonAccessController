@@ -781,7 +781,12 @@ namespace KryptonAccessController.RelationController
 
         private void openReadInfoDialog(int readerID,OpenMode openMode)
         {
-            AccessDataBase.Model.ReaderInfo modelReaderInfo = new AccessDataBase.Model.ReaderInfo();
+            if (bllReaderInfo.Exists(readerID))
+                openMode = OpenMode.Update;
+            else
+                openMode = OpenMode.Add;
+
+            modelReaderInfo = new AccessDataBase.Model.ReaderInfo();
             modelReaderInfo.ReaderID = readerID;
             FormReaderInfo formReaderInfo = new FormReaderInfo(modelReaderInfo,openMode);
             formReaderInfo.Show();

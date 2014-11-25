@@ -663,6 +663,7 @@ namespace KryptonAccessController.RelationController
                 "ControllerSAMType="+modelControllerInfo.ControllerSAMType+","+
                 "DoorUnitCounts=" + doorUnitCounts+ "," +
                 "ExpansionBoardCounts=" + expansionBoardCounts;
+            Dll.DllC0402.setDeviceData(modelControllerInfo.ControllerIP, "", data, "");
             /*
              * µ÷ÓÃAPIº¯Êý
              */

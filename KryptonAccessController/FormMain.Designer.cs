@@ -59,10 +59,6 @@ namespace KryptonAccessController
             this.toolStripMenuItemTimeGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemUser = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCardInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemTimeRelation = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemTimeZone = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemAccessTime = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemHoliday = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRecordRelation = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemConsole = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemManagerRelation = new System.Windows.Forms.ToolStripMenuItem();
@@ -187,6 +183,7 @@ namespace KryptonAccessController
             this.labelUser.Size = new System.Drawing.Size(60, 20);
             this.labelUser.TabIndex = 3;
             this.labelUser.Values.Text = "用户信息";
+            this.labelUser.Click += new System.EventHandler(this.labelUser_Click);
             this.labelUser.MouseLeave += new System.EventHandler(this.label_MouseLeave);
             this.labelUser.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label_MouseMove);
             // 
@@ -198,6 +195,7 @@ namespace KryptonAccessController
             this.labelCardInfo.Size = new System.Drawing.Size(60, 20);
             this.labelCardInfo.TabIndex = 4;
             this.labelCardInfo.Values.Text = "卡片信息";
+            this.labelCardInfo.Click += new System.EventHandler(this.labelCardInfo_Click);
             this.labelCardInfo.MouseLeave += new System.EventHandler(this.label_MouseLeave);
             this.labelCardInfo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label_MouseMove);
             // 
@@ -209,6 +207,7 @@ namespace KryptonAccessController
             this.labelDepartment.Size = new System.Drawing.Size(60, 20);
             this.labelDepartment.TabIndex = 5;
             this.labelDepartment.Values.Text = "部门信息";
+            this.labelDepartment.Click += new System.EventHandler(this.labelDepartment_Click);
             this.labelDepartment.MouseLeave += new System.EventHandler(this.label_MouseLeave);
             this.labelDepartment.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label_MouseMove);
             // 
@@ -262,6 +261,7 @@ namespace KryptonAccessController
             this.labelController.Size = new System.Drawing.Size(48, 20);
             this.labelController.TabIndex = 3;
             this.labelController.Values.Text = "控制器";
+            this.labelController.Click += new System.EventHandler(this.labelController_Click);
             this.labelController.MouseLeave += new System.EventHandler(this.label_MouseLeave);
             this.labelController.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label_MouseMove);
             // 
@@ -272,7 +272,8 @@ namespace KryptonAccessController
             this.labelDoorUnit.Name = "labelDoorUnit";
             this.labelDoorUnit.Size = new System.Drawing.Size(48, 20);
             this.labelDoorUnit.TabIndex = 4;
-            this.labelDoorUnit.Values.Text = "设备点";
+            this.labelDoorUnit.Values.Text = "门单元";
+            this.labelDoorUnit.Click += new System.EventHandler(this.labelDoorUnit_Click);
             this.labelDoorUnit.MouseLeave += new System.EventHandler(this.label_MouseLeave);
             this.labelDoorUnit.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label_MouseMove);
             // 
@@ -314,7 +315,6 @@ namespace KryptonAccessController
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemControllerRelation,
             this.toolStripMenuItemUserRelation,
-            this.toolStripMenuItemTimeRelation,
             this.toolStripMenuItemRecordRelation,
             this.toolStripMenuItemManagerRelation,
             this.toolStripMenuItemToolRelation,
@@ -393,35 +393,6 @@ namespace KryptonAccessController
             this.toolStripMenuItemCardInfo.Size = new System.Drawing.Size(134, 22);
             this.toolStripMenuItemCardInfo.Text = "卡片信息";
             this.toolStripMenuItemCardInfo.Click += new System.EventHandler(this.toolStripMenuItemCardInfo_Click);
-            // 
-            // toolStripMenuItemTimeRelation
-            // 
-            this.toolStripMenuItemTimeRelation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemTimeZone,
-            this.toolStripMenuItemAccessTime,
-            this.toolStripMenuItemHoliday});
-            this.toolStripMenuItemTimeRelation.Name = "toolStripMenuItemTimeRelation";
-            this.toolStripMenuItemTimeRelation.Size = new System.Drawing.Size(67, 20);
-            this.toolStripMenuItemTimeRelation.Text = "时间相关";
-            // 
-            // toolStripMenuItemTimeZone
-            // 
-            this.toolStripMenuItemTimeZone.Name = "toolStripMenuItemTimeZone";
-            this.toolStripMenuItemTimeZone.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemTimeZone.Text = "时区管理";
-            // 
-            // toolStripMenuItemAccessTime
-            // 
-            this.toolStripMenuItemAccessTime.Name = "toolStripMenuItemAccessTime";
-            this.toolStripMenuItemAccessTime.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemAccessTime.Text = "周计划管理";
-            this.toolStripMenuItemAccessTime.Click += new System.EventHandler(this.toolStripMenuItemAccessTime_Click);
-            // 
-            // toolStripMenuItemHoliday
-            // 
-            this.toolStripMenuItemHoliday.Name = "toolStripMenuItemHoliday";
-            this.toolStripMenuItemHoliday.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemHoliday.Text = "节假日管理";
             // 
             // toolStripMenuItemRecordRelation
             // 
@@ -612,7 +583,6 @@ namespace KryptonAccessController
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemControllerRelation;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUserRelation;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTimeRelation;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRecordRelation;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemToolRelation;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHelpRelation;
@@ -638,9 +608,6 @@ namespace KryptonAccessController
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTimeGroup;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUser;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCardInfo;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTimeZone;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAccessTime;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHoliday;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenHelpFile;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAboutUs;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;

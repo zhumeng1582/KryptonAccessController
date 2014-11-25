@@ -20,6 +20,21 @@ string data = "ControllerID=241,ControllerType=1,ControllerName='Controller1',Co
 	ControllerMAC='AA:BB:CC:DD:EE:FF',ControllerIP='192.168.1.241',ControllerSubnetMask='255.255.255.0',ControllerGateway='192.168.1.1',ControllerPort=1200,\
 	ControllerDNS='8.8.8.8',ControllerBUDNS='114.114.114.114',ControllerAddr485=0,ControllerBaudrate=115200,ControllerDataBits=8,ControllerStopBits=1,\
 	ControllerParityCheck='None',ControllerFlowControl='None',ControllerSAM=0,ControllerSAMType=0,DoorUnitCounts=2,ExpansionBoardCounts=0";
+	
+	ControllerID=1,
+	ControllerType=1,
+	ControllerName='控制器1',
+	ControllerLocation='默认地址',
+	EncryptionType=0,
+	ControllerVersion='V20140321',
+	ControllerMAC='',
+	ControllerIP='192.168.1.100',
+	ControllerSubnetMask='255.255.255.0',
+	ControllerGateway='192.168.1.1',
+	ControllerPort=1200,ControllerDNS='8.8.8.8',
+	ControllerBUDNS='192.168.1.1',ControllerAddr485=,
+	ControllerBaudrate=115200,ControllerDataBits=8,
+	ControllerStopBits=1,ControllerParityCheck='None',ControllerFlowControl='None',ControllerSAM=,ControllerSAMType=,DoorUnitCounts=2,ExpansionBoardCounts=0
 //门单元表
 string tableName = "DoorUnitInfo";
 string data = "DoorUnitID=1,OutPutLockID=01,OutPutTimeLength=6,OpenDoorOverTimeLen=20,ZoneCountLinitEnable=0,ZoneCountLimitMax=10,ZoneCountLimitMed=8,\
@@ -57,6 +72,7 @@ string data = "ExpansionBoardID=1,ExpansionBoardType=1,ExpansionBoardName='Expan
 //扩展板端口信息
 string tableName = "ExpansionBoardPointInfo";
 string data = "ExpansionBoardPointID=1,PointName=input1,PointType=1,PointID=1,PointState='Null',ExpansionBoardID=1"
+string jsonData = "{ExpansionBoardPointID:1,PointName:input1,PointType:1,PointID:1,PointState:Null,ExpansionBoardID:1}"
 
 //多媒体
 string tableName = "Media"
@@ -75,8 +91,10 @@ string data ="PlayMediaID=1,PlayMediaName='XXX',PlayReaderID=1,PlayLoop=1,\
 
 //用户表
 string tableName = "UserInfo";
-string data = "UserID=1,UserName='user1',Photograph=0xFFFFF,UserGroupID1=1,UserGroupID2=1,UserGroupID3=1,UserGroupID4=1,FingerPosition0=1,FingerPrint0=0xFFFFF,\
-	FingerPosition1=1,FingerPrint1=0xFFFFFF,SecurityAccessLevel=1,PrimaryCardID='00000000',SecondCardID='00000000'";
+string data = "UserID=1,UserName='user1',Photograph=NULL,UserGroupID1=1,UserGroupID2=1,UserGroupID3=1,UserGroupID4=1,FingerPosition0=1,FingerPrint0=NULL,\
+	FingerPosition1=1,FingerPrint1=NULL,SecurityAccessLevel=1,PrimaryCardID='00000000',SecondCardID='00000000'";
+	
+UserID:1,UserName:'user1',Photograph:0xFFFFF,UserGroupID1:1,UserGroupID2:1,UserGroupID3:1,UserGroupID4:1,FingerPosition0:1,FingerPrint0:0xFFFFF,FingerPosition1:1,FingerPrint1:0xFFFFFF,SecurityAccessLevel:1,PrimaryCardID:'00000000',SecondCardID:'00000000'"
 	
 //卡信息
 string tableName ="CardInfo";

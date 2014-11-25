@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonFormDeviceManage));
             this.statusStripMessage = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -128,12 +127,22 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.tabPageUnitTest = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.kryptonButtonJson = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonButtonTestJson = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonTextBoxTestJson = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonButtonTestSQLite = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.button_TestSetDeviceData = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.kryptonButtonJson = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.tabPageJson = new System.Windows.Forms.TabPage();
+            this.textBoxJson = new System.Windows.Forms.TextBox();
+            this.buttonJsonToString = new System.Windows.Forms.Button();
+            this.textBoxString = new System.Windows.Forms.TextBox();
+            this.buttonStringToJson = new System.Windows.Forms.Button();
+            this.buttonSetData = new System.Windows.Forms.Button();
             this.statusStripMessage.SuspendLayout();
             this.flatTabControl1.SuspendLayout();
             this.tabPageParaSet.SuspendLayout();
@@ -147,6 +156,7 @@
             this.tabPageTriggerEvent.SuspendLayout();
             this.tabPageUpdateProgram.SuspendLayout();
             this.tabPageUnitTest.SuspendLayout();
+            this.tabPageJson.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStripMessage
@@ -179,6 +189,7 @@
             this.flatTabControl1.Controls.Add(this.tabPageTriggerEvent);
             this.flatTabControl1.Controls.Add(this.tabPageUpdateProgram);
             this.flatTabControl1.Controls.Add(this.tabPageUnitTest);
+            this.flatTabControl1.Controls.Add(this.tabPageJson);
             this.flatTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flatTabControl1.Location = new System.Drawing.Point(0, 0);
             this.flatTabControl1.Name = "flatTabControl1";
@@ -621,7 +632,7 @@
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(192, 70);
+            this.kryptonPanel2.Size = new System.Drawing.Size(702, 539);
             this.kryptonPanel2.TabIndex = 0;
             // 
             // labelViewBlackCardID
@@ -1030,7 +1041,7 @@
             this.buttonUpdateDataBase.Name = "buttonUpdateDataBase";
             this.buttonUpdateDataBase.Size = new System.Drawing.Size(90, 25);
             this.buttonUpdateDataBase.TabIndex = 78;
-            this.buttonUpdateDataBase.Values.Text = "更新程序";
+            this.buttonUpdateDataBase.Values.Text = "更新数据库 ";
             this.buttonUpdateDataBase.Click += new System.EventHandler(this.buttonUpdateDataBase_Click);
             // 
             // buttonUpdateProgram
@@ -1060,6 +1071,10 @@
             // tabPageUnitTest
             // 
             this.tabPageUnitTest.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageUnitTest.Controls.Add(this.button3);
+            this.tabPageUnitTest.Controls.Add(this.textBox2);
+            this.tabPageUnitTest.Controls.Add(this.button2);
+            this.tabPageUnitTest.Controls.Add(this.button1);
             this.tabPageUnitTest.Controls.Add(this.kryptonButtonJson);
             this.tabPageUnitTest.Controls.Add(this.kryptonButtonTestJson);
             this.tabPageUnitTest.Controls.Add(this.kryptonTextBoxTestJson);
@@ -1072,9 +1087,56 @@
             this.tabPageUnitTest.TabIndex = 4;
             this.tabPageUnitTest.Text = "单元测试";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(56, 304);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(34, 338);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(616, 73);
+            this.textBox2.TabIndex = 8;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(382, 136);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Update";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(382, 107);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Del";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // kryptonButtonJson
+            // 
+            this.kryptonButtonJson.Location = new System.Drawing.Point(141, 271);
+            this.kryptonButtonJson.Name = "kryptonButtonJson";
+            this.kryptonButtonJson.Size = new System.Drawing.Size(90, 25);
+            this.kryptonButtonJson.TabIndex = 5;
+            this.kryptonButtonJson.Values.Text = "SetJsonStr";
+            this.kryptonButtonJson.Click += new System.EventHandler(this.kryptonButtonJson_Click);
+            // 
             // kryptonButtonTestJson
             // 
-            this.kryptonButtonTestJson.Location = new System.Drawing.Point(124, 295);
+            this.kryptonButtonTestJson.Location = new System.Drawing.Point(141, 227);
             this.kryptonButtonTestJson.Name = "kryptonButtonTestJson";
             this.kryptonButtonTestJson.Size = new System.Drawing.Size(90, 25);
             this.kryptonButtonTestJson.TabIndex = 4;
@@ -1083,14 +1145,14 @@
             // 
             // kryptonTextBoxTestJson
             // 
-            this.kryptonTextBoxTestJson.Location = new System.Drawing.Point(124, 253);
+            this.kryptonTextBoxTestJson.Location = new System.Drawing.Point(141, 190);
             this.kryptonTextBoxTestJson.Name = "kryptonTextBoxTestJson";
             this.kryptonTextBoxTestJson.Size = new System.Drawing.Size(409, 20);
             this.kryptonTextBoxTestJson.TabIndex = 3;
             // 
             // kryptonButtonTestSQLite
             // 
-            this.kryptonButtonTestSQLite.Location = new System.Drawing.Point(141, 188);
+            this.kryptonButtonTestSQLite.Location = new System.Drawing.Point(141, 146);
             this.kryptonButtonTestSQLite.Name = "kryptonButtonTestSQLite";
             this.kryptonButtonTestSQLite.Size = new System.Drawing.Size(90, 25);
             this.kryptonButtonTestSQLite.TabIndex = 2;
@@ -1099,7 +1161,7 @@
             // 
             // button_TestSetDeviceData
             // 
-            this.button_TestSetDeviceData.Location = new System.Drawing.Point(141, 135);
+            this.button_TestSetDeviceData.Location = new System.Drawing.Point(141, 107);
             this.button_TestSetDeviceData.Name = "button_TestSetDeviceData";
             this.button_TestSetDeviceData.Size = new System.Drawing.Size(153, 23);
             this.button_TestSetDeviceData.TabIndex = 1;
@@ -1114,16 +1176,66 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(616, 73);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
-            // kryptonButtonJson
+            // tabPageJson
             // 
-            this.kryptonButtonJson.Location = new System.Drawing.Point(117, 363);
-            this.kryptonButtonJson.Name = "kryptonButtonJson";
-            this.kryptonButtonJson.Size = new System.Drawing.Size(90, 25);
-            this.kryptonButtonJson.TabIndex = 5;
-            this.kryptonButtonJson.Values.Text = "SetJsonStr";
-            this.kryptonButtonJson.Click += new System.EventHandler(this.kryptonButtonJson_Click);
+            this.tabPageJson.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageJson.Controls.Add(this.buttonSetData);
+            this.tabPageJson.Controls.Add(this.buttonStringToJson);
+            this.tabPageJson.Controls.Add(this.textBoxString);
+            this.tabPageJson.Controls.Add(this.buttonJsonToString);
+            this.tabPageJson.Controls.Add(this.textBoxJson);
+            this.tabPageJson.Location = new System.Drawing.Point(4, 26);
+            this.tabPageJson.Name = "tabPageJson";
+            this.tabPageJson.Size = new System.Drawing.Size(702, 539);
+            this.tabPageJson.TabIndex = 5;
+            this.tabPageJson.Text = "Json";
+            // 
+            // textBoxJson
+            // 
+            this.textBoxJson.Location = new System.Drawing.Point(21, 44);
+            this.textBoxJson.Multiline = true;
+            this.textBoxJson.Name = "textBoxJson";
+            this.textBoxJson.Size = new System.Drawing.Size(616, 73);
+            this.textBoxJson.TabIndex = 1;
+            // 
+            // buttonJsonToString
+            // 
+            this.buttonJsonToString.Location = new System.Drawing.Point(21, 140);
+            this.buttonJsonToString.Name = "buttonJsonToString";
+            this.buttonJsonToString.Size = new System.Drawing.Size(98, 23);
+            this.buttonJsonToString.TabIndex = 2;
+            this.buttonJsonToString.Text = "jsonToString";
+            this.buttonJsonToString.UseVisualStyleBackColor = true;
+            this.buttonJsonToString.Click += new System.EventHandler(this.buttonJsonToString_Click);
+            // 
+            // textBoxString
+            // 
+            this.textBoxString.Location = new System.Drawing.Point(21, 169);
+            this.textBoxString.Multiline = true;
+            this.textBoxString.Name = "textBoxString";
+            this.textBoxString.Size = new System.Drawing.Size(616, 73);
+            this.textBoxString.TabIndex = 3;
+            // 
+            // buttonStringToJson
+            // 
+            this.buttonStringToJson.Location = new System.Drawing.Point(288, 140);
+            this.buttonStringToJson.Name = "buttonStringToJson";
+            this.buttonStringToJson.Size = new System.Drawing.Size(98, 23);
+            this.buttonStringToJson.TabIndex = 4;
+            this.buttonStringToJson.Text = "StringToJson";
+            this.buttonStringToJson.UseVisualStyleBackColor = true;
+            this.buttonStringToJson.Click += new System.EventHandler(this.buttonStringToJson_Click);
+            // 
+            // buttonSetData
+            // 
+            this.buttonSetData.Location = new System.Drawing.Point(21, 268);
+            this.buttonSetData.Name = "buttonSetData";
+            this.buttonSetData.Size = new System.Drawing.Size(98, 23);
+            this.buttonSetData.TabIndex = 5;
+            this.buttonSetData.Text = "写数据";
+            this.buttonSetData.UseVisualStyleBackColor = true;
+            this.buttonSetData.Click += new System.EventHandler(this.buttonSetData_Click);
             // 
             // KryptonFormDeviceManage
             // 
@@ -1154,6 +1266,8 @@
             this.tabPageUpdateProgram.PerformLayout();
             this.tabPageUnitTest.ResumeLayout(false);
             this.tabPageUnitTest.PerformLayout();
+            this.tabPageJson.ResumeLayout(false);
+            this.tabPageJson.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1266,6 +1380,16 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButtonTestJson;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBoxTestJson;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButtonJson;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TabPage tabPageJson;
+        private System.Windows.Forms.TextBox textBoxString;
+        private System.Windows.Forms.Button buttonJsonToString;
+        private System.Windows.Forms.TextBox textBoxJson;
+        private System.Windows.Forms.Button buttonStringToJson;
+        private System.Windows.Forms.Button buttonSetData;
         
     }
 }
